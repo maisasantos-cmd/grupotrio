@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029182428"></script>
+<script src="./support.js?v=20261029193645"></script>
 </head>
 <body>
 <x-dc>
@@ -38,6 +38,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   
   <style>
+    @media (max-width: 767px) {
+      main a[style*="uppercase"], main a[style*="letter-spacing"][style*="padding"], main form button, main button[style*="uppercase"][style*="padding"]:not([role="tab"]):not([aria-pressed]) { display: flex !important; width: 100% !important; min-height: 44px !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; }
+      main form button[type="submit"] { flex: 1 1 100% !important; }
+      [style*="position: sticky"], [style*="position:sticky"] { position: static !important; }
+      main span[style*="letter-spacing: 2.5px"], main span[style*="letter-spacing:2.5px"], main span[style*="letter-spacing: 3px"], main span[style*="letter-spacing:3px"], main span[style*="letter-spacing: 3.5px"], main span[style*="letter-spacing:3.5px"] { letter-spacing: 1.2px !important; }
+      main form div:has(> button[type="submit"]) { flex-wrap: wrap !important; }
+      main p[style*="font-size: 13px"], main p[style*="font-size: 14px"], main p[style*="font-size:13px"], main p[style*="font-size:14px"] { font-size: 15px !important; }
+    }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background:#510303; font-family: 'General Sans', sans-serif; overflow-x: hidden; }
@@ -62,7 +70,7 @@
     <div style="{{ heroInner }}">
       <nav aria-label="Breadcrumb" style="margin-bottom:28px">
         <ol style="display:flex;align-items:center;gap:10px;list-style:none;padding:0;margin:0;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase">
-          <li><a href="home.dc.html" style="color:rgba(249,248,244,0.55);text-decoration:none">Grupo Trio</a></li>
+          <li><a href="home.dc.html" style="display:inline-flex;align-items:center;min-height:44px;min-width:44px;margin:-14px 0;color:rgba(249,248,244,0.55);text-decoration:none">Grupo Trio</a></li>
           <li style="color:rgba(249,248,244,0.35)">·</li>
           <li aria-current="page" style="color:rgba(249,248,244,0.8)">Quem Somos</li>
         </ol>
@@ -294,7 +302,7 @@
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><div style="width:30px;height:1px;background:rgba(249,248,244,0.45)"></div><span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.7)">Perguntas frequentes</span></div>
         <h2 id="qs-faq-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(32px,3.2vw,44px);line-height:1.1;color:#F9F8F4;margin:0 0 16px">Sobre o Grupo Trio</h2>
         <p style="font-family:'General Sans',sans-serif;font-size:13px;line-height:1.7;color:rgba(249,248,244,0.7);margin:0 0 20px;max-width:280px">As dúvidas mais comuns sobre quem somos, o que operamos e como atendemos.</p>
-        <a href="#qs-cta" style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#F9F8F4;text-decoration:none">Falar com a equipe →</a>
+        <a href="#qs-cta" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 26px;background:#F9F8F4;color:#510303;text-decoration:none" style-hover="background:#BFB8AF;color:#510303">Falar com a equipe</a>
       </div>
       <div style="border-top:1px solid rgba(249,248,244,0.2)">
         <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
