@@ -64,7 +64,7 @@
 const E = k => (k === 'garden' ? 'trio-garden.dc.html' : 'nossos-espacos.dc.html#ne-espacos');
 const COLS = [
   { title: 'Espaços', links: [['Trio Pérgola','pergola'],['Trio One','one'],['Trio Sky Lounge','skylounge'],['Trio Dezenove','dezenove'],['Trio Metropolitan','metropolitan'],['Trio SP Hall','sphall'],['Trio Trivento','trivento'],['Trio Garden','garden'],['Trio River One','riverone'],['Trio Auri','auri']].map(([label,k]) => ({ label, href: k === 'garden' ? 'trio-garden.dc.html' : E(k) })) },
-  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','https://www.grupotrio.com.br/mini-wedding/'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar e Bat Mitzvah','bar-e-bat-mitzvah.dc.html'],['Corporativo','https://www.grupotrio.com.br/corporativo/']].map(([label,href]) => ({ label, href })) },
+  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','casamentos.dc.html'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar e Bat Mitzvah','bar-e-bat-mitzvah.dc.html'],['Corporativo','https://www.grupotrio.com.br/corporativo/']].map(([label,href]) => ({ label, href })) },
 ];
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };

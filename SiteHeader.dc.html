@@ -69,7 +69,7 @@
             <a href="bar-e-bat-mitzvah.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Bar e Bat Mitzvah</a>
             <a href="casamentos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Casamentos</a>
             <a href="festa-de-15-anos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Festa de 15 Anos</a>
-            <a href="https://www.grupotrio.com.br/mini-wedding/" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Mini Wedding</a>
+            <a href="casamentos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Mini Wedding</a>
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@
         <sc-if value="{{ mobileOcasioesOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid rgba(249,248,244,0.08)">
             <a href="casamentos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Casamentos</a>
-            <a href="https://www.grupotrio.com.br/mini-wedding/" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Mini Wedding</a>
+            <a href="casamentos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Mini Wedding</a>
             <a href="festa-de-15-anos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Festa de 15 Anos</a>
             <a href="aniversario.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Aniversários</a>
             <a href="bar-e-bat-mitzvah.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Bar e Bat Mitzvah</a>
@@ -158,7 +158,7 @@ const MENU = [
   { key: 'espacos', label: 'Nossos espaços', href: L.espacos, sub: [...SP.map(([k, n]) => ['TRIO | ' + n.toUpperCase(), L.esp(k)]), ['Ver todos os espaços', L.espacos]] },
   { key: 'restaurantes', label: 'Restaurantes', href: L.esp('dezenove'), sub: [['Trio Dezenove', L.esp('dezenove')], ['Trio Garden', L.esp('garden')]] },
   { key: 'corporativo', label: 'Corporativo', href: 'https://www.grupotrio.com.br/corporativo/', sub: [] },
-  { key: 'ocasioes', label: 'Ocasiões', href: L.ocasioes, sub: [['Aniversário', 'aniversario.dc.html'], ['Bar e Bat Mitzvah', 'bar-e-bat-mitzvah.dc.html'], ['Casamentos', 'casamentos.dc.html'], ['Festa de 15 anos', 'festa-de-15-anos.dc.html'], ['Mini wedding', 'https://www.grupotrio.com.br/mini-wedding/'], ['Todas as ocasiões', L.ocasioes]] },
+  { key: 'ocasioes', label: 'Ocasiões', href: L.ocasioes, sub: [['Aniversário', 'aniversario.dc.html'], ['Bar e Bat Mitzvah', 'bar-e-bat-mitzvah.dc.html'], ['Casamentos', 'casamentos.dc.html'], ['Festa de 15 anos', 'festa-de-15-anos.dc.html'], ['Mini wedding', 'casamentos.dc.html'], ['Todas as ocasiões', L.ocasioes]] },
 ];
 
 class Component extends DCLogic {
