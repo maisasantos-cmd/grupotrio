@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+  <script src="trio-data.js"></script>
+  <script src="espacos-data.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Chivo+Mono:wght@400&display=swap" rel="stylesheet">
+  
+  <style>
+    @keyframes tg-marquee { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
+    @media (prefers-reduced-motion: reduce) { [style*="tg-marquee"] { animation: none !important; } }
+    :root { --ac: #510303; --ac2: #3a0202; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ac); font-family: 'General Sans', sans-serif; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--ac); }
+    ::-webkit-scrollbar-thumb { background: var(--ac); border-radius: 2px; }
+  </style>
+</helmet>
+
+<a href="#tg-main" style="position:absolute;left:-9999px;top:4px;padding:8px 16px;background:var(--ac);color:#F9F8F4;font-family:'General Sans',sans-serif;font-size:12px;z-index:9999;text-decoration:none">Pular para o conteúdo principal</a>
+<dc-import name="SiteHeader" active="espacos" accent="{{ accentHex }}" orcamento-href="#tg-contato" hint-size="100%,72px"></dc-import>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main id="tg-main">
+
+  <!-- ── HERO ── -->
+  <section id="tg-hero" role="region" aria-labelledby="tg-h1" style="position:relative;min-height:100vh;display:flex;align-items:flex-end;background:var(--ac);overflow:hidden;;padding:140px 0 80px;box-sizing:border-box">
+
+    <sc-if value="{{ e.heroImg }}" hint-placeholder-val="{{ false }}"><img src="{{ e.heroImg }}" alt="{{ e.heroAlt }}" fetchpriority="high" loading="eager" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></sc-if>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb, var(--ac) 92%, transparent) 0%,color-mix(in srgb, var(--ac) 70%, transparent) 45%,color-mix(in srgb, var(--ac) 35%, transparent) 100%)"></div>
+    <!-- Subtle dark texture -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.25) 0%,transparent 50%,rgba(0,0,0,0.15) 100%)" aria-hidden="true"></div>
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(249,248,244,0.02) 22px,rgba(249,248,244,0.02) 23px)" aria-hidden="true"></div>
+
+    
+
+    <nav aria-label="Breadcrumb" style="position:absolute;top:110px;left:0;right:0;z-index:2;max-width:1240px;margin:0 auto;padding:0 48px;box-sizing:border-box">
+      <ol style="display:flex;align-items:center;gap:8px;list-style:none;padding:0;margin:0">
+        <li><a href="home.dc.html" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.8);text-decoration:none" style-hover="color:#F9F8F4">Início</a></li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
+        <li><a href="nossos-espacos.dc.html" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.8);text-decoration:none" style-hover="color:#F9F8F4">Nossos Espaços</a></li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
+        <li><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#F9F8F4" aria-current="page">{{ e.name }}</span></li>
+      </ol>
+    </nav>
+
+    <!-- Hero content -->
+    <div style="position:relative;z-index:1;width:100%;max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:minmax(0,760px);gap:64px;align-items:flex-end">
+
+      <div>
+        <!-- Territory badge -->
+        <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid rgba(249,248,244,0.2);margin-bottom:32px">
+          <span style="width:6px;height:6px;background:#F9F8F4;border-radius:50%;display:block"></span>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:rgba(249,248,244,0.75)">{{ e.territorio }}</span>
+        </div>
+
+        <!-- Logo mark: TRIO | GARDEN -->
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:32px">
+          <span style="font-family:'General Sans',sans-serif;font-size:clamp(44px,5vw,72px);font-weight:500;letter-spacing:8px;color:#F9F8F4;line-height:1">TRIO</span>
+          <div style="width:1px;height:56px;background:rgba(249,248,244,0.4)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:clamp(28px,3.5vw,50px);font-weight:300;letter-spacing:6px;color:#F9F8F4;line-height:1">{{ e.upper }}</span>
+        </div>
+
+        <h1 id="tg-h1" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.6;color:rgba(249,248,244,0.72);max-width:440px;margin:0 0 40px">{{ e.h1 }}</h1>
+
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <a href="#tg-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6df">Quero fazer meu evento</a>
+          <a href="#tg-caracteristicas" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 32px;background:transparent;border:1px solid rgba(249,248,244,0.35);color:#F9F8F4;text-decoration:none;transition:border-color 0.2s" style-hover="border-color:#F9F8F4">Ver Características</a>
+        </div>
+      </div>
+
+      <!-- Hero right: large placeholder -->
+      
+
+    </div>
+
+    <!-- Scroll -->
+    <div style="position:absolute;bottom:32px;left:48px;display:flex;flex-direction:column;align-items:flex-start;gap:8px" aria-hidden="true">
+      <div style="width:1px;height:48px;background:linear-gradient(to bottom,rgba(249,248,244,0.4),transparent)"></div>
+      <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.35)">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ── INTRO ── -->
+  <section id="tg-intro" aria-labelledby="tg-intro-h2" style="background:#F9F8F4;padding:100px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+
+      <!-- Image placeholder -->
+      <div style="position:relative;width:100%;max-width:560px;justify-self:center">
+        <div style="position:relative;width:100%;aspect-ratio:1/1;background:var(--ac);overflow:hidden" aria-roledescription="carousel" aria-label="{{ carouselLabel }}" onTouchStart="{{ introTouchStart }}" onTouchEnd="{{ introTouchEnd }}">
+          <div style="position:absolute;inset:0">
+            <sc-for list="{{ introSlides }}" as="s" hint-placeholder-count="0">
+              <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" width="800" height="800" aria-hidden="{{ s.hidden }}" style="{{ s.style }}">
+            </sc-for>
+          </div>
+          <sc-if value="{{ multiSlides }}" hint-placeholder-val="{{ true }}"><button onClick="{{ introPrev }}" aria-label="Foto anterior" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(249,248,244,0.92);color:var(--ac);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center">‹</button>
+          <button onClick="{{ introNext }}" aria-label="Próxima foto" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(249,248,244,0.92);color:var(--ac);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center">›</button>
+          <div style="position:absolute;left:0;right:0;bottom:8px;z-index:3;display:flex;justify-content:center;gap:0">
+            <sc-for list="{{ introDots }}" as="dt" hint-placeholder-count="5">
+              <button onClick="{{ dt.go }}" aria-label="{{ dt.label }}" aria-current="{{ dt.current }}" style="width:44px;height:44px;background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center"><span style="{{ dt.dot }}"></span></button>
+            </sc-for>
+          </div></sc-if>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:var(--ac)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">Sobre o Espaço</span>
+        </div>
+        <h2 id="tg-intro-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(34px,3vw,50px);line-height:1.15;color:#231D1A;margin:0 0 24px"><sc-for list="{{ introTitleLines }}" as="ln" hint-placeholder-count="2"><span style="display:block">{{ ln }}</span></sc-for></h2>
+        <sc-for list="{{ e.introParas }}" as="p" hint-placeholder-count="2"><p style="font-family:'General Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(35,29,26,0.65);margin:0 0 20px">{{ p }}</p></sc-for>
+        <!-- Quick stats -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:36px;border:1px solid color-mix(in srgb, var(--ac) 15%, transparent)">
+          <div style="padding:20px 24px;border-right:1px solid color-mix(in srgb, var(--ac) 12%, transparent)">
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ac);margin-bottom:6px">Área</span>
+            <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-size:32px;color:#231D1A;line-height:1">{{ e.area }}</span>
+          </div>
+          <div style="padding:20px 24px">
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--ac);margin-bottom:6px">Localização</span>
+            <span style="font-family:'General Sans',sans-serif;font-size:14px;color:rgba(35,29,26,0.7);line-height:1.5">{{ e.end1 }}<br>{{ e.end2 }}</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <a href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;background:var(--ac);color:#F9F8F4;text-decoration:none" style-hover="background:var(--ac2);color:#F9F8F4">Solicitar Orçamento</a>
+          <a href="{{ waLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:var(--ac);color:#F9F8F4;text-decoration:none;text-align:center" style-hover="background:var(--ac2);color:#F9F8F4">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CARACTERÍSTICAS ── -->
+  <section id="tg-caracteristicas" aria-labelledby="tg-car-h2" style="{{ carSection }}">
+    <div style="{{ carGrid }}">
+      <div style="{{ carPhoto }}">
+        <sc-if value="{{ e.carImg }}" hint-placeholder-val="{{ false }}"><img src="{{ e.carImg }}" alt="{{ e.carAlt }}" loading="lazy" width="1000" height="1200" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+      </div>
+      <div style="{{ carText }}">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.5)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#F9F8F4">Características</span>
+        </div>
+        <h2 id="tg-car-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(36px,4vw,56px);line-height:1.05;color:#F9F8F4;margin:0 0 16px">Estrutura completa para cada ocasião</h2>
+        <p style="font-family:'General Sans',sans-serif;font-size:15px;line-height:1.75;color:rgba(249,248,244,0.85);margin:0 0 40px;max-width:520px">Infraestrutura pensada para receber eventos com a excelência e o cuidado que são a marca do Grupo TRIO.</p>
+        <div style="{{ carStats }}">
+          <sc-for list="{{ statsList }}" as="st" hint-placeholder-count="3"><div style="{{ st.cell }}">
+            <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(26px,2.6vw,40px);line-height:1.1;white-space:nowrap;color:#F9F8F4">{{ st.v }}</span>
+            <span style="display:block;margin-top:10px;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(249,248,244,0.75)">{{ st.l }}</span>
+          </div></sc-for>
+        </div>
+        <span style="display:block;margin:36px 0 16px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.7)">Diferenciais</span>
+        <ul style="{{ carList }}">
+          <sc-for list="{{ diferenciais }}" as="d" hint-placeholder-count="6">
+            <li style="display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(249,248,244,0.14);font-family:'General Sans',sans-serif;font-size:15px;color:#F9F8F4">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F9F8F4" stroke-width="1.6" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg>
+              {{ d }}
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALERIA ── -->
+  <section id="tg-galeria" aria-labelledby="tg-gal-h2" style="background:#F9F8F4;padding:100px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+        <div style="width:40px;height:1px;background:var(--ac)"></div>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">Galeria</span>
+      </div>
+      <h2 id="tg-gal-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(34px,3vw,50px);line-height:1.1;color:#231D1A;margin:0 0 16px">{{ e.galTitle }}</h2>
+      <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.75;color:#231D1A;margin:0 0 48px;max-width:100%;text-wrap:pretty">{{ e.galText }}</p>
+
+      <!-- Gallery grid: 2 large + 3 small -->
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:4px">
+        <div style="grid-row:1/3;background:var(--ac);position:relative;overflow:hidden;position:relative;overflow:hidden"><sc-if value="{{ g0.src }}" hint-placeholder-val="{{ false }}"><img src="{{ g0.src }}" alt="{{ g0.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ g0.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Foto a enviar</span></sc-if></div>
+        <div style="background:color-mix(in srgb, var(--ac) 75%, #F9F8F4);position:relative;overflow:hidden;position:relative;overflow:hidden"><sc-if value="{{ g1.src }}" hint-placeholder-val="{{ false }}"><img src="{{ g1.src }}" alt="{{ g1.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ g1.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Foto a enviar</span></sc-if></div>
+        <div style="background:color-mix(in srgb, var(--ac) 75%, #F9F8F4);position:relative;overflow:hidden;position:relative;overflow:hidden"><sc-if value="{{ g2.src }}" hint-placeholder-val="{{ false }}"><img src="{{ g2.src }}" alt="{{ g2.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ g2.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Foto a enviar</span></sc-if></div>
+        <div style="background:color-mix(in srgb, var(--ac) 75%, #F9F8F4);position:relative;overflow:hidden;position:relative;overflow:hidden"><sc-if value="{{ g3.src }}" hint-placeholder-val="{{ false }}"><img src="{{ g3.src }}" alt="{{ g3.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ g3.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Foto a enviar</span></sc-if></div>
+        <div style="background:color-mix(in srgb, var(--ac) 75%, #F9F8F4);position:relative;overflow:hidden;position:relative;overflow:hidden"><sc-if value="{{ g4.src }}" hint-placeholder-val="{{ false }}"><img src="{{ g4.src }}" alt="{{ g4.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if><sc-if value="{{ g4.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Foto a enviar</span></sc-if></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOCALIZAÇÃO ── -->
+  <section id="tg-mapa" aria-labelledby="tg-map-h2" style="background:var(--ac);padding:100px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:flex-start">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.3)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.55)">Localização</span>
+        </div>
+        <h2 id="tg-map-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(32px,3vw,48px);line-height:1.1;color:#F9F8F4;margin:0 0 24px">Como chegar<br>ao {{ e.name }}</h2>
+        <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:36px">
+          <div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.5);margin-bottom:6px">Endereço</span>
+            <address style="font-family:'General Sans',sans-serif;font-size:15px;color:#F9F8F4;line-height:1.7;font-style:normal">{{ e.end1 }}<br>{{ e.end2 }}<sc-if value="{{ e.ref }}" hint-placeholder-val="{{ false }}"><br>{{ e.ref }}</sc-if></address>
+          </div>
+          <sc-if value="{{ e.cert }}" hint-placeholder-val="{{ false }}"><div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.5);margin-bottom:6px">Certificação</span>
+            <span style="font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.65);line-height:1.6">{{ e.cert }}</span>
+          </div></sc-if>
+        </div>
+        <a href="{{ e.mapLink }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Abrir no Google Maps
+        </a>
+      </div>
+
+      <!-- Google Maps embed -->
+      <div style="width:100%;height:400px;overflow:hidden;border:1px solid rgba(249,248,244,0.1)">
+        <iframe
+          src="{{ e.mapEmbed }}"
+          width="100%" height="400" style="border:0;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{{ mapTitle }}"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OCASIÕES ── -->
+  <section id="tg-ocasioes" aria-labelledby="tg-oc-h2" style="background:#F9F8F4;padding:80px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+            <div style="width:40px;height:1px;background:var(--ac)"></div>
+            <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">Ocasiões</span>
+          </div>
+          <h2 id="tg-oc-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.5vw,40px);line-height:1.1;color:#231D1A;margin:0">O {{ e.name }} recebe</h2>
+        </div>
+        <a href="ocasioes.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:var(--ac);color:#F9F8F4;text-decoration:none;text-align:center" style-hover="background:var(--ac2);color:#F9F8F4">Ver todas as ocasiões</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px">
+        <sc-for list="{{ ocasioes }}" as="oc" hint-placeholder-count="4">
+          <a href="{{ oc.href }}" style="display:block;padding:32px 28px;background:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:var(--ac2)">
+            <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-size:24px;color:#F9F8F4;margin-bottom:8px">{{ oc.name }}</span>
+            <span style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6);line-height:1.5">{{ oc.desc }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUTROS ESPAÇOS ── -->
+  <section aria-label="Outros espaços Grupo Trio" style="background:var(--ac);padding:64px 0;overflow:hidden;border-top:1px solid rgba(249,248,244,0.06)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px">
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.5)">Outros Espaços</span>
+        <a href="nossos-espacos.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:var(--ac);text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:var(--ac)">Ver todos</a>
+      </div>
+      <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)">
+        <div style="display:flex;gap:12px;width:max-content;animation:tg-marquee 40s linear infinite" style-hover="animation-play-state:paused">
+          <sc-for list="{{ outrosLoop }}" as="sp" hint-placeholder-count="9">
+            <a href="{{ sp.href }}" aria-hidden="{{ sp.dup }}" tabIndex="{{ sp.tab }}" style="flex:0 0 220px;display:flex;flex-direction:column;justify-content:center;min-height:88px;padding:20px 22px;background:rgba(249,248,244,0.08);border:1px solid rgba(249,248,244,0.18);text-decoration:none" style-hover="background:rgba(249,248,244,0.16)">
+              <span style="display:block;font-family:'General Sans',sans-serif;font-size:15px;font-weight:600;color:#F9F8F4;margin-bottom:4px">{{ sp.name }}</span>
+              <span style="font-family:'General Sans',sans-serif;font-size:13px;color:rgba(249,248,244,0.85)">{{ sp.bairro }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section id="tg-faq" aria-labelledby="tg-faq-h2" style="{{ faqSection }}">
+    <div style="{{ faqLayout }}">
+      <div style="position:sticky;top:100px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.3)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.5)">FAQ</span>
+        </div>
+        <h2 id="tg-faq-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.8vw,42px);line-height:1.1;color:#F9F8F4;margin:0 0 20px">Perguntas sobre<br>o {{ e.name }}</h2>
+        <a href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:var(--ac);text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:var(--ac)">Falar com a equipe</a>
+      </div>
+      <div style="border-top:1px solid rgba(249,248,244,0.1)">
+        <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
+          <div style="border-bottom:1px solid rgba(249,248,244,0.08)">
+            <button onClick="{{ faq.toggle }}" style="{{ faq.btnStyle }}" aria-expanded="{{ faq.isOpen }}">
+              <span style="font-family:'General Sans',sans-serif;font-size:15px;font-weight:400;color:#F9F8F4;text-align:left;flex:1;padding-right:24px;line-height:1.5">{{ faq.question }}</span>
+              <div style="{{ faq.iconWrap }}">
+                <span style="font-family:'General Sans',sans-serif;font-size:18px;font-weight:300;color:rgba(249,248,244,0.6);line-height:1">{{ faq.icon }}</span>
+              </div>
+            </button>
+            <sc-if value="{{ faq.isOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:4px 56px 28px 0">
+                <p style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.9;color:rgba(249,248,244,0.6);margin:0;border-left:2px solid var(--ac);padding-left:20px">{{ faq.answer }}</p>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FORMULÁRIO ── -->
+  <section id="tg-contato" aria-labelledby="tg-form-h2" style="background:#F9F8F4;padding:100px 0">
+    <div style="{{ container }}">
+    <div style="{{ contactGrid }}">
+      <div style="padding-top:8px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:var(--ac)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">Contato</span>
+        </div>
+        <h2 id="tg-form-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(32px,3vw,48px);line-height:1.15;color:#231D1A;margin:0 0 20px">Vamos planejar<br>seu evento no<br>{{ e.name }}?</h2>
+        <p style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.85;color:rgba(35,29,26,0.55);margin:0 0 40px">Nossa equipe retorna em até 24 horas úteis com uma proposta personalizada.</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">WhatsApp</span>
+            <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">(11) 94343-3813</a>
+          </div>
+          <div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">E-mail</span>
+            <a href="mailto:eventos@grupotrio.com.br" style="font-family:'General Sans',sans-serif;font-size:15px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">eventos@grupotrio.com.br</a>
+          </div>
+          <div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">Endereço</span>
+            <address style="font-family:'General Sans',sans-serif;font-size:13px;color:rgba(35,29,26,0.6);line-height:1.7;font-style:normal">{{ e.end1 }}<br>{{ e.end2 }}</address>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:56px;background:var(--ac);display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+            <div style="width:52px;height:52px;border:1px solid rgba(249,248,244,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F9F8F4" stroke-width="1.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3 style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-size:28px;font-weight:400;color:#F9F8F4;margin:0">Mensagem enviada!</h3>
+            <p style="font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.65);margin:0;line-height:1.7">Nossa equipe entrará em contato em breve com informações sobre o {{ e.name }}.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" noValidate="" style="display:flex;flex-direction:column;gap:24px">
+            <div style="{{ formGrid }}">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-nome" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Nome Completo *</label>
+                <input id="tg-nome" type="text" value="{{ formNome }}" onChange="{{ onNome }}" placeholder="Seu nome completo" style="{{ inputNomeStyle }}" required="">
+                <sc-if value="{{ errNome }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errNome }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-email" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">E-mail *</label>
+                <input id="tg-email" type="email" value="{{ formEmail }}" onChange="{{ onEmail }}" placeholder="seu@email.com" style="{{ inputEmailStyle }}" required="">
+                <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errEmail }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-tel" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Telefone / WhatsApp *</label>
+                <input id="tg-tel" type="tel" value="{{ formTelefone }}" onChange="{{ onTelefone }}" placeholder="(11) 99999-9999" style="{{ inputTelStyle }}" required="">
+                <sc-if value="{{ errTelefone }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTelefone }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-tipo" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Tipo de Evento *</label>
+                <select id="tg-tipo" value="{{ formTipo }}" onChange="{{ onTipo }}" style="{{ selectTipoStyle }}" required="">
+                  <option value="">Selecione...</option>
+                  <option value="casamento">Casamento</option>
+                  <option value="mini-wedding">Mini Wedding</option>
+                  <option value="15-anos">Festa de 15 anos</option>
+                  <option value="bar-mitzvah">Bar Mitzvah</option>
+                  <option value="bat-mitzvah">Bat Mitzvah</option>
+                  <option value="bodas">Bodas</option>
+                  <option value="corporativo">Evento Corporativo</option>
+                  <option value="aniversario">Aniversário</option>
+                  <option value="outro">Outro</option>
+                </select>
+                <sc-if value="{{ errTipo }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTipo }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-data" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Data Prevista</label>
+                <input id="tg-data" type="date" value="{{ formDataEvento }}" onChange="{{ onData }}" style="{{ inputDateStyle }}">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="tg-conv" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Nº de Convidados</label>
+                <select id="tg-conv" value="{{ formConvidados }}" onChange="{{ onConvidados }}" style="{{ selectConvStyle }}">
+                  <option value="">Selecione...</option>
+                  <option value="ate50">Até 50</option>
+                  <option value="50-120">50 a 120</option>
+                  <option value="120-200">120 a 200</option>
+                  <option value="200-400">200 a 400</option>
+                  <option value="400+">Mais de 400</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="tg-msg" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Mensagem</label>
+              <textarea id="tg-msg" value="{{ formMensagem }}" onChange="{{ onMensagem }}" rows="4" placeholder="Conte mais sobre o seu evento..." style="{{ textareaStyle }}"></textarea>
+            </div>
+            <div style="display:flex;align-items:center;gap:24px;padding-top:4px">
+              <button type="submit" disabled="{{ submitDisabled }}" style="{{ submitStyle }}">{{ submitLabel }}</button>
+              <span style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(35,29,26,0.38)">Resposta em até 24h úteis</span>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div style="height:1px;background:rgba(249,248,244,0.2)"></div>
+<dc-import name="SiteFooter" accent="{{ accentHex }}" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const EMPTY_E = { key: '', name: '', upper: '', territorio: '', h1: '', heroImg: '', heroAlt: '', slides: [], carImg: '', carAlt: '', introTitle: '', introParas: [], area: '', end1: '', end2: '', ref: '', endereco: '', cert: '', stats: [], feats: [], galTitle: '', galText: '', gallery: [{}, {}, {}, {}, {}], mapEmbed: '', mapLink: '', ocasioes: [], faqs: [], ac: '#510303', color: '#510303' };
+class Component extends DCLogic {
+  state = {
+    windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200,
+    navScrolled: false,
+    menuOpen: false,
+    openDropdown: null,
+    mobileSpacesOpen: false,
+    mobileOcasioesOpen: false,
+    openFaqIndex: null,
+    form: { nome: '', email: '', telefone: '', tipo: '', data: '', convidados: '', mensagem: '' },
+    formErrors: {},
+    formStatus: 'idle',
+  };
+
+  _closeTimer = null;
+
+  openDD(name) {
+    return () => {
+      if (this._closeTimer) { clearTimeout(this._closeTimer); this._closeTimer = null; }
+      this.setState({ openDropdown: name });
+    };
+  }
+
+  closeDD() {
+    return () => {
+      this._closeTimer = setTimeout(() => {
+        this.setState({ openDropdown: null });
+        this._closeTimer = null;
+      }, 140);
+    };
+  }
+
+  getKey() { let k = this.props.espaco; if (typeof location !== 'undefined') { const q = new URLSearchParams(location.search).get('e'); if (q) k = q; } return k || 'garden'; }
+  applyTheme() {
+    const E = window.TRIO_ESPACOS && window.TRIO_ESPACOS[this.getKey()]; if (!E) return;
+    document.documentElement.style.setProperty('--ac', E.ac); document.documentElement.style.setProperty('--ac2', E.ac2);
+    const ld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'EventVenue', name: E.name, url: E.url, telephone: '+55-11-94343-3813', email: 'eventos@grupotrio.com.br', address: { '@type': 'PostalAddress', streetAddress: E.end1, addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR', postalCode: ((E.endereco.match(/\d{5}-\d{3}/) || [])[0] || undefined) }, parentOrganization: { '@type': 'Organization', name: 'Grupo TRIO' } },
+      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: 'home.dc.html' }, { '@type': 'ListItem', position: 2, name: 'Nossos espaços', item: 'nossos-espacos.dc.html' }, { '@type': 'ListItem', position: 3, name: E.name, item: E.url }] },
+      { '@type': 'FAQPage', mainEntity: E.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] };
+    let s = document.getElementById('ld-espaco'); if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-espaco'; document.head.appendChild(s); }
+    s.textContent = JSON.stringify(ld);
+  }
+
+  componentDidMount() {
+    const chk = () => (window.TRIO_ESPACOS) ? (this.setState({ ready: true }), this.applyTheme()) : (this._p = setTimeout(chk, 60));
+    chk();
+    const onScroll = () => this.setState({ navScrolled: window.scrollY > 60 });
+    const onResize = () => this.setState({ windowWidth: window.innerWidth });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    this._offScroll = () => window.removeEventListener('scroll', onScroll);
+  }
+
+  componentWillUnmount() {
+    if (this._offScroll) this._offScroll();
+    if (this._closeTimer) clearTimeout(this._closeTimer);
+  }
+
+  validate() {
+    const f = this.state.form, e = {};
+    if (!f.nome || f.nome.trim().length < 2) e.nome = 'Nome obrigatório';
+    if (!f.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'E-mail inválido';
+    if (!f.telefone || f.telefone.replace(/\D/g, '').length < 8) e.telefone = 'Telefone obrigatório';
+    if (!f.tipo) e.tipo = 'Selecione o tipo de evento';
+    return e;
+  }
+
+  renderVals() {
+    const E = (this.state.ready && window.TRIO_ESPACOS[this.getKey()]) || EMPTY_E;
+    const nS = Math.max(E.slides.length, 1);
+    const { windowWidth, navScrolled, menuOpen, openDropdown, form, formErrors, formStatus } = this.state;
+    const m = windowWidth < 768;
+    const pad = m ? '0 20px' : '0 48px';
+
+    const heroGrid = m ? { display: 'flex', flexDirection: 'column', gap: '32px' } : { display: 'grid', gridTemplateColumns: '3fr 2fr', gap: '64px', alignItems: 'flex-end' };
+    const specsGrid = m ? { display: 'flex', flexDirection: 'column', gap: '2px' } : { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' };
+    const faqSection = { background: 'var(--ac)', padding: m ? '64px 20px' : '88px 0' };
+    const faqLayout = m ? { maxWidth: '1100px', margin: '0 auto' } : { maxWidth: '1100px', margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '72px', alignItems: 'flex-start' };
+    const contactGrid = m ? { display: 'flex', flexDirection: 'column', gap: '40px' } : { display: 'grid', gridTemplateColumns: '2fr 3fr', gap: '80px', alignItems: 'flex-start' };
+    const formGrid = { display: 'grid', gridTemplateColumns: m ? '1fr' : '1fr 1fr', gap: '20px' };
+    const footerGrid = m ? { display: 'flex', flexDirection: 'column', gap: '36px', marginBottom: '36px' } : { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '48px', marginBottom: '48px' };
+    const secPad = m ? '60px 0' : '88px 0';
+    const container = { maxWidth: '1240px', margin: '0 auto', padding: pad };
+    const burgerLine = (rotate, hide, ty) => ({ display: 'block', width: '22px', height: '1.5px', background: '#F9F8F4', transition: 'all 0.25s', transform: menuOpen ? (hide ? 'scaleX(0)' : `rotate(${rotate}deg) translateY(${ty}px)`) : 'none', opacity: menuOpen && hide ? 0 : 1 });
+
+    const dd = (name) => ({
+      position: 'absolute', top: 'calc(100% + 10px)', left: '50%',
+      transform: 'translateX(-50%)',
+      background: 'var(--ac)',
+      border: '1px solid rgba(249,248,244,0.12)',
+      backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+      zIndex: 999, minWidth: name === 'espacos' ? '220px' : '200px',
+      padding: '6px 0',
+      opacity: openDropdown === name ? 1 : 0,
+      pointerEvents: openDropdown === name ? 'auto' : 'none',
+      transition: 'opacity 0.15s ease',
+    });
+
+    const inp = (hasErr) => ({
+      background: 'transparent', border: 'none',
+      borderBottom: `1px solid ${hasErr ? '#510303' : 'rgba(35,29,26,0.22)'}`,
+      padding: '10px 0', fontFamily: "'General Sans',sans-serif",
+      fontSize: '15px', color: '#231D1A', outline: 'none', width: '100%',
+    });
+    const sel = (hasErr) => ({ ...inp(hasErr), WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', cursor: 'pointer' });
+
+    return {
+      introSlides: E.slides.map(({ src, alt, pos }, i) => ({ src, alt, hidden: (this.state.introIdx || 0) === i ? 'false' : 'true', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, opacity: (this.state.introIdx || 0) === i ? 1 : 0, transition: 'opacity .6s ease' } })),
+      introDots: E.slides.map((_, i) => i).map(i => ({ label: 'Ir para a foto ' + (i + 1), current: (this.state.introIdx || 0) === i ? 'true' : 'false', go: () => this.setState({ introIdx: i }), dot: { width: '9px', height: '9px', borderRadius: '50%', border: '1.5px solid #F9F8F4', background: (this.state.introIdx || 0) === i ? '#F9F8F4' : 'transparent', boxShadow: '0 0 4px rgba(0,0,0,0.35)' } })),
+      introPrev: () => this.setState(s => ({ introIdx: ((s.introIdx || 0) + nS - 1) % nS })),
+      introNext: () => this.setState(s => ({ introIdx: ((s.introIdx || 0) + 1) % nS })),
+      introTouchStart: e => { this._ix = e.touches[0].clientX; },
+      introTouchEnd: e => { const dx = e.changedTouches[0].clientX - (this._ix || 0); if (Math.abs(dx) > 40) this.setState(s => ({ introIdx: ((s.introIdx || 0) + (dx < 0 ? 1 : nS - 1)) % nS })); },
+      carSection: { background: 'var(--ac)', padding: 0, overflow: 'hidden' },
+      carGrid: { display: 'grid', gridTemplateColumns: (typeof window !== 'undefined' && window.innerWidth < 900) ? '1fr' : '1fr 1.1fr', minHeight: (typeof window !== 'undefined' && window.innerWidth < 900) ? 'auto' : '680px' },
+      carPhoto: { position: 'relative', minHeight: (typeof window !== 'undefined' && window.innerWidth < 900) ? '280px' : '100%' },
+      carText: { padding: (typeof window !== 'undefined' && window.innerWidth < 900) ? '56px 20px' : '88px max(48px, calc((100vw - 1240px) / 2)) 88px 72px', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
+      carStats: { display: 'grid', gridTemplateColumns: 'repeat(' + (windowWidth < 600 ? Math.min(E.stats.length, 2) : Math.max(E.stats.length, 1)) + ',minmax(0,1fr))', borderTop: '1px solid rgba(249,248,244,0.2)', borderBottom: '1px solid rgba(249,248,244,0.2)' },
+      carList: { listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: (typeof window !== 'undefined' && window.innerWidth < 600) ? '1fr' : '1fr 1fr', columnGap: '32px' },
+      // Nav
+      isMobile: m, isDesktop: !m,
+      menuOpen,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      burger1: burgerLine(45, false, 6.5), burger2: burgerLine(0, true, 0), burger3: burgerLine(-45, false, -6.5),
+      toggleMobileSpaces: () => this.setState(st => ({ mobileSpacesOpen: !st.mobileSpacesOpen })),
+      toggleMobileOcasioes: () => this.setState(st => ({ mobileOcasioesOpen: !st.mobileOcasioesOpen })),
+      mobileSpacesOpen: this.state.mobileSpacesOpen,
+      mobileOcasioesOpen: this.state.mobileOcasioesOpen,
+      mobileChevron1: { display: 'inline-block', transition: 'transform 0.2s', transform: this.state.mobileSpacesOpen ? 'rotate(180deg)' : 'rotate(0deg)' },
+      mobileChevron2: { display: 'inline-block', transition: 'transform 0.2s', transform: this.state.mobileOcasioesOpen ? 'rotate(180deg)' : 'rotate(0deg)' },
+      container, secPad, heroGrid, specsGrid, faqSection, faqLayout, contactGrid, formGrid, footerGrid,
+      heroPad: m ? '120px 20px 48px' : '180px 48px 80px',
+      heroImgH: m ? '240px' : '480px',
+      footerBottom: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px', borderTop: '1px solid rgba(249,248,244,0.06)', flexWrap: 'wrap', gap: '8px' },
+      navStyle: {
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        transition: 'all 0.35s ease',
+        backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+        padding: m ? '16px 20px' : (navScrolled ? '14px 48px' : '24px 48px'),
+        background: menuOpen ? 'var(--ac)' : navScrolled ? 'var(--ac)' : 'transparent',
+        borderBottom: navScrolled ? '1px solid rgba(249,248,244,0.1)' : '1px solid transparent',
+      },
+
+      // Dropdowns
+      openTrio: this.openDD('trio'),
+      openEspacos: this.openDD('espacos'),
+      openRestaurantes: this.openDD('restaurantes'),
+      openOcasioes: this.openDD('ocasioes'),
+      closeDD: this.closeDD(),
+      ddTrio: dd('trio'),
+      ddEspacos: dd('espacos'),
+      ddRestaurantes: dd('restaurantes'),
+      ddOcasioes: dd('ocasioes'),
+      ddBtnStyle: {
+        background: 'none', border: 'none', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', gap: '5px',
+        fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 400,
+        letterSpacing: '2px', textTransform: 'uppercase',
+        color: 'rgba(249,248,244,0.7)', padding: '8px 14px', transition: 'color 0.2s',
+      },
+      ddBtnActiveStyle: {
+        background: 'none', border: 'none', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', gap: '5px',
+        fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500,
+        letterSpacing: '2px', textTransform: 'uppercase',
+        color: '#F9F8F4', padding: '8px 14px',
+        borderBottom: '1px solid rgba(249,248,244,0.4)',
+      },
+      ddBtnLinkStyle: {
+        display: 'flex', alignItems: 'center',
+        fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 400,
+        letterSpacing: '2px', textTransform: 'uppercase',
+        color: 'rgba(249,248,244,0.7)', textDecoration: 'none',
+        padding: '8px 14px', transition: 'color 0.2s',
+      },
+      ddLinkStyle: {
+        display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '13px',
+        color: 'rgba(249,248,244,0.65)', textDecoration: 'none',
+        padding: '9px 20px', transition: 'color 0.15s, background 0.15s', whiteSpace: 'nowrap',
+      },
+      ddLinkActiveStyle: {
+        display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '13px',
+        color: 'var(--ac)', textDecoration: 'none',
+        padding: '9px 20px', whiteSpace: 'nowrap',
+        background: 'rgba(249,248,244,0.06)', fontWeight: 500,
+      },
+
+      faqs: E.faqs.map((f, i) => ({
+        question: f.q, answer: f.a,
+        isOpen: this.state.openFaqIndex === i,
+        toggle: () => this.setState(st => ({ openFaqIndex: st.openFaqIndex === i ? null : i })),
+        icon: this.state.openFaqIndex === i ? '−' : '+',
+        btnStyle: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '22px 0', cursor: 'pointer', textAlign: 'left', width: '100%' },
+        iconWrap: { width: '28px', height: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(249,248,244,0.2)', borderRadius: '50%', transition: 'border-color 0.2s' },
+      })),
+
+      // Space data
+      diferenciais: E.feats,
+
+      ocasioes: E.ocasioes,
+
+      outrosEspacos: Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })),
+      outrosLoop: (() => { const l = Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })); return l.map(x => ({ ...x, dup: 'false', tab: 0 })).concat(l.map(x => ({ ...x, dup: 'true', tab: -1 }))); })(),
+      e: E, accentHex: E.ac, multiSlides: E.slides.length > 1,
+      carouselLabel: 'Fotos do ' + E.name, mapTitle: 'Mapa do ' + E.name,
+      introTitleLines: (E.introTitle || '').split('\n'),
+      waLink: 'https://wa.me/5511943433813?text=' + encodeURIComponent('Olá, gostaria de saber mais sobre o ' + E.name + '.'),
+      statsList: E.stats.map((st, i) => ({ v: st.v, l: st.l, cell: { minWidth: 0, padding: i === 0 ? '22px 16px 22px 0' : (i === E.stats.length - 1 ? '22px 0 22px 16px' : '22px 16px'), borderRight: i === E.stats.length - 1 ? 'none' : '1px solid rgba(249,248,244,0.2)' } })),
+      g0: { src: (E.gallery[0] || {}).src || '', alt: (E.gallery[0] || {}).alt || '', empty: !(E.gallery[0] || {}).src },
+      g1: { src: (E.gallery[1] || {}).src || '', alt: (E.gallery[1] || {}).alt || '', empty: !(E.gallery[1] || {}).src },
+      g2: { src: (E.gallery[2] || {}).src || '', alt: (E.gallery[2] || {}).alt || '', empty: !(E.gallery[2] || {}).src },
+      g3: { src: (E.gallery[3] || {}).src || '', alt: (E.gallery[3] || {}).alt || '', empty: !(E.gallery[3] || {}).src },
+      g4: { src: (E.gallery[4] || {}).src || '', alt: (E.gallery[4] || {}).alt || '', empty: !(E.gallery[4] || {}).src },
+
+      // Form
+      formNome: form.nome, formEmail: form.email, formTelefone: form.telefone,
+      formTipo: form.tipo, formDataEvento: form.data,
+      formConvidados: form.convidados, formMensagem: form.mensagem,
+      onNome: e => this.setState(st => ({ form: { ...st.form, nome: e.target.value } })),
+      onEmail: e => this.setState(st => ({ form: { ...st.form, email: e.target.value } })),
+      onTelefone: e => this.setState(st => ({ form: { ...st.form, telefone: e.target.value } })),
+      onTipo: e => this.setState(st => ({ form: { ...st.form, tipo: e.target.value } })),
+      onData: e => this.setState(st => ({ form: { ...st.form, data: e.target.value } })),
+      onConvidados: e => this.setState(st => ({ form: { ...st.form, convidados: e.target.value } })),
+      onMensagem: e => this.setState(st => ({ form: { ...st.form, mensagem: e.target.value } })),
+      onSubmit: e => {
+        e.preventDefault();
+        const errs = this.validate();
+        if (Object.keys(errs).length) { this.setState({ formErrors: errs }); return; }
+        this.setState({ formStatus: 'submitting', formErrors: {} });
+        setTimeout(() => this.setState({ formStatus: 'success' }), 1600);
+      },
+      errNome: formErrors.nome, errEmail: formErrors.email,
+      errTelefone: formErrors.telefone, errTipo: formErrors.tipo,
+      isSuccess: formStatus === 'success',
+      showForm: formStatus !== 'success',
+      submitDisabled: formStatus === 'submitting',
+      submitLabel: formStatus === 'submitting' ? 'Enviando...' : 'Enviar Solicitação',
+      inputNomeStyle: inp(!!formErrors.nome),
+      inputEmailStyle: inp(!!formErrors.email),
+      inputTelStyle: inp(!!formErrors.telefone),
+      inputDateStyle: inp(false),
+      selectTipoStyle: sel(!!formErrors.tipo),
+      selectConvStyle: sel(false),
+      textareaStyle: { ...inp(false), resize: 'vertical', lineHeight: '1.75' },
+      submitStyle: {
+        background: formStatus === 'submitting' ? 'color-mix(in srgb, var(--ac) 50%, transparent)' : 'var(--ac)',
+        color: '#F9F8F4', border: 'none',
+        fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500,
+        letterSpacing: '2.5px', textTransform: 'uppercase',
+        padding: '14px 36px',
+        cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer',
+        transition: 'background 0.2s',
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -80,7 +80,7 @@ class Component extends DCLogic {
           meta: os ? os.meta : cap(s),
           text: os ? os.paras[0] : (s.paras[0] || s.tagline),
           feats, hasFeats: feats.length > 0,
-          href: s.key === 'garden' ? 'trio-garden.dc.html' : (s.key === 'garden' ? 'trio-garden.dc.html' : 'nossos-espacos.dc.html#ne-espacos') + '&v=' + v,
+          href: s.key === 'garden' ? 'trio-garden.dc.html' : ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[s.key] + '.dc.html',
           ariaConhecer: 'Conhecer o ' + s.name.replace(' | ', ' '),
           proposta: this.props.propostaHref || '#contato',
         };

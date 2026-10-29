@@ -61,10 +61,10 @@
 </a>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;460px&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#510303&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
-const E = k => (k === 'garden' ? 'trio-garden.dc.html' : 'nossos-espacos.dc.html#ne-espacos');
+const E = k => ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[k] + '.dc.html';
 const COLS = [
   { title: 'Espaços', links: [['Trio Pérgola','pergola'],['Trio One','one'],['Trio Sky Lounge','skylounge'],['Trio Dezenove','dezenove'],['Trio Metropolitan','metropolitan'],['Trio SP Hall','sphall'],['Trio Trivento','trivento'],['Trio Garden','garden'],['Trio River One','riverone'],['Trio Auri','auri']].map(([label,k]) => ({ label, href: k === 'garden' ? 'trio-garden.dc.html' : E(k) })) },
-  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','casamentos.dc.html'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar e Bat Mitzvah','bar-e-bat-mitzvah.dc.html'],['Corporativo','https://www.grupotrio.com.br/corporativo/']].map(([label,href]) => ({ label, href })) },
+  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','mini-wedding.dc.html'],['Bodas','bodas.dc.html'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar Mitzvah','bar-mitzvah.dc.html'],['Bat Mitzvah','bat-mitzvah.dc.html'],['Corporativo','https://www.grupotrio.com.br/corporativo/']].map(([label,href]) => ({ label, href })) },
 ];
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };

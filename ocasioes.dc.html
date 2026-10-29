@@ -39,10 +39,12 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "item": { "@type": "Service", "name": "Casamentos em São Paulo", "url": "https://www.grupotrio.com.br/casamentos/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
           { "@type": "ListItem", "position": 2, "item": { "@type": "Service", "name": "Mini Wedding em São Paulo", "url": "https://www.grupotrio.com.br/mini-wedding/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
-          { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Festa de 15 Anos em São Paulo", "url": "https://www.grupotrio.com.br/festa-de-15-anos/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
-          { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Aniversários em São Paulo", "url": "https://www.grupotrio.com.br/aniversario/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
-          { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Bar e Bat Mitzvah em São Paulo", "url": "https://www.grupotrio.com.br/bar-e-bat-mitzvah/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
-          { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Eventos Corporativos em São Paulo", "url": "https://www.grupotrio.com.br/corporativo/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } }
+          { "@type": "ListItem", "position": 3, "item": { "@type": "Service", "name": "Festa de bodas em São Paulo", "url": "https://www.grupotrio.com.br/bodas/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
+          { "@type": "ListItem", "position": 4, "item": { "@type": "Service", "name": "Festa de 15 Anos em São Paulo", "url": "https://www.grupotrio.com.br/festa-de-15-anos/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
+          { "@type": "ListItem", "position": 5, "item": { "@type": "Service", "name": "Aniversários em São Paulo", "url": "https://www.grupotrio.com.br/aniversario/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
+          { "@type": "ListItem", "position": 6, "item": { "@type": "Service", "name": "Bar Mitzvah em São Paulo", "url": "https://www.grupotrio.com.br/bar-mitzvah/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
+          { "@type": "ListItem", "position": 7, "item": { "@type": "Service", "name": "Bat Mitzvah em São Paulo", "url": "https://www.grupotrio.com.br/bat-mitzvah/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } },
+          { "@type": "ListItem", "position": 8, "item": { "@type": "Service", "name": "Eventos Corporativos em São Paulo", "url": "https://www.grupotrio.com.br/corporativo/", "provider": { "@type": "Organization", "name": "Grupo Trio" } } }
         ]
       },
       {
@@ -145,7 +147,7 @@
                 </div>
               </div>
               <div style="display:flex;align-items:stretch;gap:12px;margin-top:28px;flex-wrap:wrap">
-                <a href="{{ oc.href }}" style="flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 24px;background:#F9F8F4;color:#510303;text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:#510303">Ver {{ oc.name }}</a>
+                <a href="{{ oc.href }}" style="flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 24px;background:#F9F8F4;color:#510303;text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:#510303">{{ oc.btnLabel }}</a>
                 <a href="#oc-contato" style="flex:1 1 180px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none;text-align:center" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Solicitar orçamento</a>
               </div>
             </div>
@@ -252,9 +254,11 @@
                   <option value="">Selecione...</option>
                   <option value="casamento">Casamento</option>
                   <option value="mini-wedding">Mini Wedding</option>
+                  <option value="bodas">Bodas</option>
                   <option value="15anos">Festa de 15 Anos</option>
                   <option value="aniversario">Aniversário</option>
-                  <option value="bar-bat-mitzvah">Bar / Bat Mitzvah</option>
+                  <option value="bar-mitzvah">Bar Mitzvah</option>
+                  <option value="bat-mitzvah">Bat Mitzvah</option>
                   <option value="corporativo">Corporativo</option>
                   <option value="outro">Outro</option>
                 </select>
@@ -301,69 +305,93 @@ const OCASIOES_DATA = [
     desc: 'Espaços exclusivos para o dia mais especial. De rooftops com vista para a skyline de São Paulo a jardins sofisticados, oferecemos o cenário perfeito para cada estilo de cerimônia com gastronomia autoral.',
     features: ['Cerimônia + recepção', 'Gastronomia personalizada', 'Indoor e outdoor'],
     spaces: [
-      { name: 'Trio Pérgola', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
       { name: 'Trio Garden', href: 'trio-garden.dc.html' },
-      { name: 'Trio Sky Lounge', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Sky Lounge', href: 'trio-skylounge.dc.html' },
     ],
   },
   {
     num: '02', tag: 'Social',
-    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/capa_1x.webp', name: 'Mini Wedding', href: 'casamentos.dc.html',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/capa_1x.webp', name: 'Mini Wedding', href: 'mini-wedding.dc.html',
     capacity: 'até 150 convidados',
     desc: 'Celebrações intimistas com todo o cuidado de um grande casamento. Ambientes exclusivos para grupos menores, onde cada detalhe é pensado para criar uma experiência única e inesquecível.',
     features: ['Até 150 convidados', 'Ambiente exclusivo', 'Personalização total'],
     spaces: [
-      { name: 'Trio Sky Lounge', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio River One', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio Dezenove', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Sky Lounge', href: 'trio-skylounge.dc.html' },
+      { name: 'Trio River One', href: 'trio-river-one.dc.html' },
+      { name: 'Trio Dezenove', href: 'trio-dezenove.dc.html' },
     ],
   },
   {
     num: '03', tag: 'Social',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-2.webp', name: 'Bodas', href: 'bodas.dc.html',
+    capacity: 'até 350 convidados em jantar',
+    desc: 'A celebração dos anos de casamento com a família inteira à mesa. Renovação de votos, jantar e festa no mesmo endereço, com um menu provado antes da data.',
+    features: ['Renovação de votos', 'Menu para três gerações', 'Vista do 19º e do 34º andar'],
+    spaces: [
+      { name: 'Trio Sky Lounge', href: 'trio-skylounge.dc.html' },
+      { name: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
+      { name: 'Trio Garden', href: 'trio-garden.dc.html' },
+    ],
+  },
+  {
+    num: '04', tag: 'Social',
     img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_1x.webp', name: 'Festa de 15 Anos', href: 'festa-de-15-anos.dc.html',
     capacity: 'até 500 convidados',
     desc: 'Estrutura completa para uma noite dos sonhos. Espaços amplos com capacidade para grandes festas, sistema de iluminação, pista de dança e gastronomia especialmente desenvolvida para o grande momento.',
     features: ['Pista de dança', 'Sistema de som', 'Buffet especializado'],
     spaces: [
-      { name: 'Trio Pérgola', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio River One', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio SP Hall', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
+      { name: 'Trio River One', href: 'trio-river-one.dc.html' },
+      { name: 'Trio SP Hall', href: 'trio-sp-hall.dc.html' },
     ],
   },
   {
-    num: '04', tag: 'Social',
+    num: '05', tag: 'Social',
     img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1_1x.webp', name: 'Aniversários', href: 'aniversario.dc.html',
     capacity: 'de 50 a 800 convidados',
     desc: 'Do almoço intimista à grande festa, comemore com estilo em espaços que se adaptam ao seu perfil. Gastronomia autoral, infraestrutura completa e atendimento consultivo para todos os formatos.',
     features: ['Todos os portes', 'Menus personalizados', 'Decoração adaptável'],
     spaces: [
       { name: 'Trio Garden', href: 'trio-garden.dc.html' },
-      { name: 'Trio Dezenove', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio Trivento', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Dezenove', href: 'trio-dezenove.dc.html' },
+      { name: 'Trio Trivento', href: 'trio-trivento.dc.html' },
     ],
   },
   {
-    num: '05', tag: 'Social',
-    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', name: 'Bar e Bat Mitzvah', href: 'bar-e-bat-mitzvah.dc.html',
-    capacity: 'até 500 convidados',
-    desc: 'Uma passagem marcada pela excelência. Espaços que combinam a sofisticação e a escala necessárias para esta celebração tão especial, com gastronomia que respeita as tradições e encanta todos os convidados.',
-    features: ['Respeito às tradições', 'Grandes capacidades', 'Gastronomia cuidadosa'],
+    num: '06', tag: 'Social',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', name: 'Bar Mitzvah', href: 'bar-mitzvah.dc.html',
+    capacity: 'até 650 convidados',
+    desc: 'A celebração dos 13 anos com a família e a comunidade reunidas. Cozinha kosher certificada pela Beit Yaacov, equipe própria e espaços que recebem da cerimônia à festa.',
+    features: ['Cozinha kosher certificada','Cerimônia e festa','Até 650 convidados'],
     spaces: [
-      { name: 'Trio Pérgola', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio Metropolitan', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio SP Hall', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio Trivento', href: 'trio-trivento.dc.html' },
+      { name: 'Trio SP Hall', href: 'trio-sp-hall.dc.html' },
+      { name: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
     ],
   },
   {
-    num: '06', tag: 'Corporativo',
+    num: '07', tag: 'Social',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', name: 'Bat Mitzvah', href: 'bat-mitzvah.dc.html',
+    capacity: 'até 650 convidados',
+    desc: 'A celebração dos 12 anos com a família e as amigas reunidas. Menu kosher certificado pela Beit Yaacov, gastronomia própria e espaços que se adaptam do jantar à festa.',
+    features: ['Cozinha kosher certificada','Jantar e festa','Até 650 convidados'],
+    spaces: [
+      { name: 'Trio Trivento', href: 'trio-trivento.dc.html' },
+      { name: 'Trio SP Hall', href: 'trio-sp-hall.dc.html' },
+      { name: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
+    ],
+  },
+  {
+    num: '08', tag: 'Corporativo',
     img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop.webp', name: 'Corporativo', href: 'https://www.grupotrio.com.br/corporativo/',
     capacity: 'de 50 a 800 convidados',
     desc: 'Convenções, treinamentos, lançamentos de produto, workshops e confraternizações. Espaços com estrutura técnica avançada, rigging, auditórios e gastronomia corporativa para elevar a imagem da sua empresa.',
     features: ['Estrutura técnica', 'Auditório disponível', 'Rigging e cenografia'],
     spaces: [
-      { name: 'Trio SP Hall', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio Metropolitan', href: 'nossos-espacos.dc.html#ne-espacos' },
-      { name: 'Trio Trivento', href: 'nossos-espacos.dc.html#ne-espacos' },
+      { name: 'Trio SP Hall', href: 'trio-sp-hall.dc.html' },
+      { name: 'Trio Metropolitan', href: 'trio-metropolitan.dc.html' },
+      { name: 'Trio Trivento', href: 'trio-trivento.dc.html' },
     ],
   },
 ];
@@ -488,7 +516,7 @@ class Component extends DCLogic {
       container, secPad, heroGrid, faqSection, faqLayout, contactGrid, formGrid, footerGrid,
       footerBottom: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px', borderTop: '1px solid rgba(249,248,244,0.06)', flexWrap: 'wrap', gap: '8px' },
       navStyle: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'space-between', transition: 'all 0.35s ease', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', padding: m ? '16px 20px' : (navScrolled ? '14px 48px' : '24px 48px'), background: navScrolled || menuOpen ? 'rgba(81,3,3,0.97)' : 'transparent', borderBottom: navScrolled ? '1px solid rgba(249,248,244,0.1)' : '1px solid transparent' },
-      ocasioes: OCASIOES_DATA.map(o => ({ lower: (o.name === 'Corporativo' ? 'eventos corporativos' : o.name.toLowerCase()),
+      ocasioes: OCASIOES_DATA.map(o => ({ lower: (o.name === 'Corporativo' ? 'eventos corporativos' : o.name.toLowerCase()), btnLabel: 'Ver ' + o.name,
         ...o,
         cardGrid: m
           ? { display: 'flex', flexDirection: 'column', background: '#510303', overflow: 'hidden' }
