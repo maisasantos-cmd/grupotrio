@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029182428"></script>
+<script src="./support.js?v=20261029193645"></script>
 </head>
 <body>
 <x-dc>
@@ -39,6 +39,14 @@
   }
   </script>
   <style>
+    @media (max-width: 767px) {
+      main a[style*="uppercase"], main a[style*="letter-spacing"][style*="padding"], main form button, main button[style*="uppercase"][style*="padding"]:not([role="tab"]):not([aria-pressed]) { display: flex !important; width: 100% !important; min-height: 44px !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; }
+      main form button[type="submit"] { flex: 1 1 100% !important; }
+      [style*="position: sticky"], [style*="position:sticky"] { position: static !important; }
+      main span[style*="letter-spacing: 2.5px"], main span[style*="letter-spacing:2.5px"], main span[style*="letter-spacing: 3px"], main span[style*="letter-spacing:3px"], main span[style*="letter-spacing: 3.5px"], main span[style*="letter-spacing:3.5px"] { letter-spacing: 1.2px !important; }
+      main form div:has(> button[type="submit"]) { flex-wrap: wrap !important; }
+      main p[style*="font-size: 13px"], main p[style*="font-size: 14px"], main p[style*="font-size:13px"], main p[style*="font-size:14px"] { font-size: 15px !important; }
+    }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; background:#510303; font-family: 'General Sans', sans-serif; color:#231D1A; overflow-x: hidden; }
@@ -95,7 +103,7 @@
       <div style="{{ heroCtas }}">
         <a href="#gt-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:#510303;text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6e0">Faça um Orçamento</a>
         <a href="#gt-espacos" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;background:transparent;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none;transition:all 0.2s" style-hover="background:rgba(249,248,244,0.1)">Ver Espaços</a>
-        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="{{ heroWa }}" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;{{ heroWa }}" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
       </div>
     </div>
     <div style="position:absolute;left:0;right:0;bottom:24px;z-index:2;display:flex;justify-content:center;gap:10px" role="group" aria-label="Selecionar foto">
@@ -208,7 +216,7 @@
               </sc-for>
             </div>
             <div style="{{ spaceCtas }}">
-              <a href="{{ activeSpaceSlug }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:11px 20px;border:1px solid rgba(249,248,244,0.35);color:rgba(249,248,244,0.8);text-decoration:none;transition:all 0.2s" style-hover="background:rgba(249,248,244,0.1)">Conhecer Espaço →</a>
+              <a href="{{ activeSpaceSlug }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:11px 20px;border:1px solid rgba(249,248,244,0.35);color:rgba(249,248,244,0.8);text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;min-height:44px" style-hover="background:rgba(249,248,244,0.1)">Conhecer Espaço →</a>
               <a href="{{ activeSpaceMapUrl }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4;text-decoration:none;align-items:center;gap:5px;display:inline-flex;align-items:center;gap:6px;min-height:44px" style-hover="color:#BFB8AF">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
                 Ver no mapa
@@ -610,10 +618,10 @@ class Component extends DCLogic {
       heroWa: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase', padding: '15px 28px', background: 'rgba(249,248,244,0.18)', border: '1px solid rgba(249,248,244,0.18)', color: '#F9F8F4', textDecoration: 'none', textAlign: 'center', backdropFilter: 'blur(4px)' },
 
       // Numbers
-      numbersGrid: { maxWidth: '1240px', margin: '0 auto', padding: pad, display: 'grid', gridTemplateColumns: m ? '1fr 1fr' : 'repeat(4,1fr)' },
-      numCell: { padding: m ? '32px 20px' : '52px 32px', borderRight: '1px solid rgba(249,248,244,0.1)', borderBottom: m ? '1px solid rgba(249,248,244,0.1)' : 'none', display: 'flex', flexDirection: 'column', gap: '5px' },
-      numValue: { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 300, fontSize: m ? '56px' : '72px', lineHeight: 1, color: '#F9F8F4', letterSpacing: '-2px' },
-      numLabel: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.65)', marginTop: '4px' },
+      numbersGrid: { maxWidth: '1240px', margin: '0 auto', padding: pad, display: 'grid', gridTemplateColumns: m ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))' },
+      numCell: { minWidth: 0, padding: m ? '28px 12px' : '52px 32px', borderRight: '1px solid rgba(249,248,244,0.1)', borderBottom: m ? '1px solid rgba(249,248,244,0.1)' : 'none', display: 'flex', flexDirection: 'column', gap: '5px' },
+      numValue: { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 300, fontSize: m ? '40px' : '72px', lineHeight: 1, color: '#F9F8F4', letterSpacing: m ? '-1px' : '-2px', whiteSpace: 'nowrap' },
+      numLabel: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: m ? '1.2px' : '3px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.65)', marginTop: '4px' },
 
       // Ocasiões
       ocasioesGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : 'repeat(3,1fr)', gap: '2px' },
@@ -621,7 +629,7 @@ class Component extends DCLogic {
 
       // Spaces explorer
       explorerGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : '240px 1fr', border: '1px solid rgba(249,248,244,0.1)' },
-      explorerNav: { borderRight: m ? 'none' : '1px solid rgba(249,248,244,0.1)', borderBottom: m ? '1px solid rgba(249,248,244,0.1)' : 'none', display: m ? 'grid' : 'block', gridTemplateColumns: m ? 'repeat(3,1fr)' : 'unset' },
+      explorerNav: { borderRight: m ? 'none' : '1px solid rgba(249,248,244,0.1)', borderBottom: m ? '1px solid rgba(249,248,244,0.1)' : 'none', display: m ? 'grid' : 'block', gridTemplateColumns: m ? 'repeat(3,minmax(0,1fr))' : 'unset' },
       spaceImgBox: { width: '100%', height: m ? '200px' : '280px', position: 'relative', overflow: 'hidden', background: '#510303', borderBottom: '1px solid rgba(249,248,244,0.1)' },
       spaceInfo: { padding: m ? '20px' : '28px 32px' },
       spaceStatsGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid rgba(249,248,244,0.08)' },
@@ -689,7 +697,7 @@ class Component extends DCLogic {
         ...s,
         isActive: i === activeSpace,
         select: () => this.setState({ activeSpace: i }),
-        tabStyle: {
+        tabStyle: { minHeight: '44px',
           display: 'flex', flexDirection: 'column', gap: '2px',
           padding: m ? '10px 12px' : '13px 18px', border: 'none', width: '100%',
           borderLeft: m ? 'none' : `3px solid ${i === activeSpace ? '#F9F8F4' : 'rgba(249,248,244,0.1)'}`,
@@ -698,7 +706,7 @@ class Component extends DCLogic {
           background: i === activeSpace ? 'rgba(249,248,244,0.06)' : 'transparent',
         },
         nameStyle: {
-          fontFamily: "'General Sans',sans-serif", fontSize: m ? '11px' : '12.5px', fontWeight: 500,
+          fontFamily: "'General Sans',sans-serif", fontSize: m ? '12px' : '12.5px', fontWeight: 500,
           color: i === activeSpace ? '#F9F8F4' : 'rgba(249,248,244,0.45)',
           display: 'block', whiteSpace: 'nowrap',
         },
