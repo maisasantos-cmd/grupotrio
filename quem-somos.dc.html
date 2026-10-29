@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029213120"></script>
+<script src="./support.js?v=20261029215311"></script>
 </head>
 <body>
 <x-dc>
@@ -109,7 +109,7 @@
           <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0">
             <div style="position:relative;width:100%;aspect-ratio:9/16;background:#510303;overflow:hidden">
               <sc-if value="{{ r.hasUrl }}" hint-placeholder-val="{{ false }}">
-                <video src="{{ r.src }}" controls="" playsInline="" preload="metadata" aria-label="{{ r.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#510303"></video>
+                <video src="{{ r.src }}" controls="controls" playsInline="playsinline" preload="metadata" aria-label="{{ r.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#510303"></video>
               </sc-if>
               <sc-if value="{{ r.noUrl }}" hint-placeholder-val="{{ true }}">
                 <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center">
