@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+  <script src="trio-data.js"></script>
+  <script src="ocasioes-data.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Chivo+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background:#510303; font-family: 'General Sans', sans-serif; color:#231D1A; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #510303; }
+    ::-webkit-scrollbar-thumb { background: #510303; border-radius: 2px; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+
+<a href="#cas-main" style="position:absolute;left:-9999px;top:4px;padding:8px 16px;background:#510303;color:#F9F8F4;font-family:'General Sans',sans-serif;font-size:12px;z-index:9999;text-decoration:none">Pular para o conteúdo principal</a>
+
+<!-- NAV -->
+<header role="banner" style="position:relative;z-index:1001">
+  <nav style="{{ navStyle }}" role="navigation" aria-label="Navegação principal">
+    <a href="home.dc.html" style="text-decoration:none;display:flex;flex-direction:column;justify-content:center;gap:2px;line-height:1;flex-shrink:0;min-height:44px">
+      <span style="font-family:'General Sans',sans-serif;font-size:22px;font-weight:600;letter-spacing:8px;color:#F9F8F4">TRIO</span>
+      <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:400;letter-spacing:3.5px;color:rgba(249,248,244,0.45);text-transform:uppercase">Eventos &amp; Gastronomia</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:stretch;gap:0">
+        <div onMouseEnter="{{ openTrio }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
+          <button style="{{ ddBtnStyle }}">Grupo Trio <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div onMouseEnter="{{ openTrio }}" onMouseLeave="{{ closeDD }}" style="{{ ddTrio }}" role="menu">
+            <a href="quem-somos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Sobre Nós</a>
+            <a href="https://www.grupotrio.com.br/blog/" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Blog</a>
+            <a href="https://jobs.recrutei.com.br/grupo-trio-eventos-e-gastronomia" target="_blank" rel="noopener" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trabalhe Conosco</a>
+          </div>
+        </div>
+        <div onMouseEnter="{{ openEspacos }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
+          <button style="{{ ddBtnStyle }}">Nossos Espaços <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div onMouseEnter="{{ openEspacos }}" onMouseLeave="{{ closeDD }}" style="{{ ddEspacos }}" role="menu">
+            <div style="padding:6px 0;border-bottom:1px solid rgba(249,248,244,0.08);margin-bottom:4px">
+              <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.3);padding:4px 20px 8px">Zona Sul</span>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Pérgola</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio One</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Sky Lounge</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Dezenove</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Metropolitan</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio SP Hall</a>
+              <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Trivento</a><a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Auri</a>
+            </div>
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,248,244,0.3);padding:4px 20px 8px">Zona Oeste</span>
+            <a href="trio-garden.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Garden</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio River One</a>
+          </div>
+        </div>
+        <div onMouseEnter="{{ openRestaurantes }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
+          <button style="{{ ddBtnStyle }}">Restaurantes <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div onMouseEnter="{{ openRestaurantes }}" onMouseLeave="{{ closeDD }}" style="{{ ddRestaurantes }}" role="menu">
+            <a href="nossos-espacos.dc.html#ne-espacos" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Dezenove</a>
+            <a href="trio-garden.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Garden</a>
+          </div>
+        </div>
+        <a href="https://www.grupotrio.com.br/corporativo/" style="{{ ddBtnLinkStyle }}" style-hover="color:#F9F8F4">Corporativo</a>
+        <div onMouseEnter="{{ openOcasioes }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
+          <button style="{{ ddBtnStyle }}">Ocasiões <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div onMouseEnter="{{ openOcasioes }}" onMouseLeave="{{ closeDD }}" style="{{ ddOcasioes }}" role="menu">
+            <a href="aniversario.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Aniversário</a>
+            <a href="bar-e-bat-mitzvah.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Bar e Bat Mitzvah</a>
+            <a href="casamentos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Casamentos</a>
+            <a href="festa-de-15-anos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Festa de 15 Anos</a>
+            <a href="casamentos.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Mini Wedding</a>
+          </div>
+        </div>
+      </div>
+      <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;background:#510303;color:#F9F8F4;text-decoration:none;transition:background 0.2s;flex-shrink:0" style-hover="background:#3a0202">Faça um Orçamento</a>
+    </sc-if>
+
+    <!-- Mobile hamburger -->
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:12px">
+        <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#F9F8F4;text-decoration:none" aria-label="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <button onClick="{{ toggleMenu }}" style="width:44px;height:44px;background:none;border:none;cursor:pointer;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px" aria-label="Menu" aria-expanded="{{ menuOpen }}">
+          <span style="{{ burger1 }}"></span>
+          <span style="{{ burger2 }}"></span>
+          <span style="{{ burger3 }}"></span>
+        </button>
+      </div>
+    </sc-if>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:999;background:#510303;display:flex;flex-direction:column;padding:80px 24px 40px;overflow-y:auto" role="dialog" aria-label="Menu de navegação">
+      <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(249,248,244,0.1)">
+        <a href="quem-somos.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Sobre Nós</a>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,248,244,0.08)">
+          <a href="nossos-espacos.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;flex:1">Nossos Espaços</a>
+          <button onClick="{{ toggleMobileSpaces }}" aria-label="Expandir espaços" aria-expanded="{{ mobileSpacesOpen }}" style="width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;padding:0;color:rgba(249,248,244,0.5);cursor:pointer">
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" style="{{ mobileChevron1 }}"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <sc-if value="{{ mobileSpacesOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid rgba(249,248,244,0.08)">
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Pérgola</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio One</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Sky Lounge</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Dezenove</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Metropolitan</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio SP Hall</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Trivento</a><a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Auri</a>
+            <a href="trio-garden.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Garden</a>
+            <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio River One</a>
+          </div>
+        </sc-if>
+        <span style="display:flex;align-items:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#F9F8F4">Restaurantes</span>
+        <div style="display:flex;flex-direction:column;border-bottom:1px solid rgba(249,248,244,0.12);padding-bottom:6px">
+          <a href="nossos-espacos.dc.html#ne-espacos" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Dezenove</a>
+          <a href="trio-garden.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Garden</a>
+        </div>
+        <a href="https://www.grupotrio.com.br/corporativo/" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Corporativo</a>
+        <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,248,244,0.08)">
+          <a href="ocasioes.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;flex:1">Ocasiões</a>
+          <button onClick="{{ toggleMobileOcasioes }}" aria-label="Expandir ocasiões" aria-expanded="{{ mobileOcasioesOpen }}" style="width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;padding:0;color:rgba(249,248,244,0.5);cursor:pointer">
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" style="{{ mobileChevron2 }}"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <sc-if value="{{ mobileOcasioesOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid rgba(249,248,244,0.08)">
+            <a href="casamentos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Casamentos</a>
+            <a href="casamentos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Mini Wedding</a>
+            <a href="festa-de-15-anos.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Festa de 15 Anos</a>
+            <a href="aniversario.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Aniversários</a>
+            <a href="bar-e-bat-mitzvah.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Bar e Bat Mitzvah</a>
+          </div>
+        </sc-if>
+        <a href="https://www.grupotrio.com.br/blog/" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Blog</a>
+      </div>
+      <div style="margin-top:32px;display:flex;flex-direction:column;gap:12px">
+        <a href="#cas-contato" onClick="{{ closeMenu }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 24px;background:#510303;color:#F9F8F4;text-decoration:none;text-align:center">Faça um Orçamento</a>
+        <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:13px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;padding:14px 24px;border:1px solid rgba(249,248,244,0.25);color:#F9F8F4;text-decoration:none;text-align:center">WhatsApp</a>
+        <a href="https://jobs.recrutei.com.br/grupo-trio-eventos-e-gastronomia" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(249,248,244,0.6);color:#F9F8F4;text-decoration:none">Trabalhe conosco</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+
+<main id="cas-main">
+
+  <!-- HERO -->
+  <section id="cas-hero" role="region" aria-labelledby="cas-h1" style="{{ heroSection }}">
+    <sc-if value="{{ heroPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ heroPhoto }}" alt="{{ heroAlt }}" fetchpriority="high" loading="eager" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"></sc-if>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(81,3,3,0.9) 0%,rgba(81,3,3,0.66) 45%,rgba(81,3,3,0.4) 100%)"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(81,3,3,0.35) 0%,rgba(81,3,3,0) 30%,rgba(81,3,3,0) 70%,rgba(81,3,3,0.55) 100%)"></div>
+    <nav aria-label="Breadcrumb" style="{{ breadcrumb }}">
+      <ol style="display:flex;align-items:center;gap:8px;list-style:none;padding:0;margin:0">
+        <li><a href="home.dc.html" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.4);text-decoration:none" style-hover="color:#F9F8F4">Início</a></li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.2)">/</li>
+        <li><a href="ocasioes.dc.html" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.4);text-decoration:none" style-hover="color:#F9F8F4">Ocasiões</a></li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.2)">/</li>
+        <li><span style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.65)" aria-current="page">{{ crumb }}</span></li>
+      </ol>
+    </nav>
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(249,248,244,0.02) 22px,rgba(249,248,244,0.02) 23px)" aria-hidden="true"></div>
+    <div style="{{ heroInner }}">
+      
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:32px;height:1px;background:rgba(249,248,244,0.6)"></div>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#BFB8AF">{{ hero.eyebrow }}</span>
+      </div>
+      <h1 id="cas-h1" style="{{ heroH1 }}">{{ hero.title }}</h1>
+      <p style="{{ heroP }}">{{ heroLead }}</p>
+      <div style="{{ heroCtas }}">
+        <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:#510303;text-decoration:none" style-hover="background:#BFB8AF;color:#510303">{{ hero.cta1 }}</a>
+        <a href="#cas-espacos" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">{{ hero.cta2 }}</a>
+        <sc-if value="{{ showHeroWa }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:rgba(249,248,244,0.18);border:1px solid rgba(249,248,244,0.18);color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
+      </div>
+    </div>
+    <!-- Stats strip -->
+    <div style="{{ heroStats }}">
+      <div style="{{ statCard }}">
+        <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:44px;font-style:italic;font-weight:300;line-height:1;color:#F9F8F4;margin-bottom:10px;font-family:'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif">{{ n0.value }}</span>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,248,244,0.7)">{{ n0.label }}</span>
+      </div>
+      <div style="{{ statCard2 }}">
+        <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:44px;font-style:italic;font-weight:300;line-height:1;color:#F9F8F4;margin-bottom:10px;font-family:'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif">{{ n1.value }}</span>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,248,244,0.7)">{{ n1.label }}</span>
+      </div>
+      <div style="{{ statCard2 }}">
+        <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:44px;font-style:italic;font-weight:300;line-height:1;color:#F9F8F4;margin-bottom:10px;font-family:'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif">{{ n2.value }}</span>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(249,248,244,0.7)">{{ n2.label }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section id="cas-intro" aria-labelledby="cas-intro-h2" style="{{ lightSection }}">
+    <div style="{{ container }}">
+      <div style="{{ twoCol }}">
+        <div>
+          <div style="{{ eyebrowRow }}">
+            <div style="width:40px;height:1px;background:#510303"></div>
+            <span style="{{ eyebrow }}">{{ sobre.eyebrow }}</span>
+          </div>
+          <h2 id="cas-intro-h2" style="{{ h2Dark }}">{{ sobre.title }}</h2>
+          <sc-for list="{{ sobre.paras }}" as="p" hint-placeholder-count="3"><p style="{{ subtextDark }}">{{ p }}</p></sc-for>
+          <div style="{{ introCtas }}">
+            <a href="#cas-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;background:#510303;color:#F9F8F4;text-decoration:none;transition:background 0.2s" style-hover="background:#3a0202">{{ sobre.cta1 }}</a>
+            <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 28px;border:1px solid #510303;color:#510303;text-decoration:none;text-align:center" style-hover="background:#510303;color:#F9F8F4">Falar no WhatsApp</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <sc-for list="{{ diferenciais }}" as="d" hint-placeholder-count="4">
+            <div style="display:flex;gap:20px;padding:24px 28px;background:#510303;border-bottom:1px solid rgba(249,248,244,0.06)">
+              <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:32px;font-weight:300;color:rgba(249,248,244,0.8);line-height:1;flex-shrink:0;min-width:32px">{{ d.num }}</span>
+              <div>
+                <h3 style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4;margin:0 0 6px">{{ d.title }}</h3>
+                <p style="font-family:'General Sans',sans-serif;font-size:13px;line-height:1.75;color:rgba(249,248,244,0.5);margin:0">{{ d.desc }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPAÇOS -->
+  <section id="cas-espacos" aria-labelledby="cas-esp-h2" style="{{ darkSection }}">
+    <div style="{{ container }}">
+      <div style="margin-bottom:40px;width:100%">
+        <div>
+          <div style="{{ eyebrowRowDark }}">
+            <div style="width:40px;height:1px;background:rgba(249,248,244,0.4)"></div>
+            <span style="{{ eyebrowDark }}">{{ locais.eyebrow }}</span>
+          </div>
+          <h2 id="cas-esp-h2" style="{{ h2LightWide }}">{{ locais.title }}</h2>
+          <p style="{{ subtextLightWide }}">{{ locaisLead }}</p>
+        </div>
+      </div>
+      <div style="{{ explorerGrid }}">
+        <nav aria-label="Espaços sugeridos" style="{{ explorerNav }}">
+          <sc-for list="{{ weddingSpaces }}" as="ws" hint-placeholder-count="6">
+            <button onClick="{{ ws.select }}" style="{{ ws.tabStyle }}" aria-pressed="{{ ws.isActive }}">
+              <span style="{{ ws.nameStyle }}">{{ ws.name }}</span>
+              <span style="{{ ws.bairroStyle }}">{{ ws.bairro }}</span>
+            </button>
+          </sc-for>
+        </nav>
+        <div style="background:#510303">
+          <div style="{{ spaceImgBox }}">
+            <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 18px,rgba(249,248,244,0.03) 18px,rgba(249,248,244,0.03) 19px)"></div>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center">
+              <sc-if value="{{ activeSpacePhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ activeSpacePhoto }}" alt="{{ activeSpaceAlt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1"></sc-if><span style="font-family:'Chivo Mono',ui-monospace,monospace;font-size:12px;letter-spacing:1.5px;color:rgba(249,248,244,0.2);line-height:1.7;text-transform:uppercase">{{ activeSpaceImg }}</span>
+            </div>
+          </div>
+          <div style="{{ spaceInfo }}">
+            <div style="margin-bottom:16px">
+              <h3 style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:30px;font-weight:400;color:#F9F8F4;margin:0 0 4px">{{ activeSpaceName }}</h3>
+              <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(249,248,244,0.5)">{{ activeSpaceBairro }}</span>
+              <address style="font-family:'General Sans',sans-serif;font-size:13px;line-height:1.5;font-style:normal;color:rgba(249,248,244,0.85);margin:6px 0 0">{{ activeSpaceEndereco }}</address>
+            </div>
+            <div style="{{ spaceStatsGrid }}">
+              <div><span style="{{ statLabel }}">Área Total</span><span style="{{ statValue }}">{{ activeSpaceArea }}</span></div>
+              <div><span style="{{ statLabel }}">Capacidade</span><span style="{{ statValue }}">{{ activeSpaceCapacidade }}</span></div>
+            </div>
+            <p style="font-family:'General Sans',sans-serif;font-size:13px;line-height:1.75;color:rgba(249,248,244,0.48);margin:0 0 14px">{{ activeSpaceDestaque }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+              <sc-for list="{{ activeSpaceDiferenciais }}" as="d" hint-placeholder-count="4">
+                <span style="font-family:'General Sans',sans-serif;font-size:12px;padding:4px 10px;border:1px solid rgba(249,248,244,0.18);color:rgba(249,248,244,0.6)">{{ d }}</span>
+              </sc-for>
+            </div>
+            <div style="{{ spaceCtas }}">
+              <a href="{{ activeSpaceSlug }}" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid rgba(249,248,244,0.35);color:rgba(249,248,244,0.8);text-decoration:none;transition:all 0.2s" style-hover="background:rgba(249,248,244,0.1)">Conhecer Espaço →</a>
+              <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:#510303;text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:#510303">Receber uma proposta</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- SKYLINE -->
+  <section id="cas-skyline" aria-labelledby="skyline-h2" style="background:#510303;overflow:hidden">
+    <div style="{{ skylineGrid }}">
+      <div style="{{ skylineImg }}">
+        <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 16px,rgba(249,248,244,0.03) 16px,rgba(249,248,244,0.03) 17px)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px">
+          <img src="https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_skylounge_des_1.webp" alt="Vista de São Paulo a partir do TRIO Sky Lounge, na Berrini" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+      <div style="{{ skylineText }}">
+        <div style="{{ eyebrowRowDark }}">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.35)"></div>
+          <span style="{{ eyebrowDark }}">{{ vista.eyebrow }}</span>
+        </div>
+        <h2 id="skyline-h2" style="{{ h2Light }}">{{ vista.title }}</h2>
+        <sc-for list="{{ vista.paras }}" as="p" hint-placeholder-count="2"><p style="{{ subtextLight }}">{{ p }}</p></sc-for>
+        <div style="{{ introCtas }}">
+          <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:15px 28px;background:#F9F8F4;color:#510303;text-decoration:none"  style-hover="background:#BFB8AF;color:#510303">{{ vista.cta1 }}</a>
+          <a href="#cas-espacos" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 26px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none"  style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">{{ vista.link }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GASTRONOMIA -->
+  <section id="cas-gastro" aria-labelledby="gastro-h2" style="{{ lightSection }}">
+    <div style="{{ container }}">
+      <div style="{{ gastroGrid }}">
+        <div>
+          <div style="{{ eyebrowRow }}">
+            <div style="width:40px;height:1px;background:#510303"></div>
+            <span style="{{ eyebrow }}">{{ gastro.eyebrow }}</span>
+          </div>
+          <h2 id="gastro-h2" style="{{ h2Dark }}">{{ gastro.title }}</h2>
+          <sc-for list="{{ gastro.paras }}" as="p" hint-placeholder-count="3"><p style="{{ subtextDark }}">{{ p }}</p></sc-for>
+          <div style="{{ introCtas }}">
+            <a href="#cas-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;background:#510303;color:#F9F8F4;text-decoration:none;transition:background 0.2s" style-hover="background:#3a0202">{{ gastro.cta1 }}</a>
+          </div>
+        </div>
+        <div style="{{ gastroImg }}">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent,transparent 16px,rgba(249,248,244,0.03) 16px,rgba(249,248,244,0.03) 17px)"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px">
+            <img src="https://www.grupotrio.com.br/wp-content/uploads/2024/11/img_4022_1x-683x1024.webp" alt="Prato da gastronomia autoral do Grupo TRIO" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+
+  <section id="cas-faq" aria-labelledby="faq-h2" style="{{ faqSection }}">
+    <div style="{{ faqLayout }}">
+      <div>
+        <div style="{{ eyebrowRowDark }}">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.4)"></div>
+          <span style="{{ eyebrowDark }}">{{ faq.eyebrow }}</span>
+        </div>
+        <h2 id="faq-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.1;color:#F9F8F4;margin:0 0 16px">{{ faq.title }}</h2>
+        <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;background:#F9F8F4;color:#510303;text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:#510303">Falar com a equipe</a>
+      </div>
+      <div style="border-top:1px solid rgba(249,248,244,0.2)">
+        <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="6">
+          <div style="border-bottom:1px solid rgba(249,248,244,0.15)">
+            <button onClick="{{ faq.toggle }}" style="{{ faq.btnStyle }}" aria-expanded="{{ faq.isOpen }}">
+              <span style="font-family:'General Sans',sans-serif;font-size:15px;font-weight:400;color:#F9F8F4;text-align:left;flex:1;padding-right:20px;line-height:1.5">{{ faq.question }}</span>
+              <div style="{{ faq.iconWrap }}"><span style="font-family:'General Sans',sans-serif;font-size:18px;font-weight:300;color:rgba(249,248,244,0.7);line-height:1">{{ faq.icon }}</span></div>
+            </button>
+            <sc-if value="{{ faq.isOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:4px 48px 24px 0">
+                <sc-for list="{{ faq.parts }}" as="pt" hint-placeholder-count="2"><p style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.9;color:rgba(249,248,244,0.7);margin:0;border-left:2px solid rgba(249,248,244,0.3);padding-left:20px;margin:0 0 10px">{{ pt }}</p></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="cas-contato" aria-labelledby="cas-form-h2" style="{{ lightSection }}">
+    <div style="{{ container }}">
+      <div style="{{ contactGrid }}">
+        <div style="padding-top:4px">
+          <div style="{{ eyebrowRow }}">
+            <div style="width:40px;height:1px;background:#510303"></div>
+            <span style="{{ eyebrow }}">Contato</span>
+          </div>
+          <h2 id="cas-form-h2" style="{{ h2Dark }}">{{ contato.title }}</h2>
+          <sc-for list="{{ contato.paras }}" as="p" hint-placeholder-count="2"><p style="{{ subtextDark }}">{{ p }}</p></sc-for>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:28px">
+            <div><span style="{{ contactLabel }}">WhatsApp</span><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:#510303">(11) 94343-3813</a></div>
+            <div><span style="{{ contactLabel }}">E-mail</span><a href="mailto:eventos@grupotrio.com.br" style="font-family:'General Sans',sans-serif;font-size:14px;color:#231D1A;text-decoration:none" style-hover="color:#510303">eventos@grupotrio.com.br</a></div>
+            <div><span style="{{ contactLabel }}">Endereço</span><address style="font-family:'General Sans',sans-serif;font-size:13px;color:rgba(35,29,26,0.6);line-height:1.7;font-style:normal">Al. Raja Gabaglia, 150<br>Vila Olímpia, São Paulo - SP</address></div>
+          </div>
+        </div>
+        <div>
+          <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:48px;background:#510303;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+              <div style="width:52px;height:52px;border:1px solid #510303;border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#510303" stroke-width="1.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              <h3 style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:26px;font-weight:400;color:#F9F8F4;margin:0">Mensagem enviada!</h3>
+              <p style="font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.55);margin:0;line-height:1.7">Nossa equipe entrará em contato em breve.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ onSubmit }}" noValidate="" style="display:flex;flex-direction:column;gap:20px" aria-label="Formulário de orçamento">
+              <div style="{{ formGrid }}">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-nome" style="{{ formLabel }}">Nome Completo *</label>
+                  <input id="cas-nome" type="text" value="{{ formNome }}" onChange="{{ onNome }}" placeholder="Seu nome" style="{{ inputNomeStyle }}" required="">
+                  <sc-if value="{{ errNome }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errNome }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-email" style="{{ formLabel }}">E-mail *</label>
+                  <input id="cas-email" type="email" value="{{ formEmail }}" onChange="{{ onEmail }}" placeholder="seu@email.com" style="{{ inputEmailStyle }}" required="">
+                  <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errEmail }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-tel" style="{{ formLabel }}">Telefone *</label>
+                  <input id="cas-tel" type="tel" value="{{ formTelefone }}" onChange="{{ onTelefone }}" placeholder="(11) 99999-9999" style="{{ inputTelStyle }}" required="">
+                  <sc-if value="{{ errTelefone }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTelefone }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-tipo" style="{{ formLabel }}">{{ tipoLabel }}</label>
+                  <select id="cas-tipo" value="{{ formTipo }}" onChange="{{ onTipo }}" style="{{ selectTipoStyle }}" required="">
+                    <option value="">Selecione...</option>
+                    <sc-for list="{{ tipoOptions }}" as="op" hint-placeholder-count="3"><option value="{{ op }}">{{ op }}</option></sc-for>
+                  </select>
+                  <sc-if value="{{ errTipo }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTipo }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-data" style="{{ formLabel }}">Data Prevista</label>
+                  <input id="cas-data" type="date" value="{{ formDataEvento }}" onChange="{{ onData }}" style="{{ inputDateStyle }}">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="cas-conv" style="{{ formLabel }}">Nº de Convidados</label>
+                  <select id="cas-conv" value="{{ formConvidados }}" onChange="{{ onConvidados }}" style="{{ selectConvStyle }}">
+                    <option value="">Selecione...</option>
+                    <option value="ate50">Até 50 (Mini Wedding)</option>
+                    <option value="50-100">50 a 100</option>
+                    <option value="100-200">100 a 200</option>
+                    <option value="200-400">200 a 400</option>
+                    <option value="400+">Mais de 400</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="cas-msg" style="{{ formLabel }}">Mensagem</label>
+                <textarea id="cas-msg" value="{{ formMensagem }}" onChange="{{ onMensagem }}" rows="4" placeholder="Conte mais sobre o seu evento..." style="{{ textareaStyle }}"></textarea>
+              </div>
+              <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+                <button type="submit" disabled="{{ submitDisabled }}" style="{{ submitStyle }}">{{ submitLabel }}</button>
+                <span style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(35,29,26,0.38)">Resposta em até 24h úteis</span>
+              </div>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<div style="height:1px;background:rgba(249,248,244,0.2)"></div>
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;o&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;casamento&quot;,&quot;15anos&quot;,&quot;aniversario&quot;,&quot;barmitzvah&quot;],&quot;default&quot;:&quot;casamento&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+
+
+const TIPOS = { casamento: ['Casamento', 'Mini wedding', 'Cerimônia e festa no mesmo local', 'Renovação de votos', 'Outro'], '15anos': ['Festa de 15 anos', 'Jantar de 15 anos', 'Outro'], aniversario: ['Aniversário com jantar', 'Aniversário com coquetel', 'Outro'], barmitzvah: ['Bar Mitzvah', 'Bat Mitzvah', 'Outro'] };
+const CRUMB = { casamento: 'Casamentos', '15anos': 'Festa de 15 anos', aniversario: 'Aniversário', barmitzvah: 'Bar e Bat Mitzvah' };
+const HERO_IMG = { casamento: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_scaled_1x.webp', '15anos': 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_1x.webp', aniversario: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1_1x.webp', barmitzvah: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp' };
+const HERO_PHOTO = { casamento: 'pergola', '15anos': 'trivento', aniversario: 'skylounge', barmitzvah: 'sphall' };
+const EMPTY_SP = { name: '', bairro: '', area: '', capacidade: '', destaque: '', img: '', photo: '', diferenciais: [], slug: '#' };
+const EMPTY = { eyebrow: '', title: '', paras: [], cards: [], spaces: [], faqs: [], numbers: [], cta1: '', cta2: '', link: '', lead: '' };
+const mkWS = (B) => B('locais').spaces.filter(s => s.key !== 'metropolitan').map(s => { const t = window.TRIO.spaces.find(x => x.key === s.key) || {}; const cp = (t.caps || {}); const o2 = {}; o2.id = s.key; o2.name = 'Trio ' + s.name.replace(/^TRIO \| /,'').toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()).replace('Sp Hall','SP Hall'); o2.slug = (s.key === 'garden' ? 'trio-garden.dc.html' : 'nossos-espacos.dc.html#ne-espacos'); o2.bairro = t.bairro || ''; o2.endereco = t.endereco || ''; o2.area = t.area || ''; o2.capacidade = cp.coquetel ? 'até ' + cp.coquetel + ' pessoas' : (cp.ate ? 'até ' + cp.ate + ' pessoas' : 'A confirmar'); o2.img = ''; o2.photo = t.photo || ''; o2.diferenciais = s.feats; o2.destaque = s.paras[0] || ''; return o2; });
+
+class Component extends DCLogic {
+  injectSchema() {
+    const o = this.props.o || 'casamento'; const d = window.TRIO_OCASIOES[o]; if (!d) return;
+    const faq = d.blocks.find(b => b.key === 'faq');
+    const ld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: 'home.dc.html' }, { '@type': 'ListItem', position: 2, name: 'Ocasiões', item: 'ocasioes.dc.html' }, { '@type': 'ListItem', position: 3, name: CRUMB[o], item: d.meta.url }] },
+      { '@type': 'FAQPage', mainEntity: faq.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.map(x => x.t).join(' ') } })) }] };
+    let s = document.getElementById('ld-ocasiao'); if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-ocasiao'; document.head.appendChild(s); }
+    s.textContent = JSON.stringify(ld);
+  }
+
+  state = {
+    ready: false,
+    windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200,
+    navScrolled: false,
+    openDropdown: null,
+    menuOpen: false,
+    mobileSpacesOpen: false,
+    mobileOcasioesOpen: false,
+    activeSpace: 0,
+    openFaqIndex: null,
+    form: { nome: '', email: '', telefone: '', tipo: '', data: '', convidados: '', mensagem: '' },
+    formErrors: {},
+    formStatus: 'idle',
+  };
+
+  _closeTimer = null;
+
+  componentDidMount() {
+    const chk = () => (window.TRIO && window.TRIO_OCASIOES) ? (this.setState({ ready: true }), this.injectSchema()) : (this._p = setTimeout(chk, 60));
+    chk();
+    const onScroll = () => { const hero = document.getElementById('cas-hero'); const limit = hero ? hero.offsetHeight - 80 : 60; this.setState({ navScrolled: window.scrollY > limit }); };
+    const onResize = () => this.setState({ windowWidth: window.innerWidth });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    this._cleanup = () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+  }
+
+  componentWillUnmount() {
+    if (this._cleanup) this._cleanup();
+    if (this._closeTimer) clearTimeout(this._closeTimer);
+  }
+
+  openDD(name) { return () => { if (this._closeTimer) { clearTimeout(this._closeTimer); this._closeTimer = null; } this.setState({ openDropdown: name }); }; }
+  closeDD() { return () => { this._closeTimer = setTimeout(() => { this.setState({ openDropdown: null }); this._closeTimer = null; }, 140); }; }
+
+  validate() {
+    const f = this.state.form, e = {};
+    if (!f.nome || f.nome.trim().length < 2) e.nome = 'Nome obrigatório';
+    if (!f.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'E-mail inválido';
+    if (!f.telefone || f.telefone.replace(/\D/g, '').length < 8) e.telefone = 'Telefone obrigatório';
+    if (!f.tipo) e.tipo = 'Selecione o tipo';
+    return e;
+  }
+
+  renderVals() {
+    const { windowWidth, navScrolled, openDropdown, menuOpen, activeSpace, openFaqIndex, form, formErrors, formStatus } = this.state;
+    const m = windowWidth < 768;
+    const navM = windowWidth < 1180;
+    const o = this.props.o || 'casamento';
+    const D = this.state.ready && window.TRIO_OCASIOES[o];
+    const B = k => (D && D.blocks.find(b => b.key === k)) || EMPTY;
+    const WS = D ? mkWS(B) : [];
+    const FAQS = B('faq').faqs.map(f => ({ q: f.q, a: f.a.map(x => x.t).join(' '), parts: f.a.map(x => (x.li ? '• ' : '') + x.t) }));
+    const hp = D && window.TRIO.spaces.find(s => s.key === HERO_PHOTO[o]);
+    const sp = WS[activeSpace] || EMPTY_SP;
+
+    const pad = m ? '0 20px' : '0 48px';
+    const secPad = m ? '60px 0' : '96px 0';
+
+    const eyebrowRow = { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' };
+    const eyebrowRowDark = { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' };
+    const eyebrow = { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#510303' };
+    const eyebrowDark = { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.6)' };
+    const h2Dark = { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 400, fontSize: 'clamp(30px,3.5vw,50px)', lineHeight: 1.1, color: '#510303', margin: '0 0 18px' };
+    const h2Light = { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 400, fontSize: 'clamp(30px,3.5vw,50px)', lineHeight: 1.1, color: '#F9F8F4', margin: '0 0 18px' };
+    const subtextDark = { fontFamily: "'General Sans',sans-serif", fontSize: '14px', lineHeight: 1.85, color: 'rgba(35,29,26,0.6)', margin: '0 0 14px' };
+    const subtextLight = { fontFamily: "'General Sans',sans-serif", fontSize: '14px', lineHeight: 1.85, color: 'rgba(249,248,244,0.9)', margin: '0 0 14px' };
+    const container = { maxWidth: '1240px', margin: '0 auto', padding: pad };
+    const lightSection = { background: '#F9F8F4', padding: secPad };
+    const darkSection = { background: '#510303', padding: secPad };
+    const formLabel = { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'rgba(35,29,26,0.55)' };
+    const contactLabel = { display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#510303', marginBottom: '5px' };
+    const footerHeading = { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.6)', margin: '0 0 18px' };
+    const footerLink = { fontFamily: "'General Sans',sans-serif", fontSize: '13px', color: 'rgba(249,248,244,0.45)', textDecoration: 'none' };
+    const footerContactLabel = { display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '12px', color: 'rgba(249,248,244,0.28)', marginBottom: '3px' };
+    const statLabel = { display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2.5px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.5)', marginBottom: '5px' };
+    const statValue = { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontSize: '24px', color: '#F9F8F4', lineHeight: 1, display: 'block' };
+    const twoColHeader = m ? { display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' } : { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'flex-end', marginBottom: '48px' };
+    const introCtas = { display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginTop: '28px', flexDirection: m ? 'column' : 'row', alignItems: m ? 'stretch' : 'center' };
+
+    const inp = (e) => ({ background: 'transparent', border: 'none', borderBottom: `1px solid ${e ? '#510303' : 'rgba(35,29,26,0.22)'}`, padding: '10px 0', fontFamily: "'General Sans',sans-serif", fontSize: '15px', color: '#231D1A', outline: 'none', width: '100%' });
+    const sel = (e) => ({ ...inp(e), WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', cursor: 'pointer' });
+    const dd = (name) => ({ position: 'absolute', top: 'calc(100% + 10px)', left: '50%', transform: 'translateX(-50%)', background: 'rgba(14,5,7,0.98)', border: '1px solid rgba(249,248,244,0.12)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', zIndex: 999, minWidth: name === 'espacos' ? '220px' : '200px', padding: '6px 0', opacity: openDropdown === name ? 1 : 0, pointerEvents: openDropdown === name ? 'auto' : 'none', transition: 'opacity 0.15s ease' });
+    const burgerLine = (rotate, hide, ty) => ({ display: 'block', width: '22px', height: '1.5px', background: '#F9F8F4', transition: 'all 0.25s', transform: menuOpen ? (hide ? 'scaleX(0)' : `rotate(${rotate}deg) translateY(${ty}px)`) : 'none', opacity: menuOpen && hide ? 0 : 1 });
+
+    return {
+      o, crumb: CRUMB[o], hero: B('hero'), heroLead: (B('hero').paras || []).join(' ').replace(/\s*—\s*/g, ', '), isDesktop: !navM, showHeroWa: (typeof window !== 'undefined' ? window.innerWidth : 1280) >= 768, n0: (B('hero').numbers[0] || { value: '', label: '' }), n1: (B('hero').numbers[1] || { value: '', label: '' }), n2: (B('hero').numbers[2] || { value: '', label: '' }),
+      heroPhoto: HERO_IMG[o] || '', heroAlt: CRUMB[o] + ' no Grupo TRIO',
+      sobre: B('sobre'), locais: B('locais'), locaisLead: B('locais').lead, vista: B('vista'), gastro: B('gastro'), faq: B('faq'), contato: B('contato'),
+      tipoLabel: ((B('contato').formFields || [])[3] ? (B('contato').formFields[3].charAt(0).toUpperCase() + B('contato').formFields[3].slice(1)) : 'Tipo de evento') + ' *',
+      tipoOptions: TIPOS[o] || [],
+      activeSpacePhoto: sp.photo, activeSpaceAlt: 'Espaço de eventos ' + sp.name.replace(' | ', ' ') + ', em ' + sp.bairro,
+      verTodos: { display: 'flex', flexDirection: (typeof window !== 'undefined' && window.innerWidth < 768) ? 'column' : 'row', alignItems: (typeof window !== 'undefined' && window.innerWidth < 768) ? 'stretch' : 'center', justifyContent: 'space-between', gap: '24px', marginTop: '40px', padding: '28px', border: '1px solid rgba(249,248,244,0.2)' },
+      isMobile: navM,
+      navStyle: { position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'space-between', transition: 'all 0.35s ease', backdropFilter: navScrolled || menuOpen ? 'blur(20px)' : 'none', WebkitBackdropFilter: navScrolled || menuOpen ? 'blur(20px)' : 'none', padding: m ? (navScrolled ? '14px 20px' : '20px 20px') : (navScrolled ? '14px 48px' : '24px 48px'), background: navScrolled || menuOpen ? 'rgba(81,3,3,0.97)' : 'transparent', borderBottom: navScrolled ? '1px solid rgba(249,248,244,0.1)' : '1px solid transparent' },
+      openTrio: this.openDD('trio'), openEspacos: this.openDD('espacos'), openRestaurantes: this.openDD('restaurantes'), openOcasioes: this.openDD('ocasioes'), closeDD: this.closeDD(),
+      ddTrio: dd('trio'), ddEspacos: dd('espacos'), ddRestaurantes: dd('restaurantes'), ddOcasioes: dd('ocasioes'),
+      ddBtnStyle: { background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 400, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.9)', padding: '8px 14px', whiteSpace: 'nowrap' },
+      ddBtnLinkStyle: { display: 'flex', alignItems: 'center', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 400, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(249,248,244,0.9)', textDecoration: 'none', padding: '8px 14px', whiteSpace: 'nowrap' },
+      ddLinkStyle: { display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '13px', color: 'rgba(249,248,244,0.65)', textDecoration: 'none', padding: '9px 20px', transition: 'color 0.15s, background 0.15s', whiteSpace: 'nowrap' },
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen, burger1: burgerLine(45, false, 6.5), burger2: burgerLine(0, true, 0), burger3: burgerLine(-45, false, -6.5),
+      toggleMobileSpaces: () => this.setState(st => ({ mobileSpacesOpen: !st.mobileSpacesOpen })),
+      toggleMobileOcasioes: () => this.setState(st => ({ mobileOcasioesOpen: !st.mobileOcasioesOpen })),
+      mobileSpacesOpen: this.state.mobileSpacesOpen,
+      mobileOcasioesOpen: this.state.mobileOcasioesOpen,
+      mobileChevron1: { display: 'inline-block', transition: 'transform 0.2s', transform: this.state.mobileSpacesOpen ? 'rotate(180deg)' : 'rotate(0deg)' },
+      mobileChevron2: { display: 'inline-block', transition: 'transform 0.2s', transform: this.state.mobileOcasioesOpen ? 'rotate(180deg)' : 'rotate(0deg)' },
+
+      heroSection: { position: 'relative', minHeight: m ? '100svh' : '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: m ? '120px 0 40px' : '150px 0 64px', background: '#510303', overflow: 'hidden', boxSizing: 'border-box' },
+      breadcrumb: { position: 'absolute', top: m ? '84px' : '100px', left: m ? '20px' : '42px', zIndex: 2 },
+      heroInner: { position: 'relative', zIndex: 1, width: m ? 'calc(100% - 40px)' : 'min(1150px, calc(100% - 96px))', margin: '0 auto' },
+      heroH1: { fontFamily: "'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif", fontStyle: 'italic', fontWeight: 300, fontSize: m ? 'clamp(48px,13vw,64px)' : 'clamp(64px,6.2vw,100px)', lineHeight: 1.02, letterSpacing: '-0.5px', color: '#F9F8F4', margin: '0 0 28px', maxWidth: '640px', textWrap: 'balance' },
+      heroP: { fontFamily: "'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif", fontStyle: 'italic', fontWeight: 400, fontSize: m ? '19px' : '24px', lineHeight: 1.55, color: '#E6D6CF', margin: '0 0 36px', maxWidth: '620px' },
+      heroCtas: { display: 'flex', gap: m ? '12px' : '14px', alignItems: m ? 'stretch' : 'center', flexWrap: 'wrap', flexDirection: m ? 'column' : 'row' },
+      heroWa: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', letterSpacing: '1.5px', textTransform: 'uppercase', padding: m ? '14px' : '14px 8px', color: 'rgba(249,248,244,0.55)', textDecoration: 'none', textAlign: m ? 'center' : 'left' },
+      heroStats: { position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: m ? 'repeat(3,minmax(0,1fr))' : 'repeat(3,max-content)', borderTop: '1px solid rgba(249,248,244,0.22)', width: m ? 'calc(100% - 40px)' : 'min(1150px, calc(100% - 96px))', margin: m ? '40px auto 0' : '48px auto 0' },
+      statCard: { padding: m ? '20px 12px 8px 0' : '28px 32px 20px 0', borderRight: '1px solid rgba(249,248,244,0.22)' },
+      statCard2: { padding: m ? '20px 12px 8px 12px' : '28px 32px 20px 32px', borderRight: '1px solid rgba(249,248,244,0.22)' },
+
+      twoCol: m ? { display: 'flex', flexDirection: 'column', gap: '32px' } : { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'flex-start' },
+      twoColHeader, introCtas,
+
+      explorerGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : '240px 1fr', border: '1px solid rgba(249,248,244,0.1)' },
+      explorerNav: { borderRight: m ? 'none' : '1px solid rgba(249,248,244,0.1)', borderBottom: m ? '1px solid rgba(249,248,244,0.1)' : 'none', display: m ? 'grid' : 'block', gridTemplateColumns: m ? 'repeat(3,1fr)' : 'unset', overflowX: m ? 'auto' : 'unset' },
+      spaceImgBox: { width: '100%', height: m ? '200px' : '260px', position: 'relative', overflow: 'hidden', background: '#510303', borderBottom: '1px solid rgba(249,248,244,0.08)' },
+      spaceInfo: { padding: m ? '20px' : '28px 32px' },
+      spaceStatsGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '14px', paddingBottom: '14px', borderBottom: '1px solid rgba(249,248,244,0.08)' },
+      spaceCtas: { display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' },
+
+      skylineGrid: m ? { display: 'flex', flexDirection: 'column' } : { display: 'grid', gridTemplateColumns: '1fr 1fr' },
+      skylineImg: { position: 'relative', minHeight: m ? '240px' : '480px', background: '#510303', overflow: 'hidden' },
+      skylineText: { padding: m ? '40px 20px' : '64px 52px', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
+
+      gastroGrid: m ? { display: 'flex', flexDirection: 'column', gap: '32px' } : { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' },
+      gastroImg: { width: '100%', height: m ? '240px' : '460px', background: '#510303', position: 'relative', overflow: 'hidden' },
+
+      faqSection: { background: '#510303', padding: m ? '64px 20px' : '88px 0' },
+      faqLayout: m
+        ? { maxWidth: '1100px', margin: '0 auto' }
+        : { maxWidth: '1100px', margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '72px', alignItems: 'flex-start' },
+
+      contactGrid: m ? { display: 'flex', flexDirection: 'column', gap: '40px' } : { display: 'grid', gridTemplateColumns: '2fr 3fr', gap: '72px', alignItems: 'flex-start' },
+      formGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : '1fr 1fr', gap: '20px' },
+
+      footerOuter: { background: '#510303', padding: m ? '48px 20px 28px' : '60px 48px 28px', borderTop: '1px solid rgba(249,248,244,0.06)' },
+      footerGrid: m ? { display: 'flex', flexDirection: 'column', gap: '36px', marginBottom: '36px' } : { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '48px', marginBottom: '48px' },
+      footerBottom: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px', borderTop: '1px solid rgba(249,248,244,0.06)', flexWrap: 'wrap', gap: '8px' },
+
+      eyebrowRow, eyebrowRowDark, eyebrow, eyebrowDark, h2Dark, h2Light, subtextDark, subtextLight,
+      h2LightWide: Object.assign({}, h2Light, { maxWidth: 'none', textWrap: 'wrap' }),
+      subtextLightWide: Object.assign({}, subtextLight, { fontSize: '15px', maxWidth: 'none', textWrap: 'pretty' }),
+      container, lightSection, darkSection, formLabel, contactLabel,
+      footerHeading, footerLink, footerContactLabel, statLabel, statValue,
+
+      diferenciais: B('sobre').cards,
+
+      weddingSpaces: WS.map((sp, i) => ({
+        ...sp,
+        isActive: i === activeSpace,
+        select: () => this.setState({ activeSpace: i }),
+        tabStyle: { display: 'flex', flexDirection: 'column', gap: '2px', padding: m ? '10px 12px' : '13px 18px', border: 'none', width: '100%', borderLeft: m ? 'none' : `3px solid ${i === activeSpace ? '#F9F8F4' : 'rgba(249,248,244,0.1)'}`, borderBottom: m ? `2px solid ${i === activeSpace ? '#F9F8F4' : 'transparent'}` : 'none', cursor: 'pointer', textAlign: 'left', transition: 'all 0.18s', background: i === activeSpace ? 'rgba(249,248,244,0.06)' : 'transparent' },
+        nameStyle: { fontFamily: "'General Sans',sans-serif", fontSize: m ? '11px' : '12.5px', fontWeight: 500, color: i === activeSpace ? '#F9F8F4' : 'rgba(249,248,244,0.45)', display: 'block', whiteSpace: 'nowrap' },
+        bairroStyle: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', color: 'rgba(249,248,244,0.35)', display: m ? 'none' : 'block' },
+      })),
+
+      activeSpaceName: sp.name, activeSpaceBairro: sp.bairro, activeSpaceEndereco: sp.endereco || '', activeSpaceArea: sp.area,
+      activeSpaceCapacidade: sp.capacidade, activeSpaceDestaque: sp.destaque,
+      activeSpaceImg: sp.img, activeSpaceDiferenciais: sp.diferenciais, activeSpaceSlug: sp.slug,
+
+      faqs: FAQS.map((f, i) => ({
+        question: f.q, answer: f.a, parts: f.parts,
+        isOpen: openFaqIndex === i,
+        toggle: () => this.setState(st => ({ openFaqIndex: st.openFaqIndex === i ? null : i })),
+        icon: openFaqIndex === i ? '−' : '+',
+        btnStyle: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '20px 0', cursor: 'pointer', textAlign: 'left', width: '100%' },
+        iconWrap: { width: '26px', height: '26px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(249,248,244,0.25)', borderRadius: '50%' },
+      })),
+
+      formNome: form.nome, formEmail: form.email, formTelefone: form.telefone,
+      formTipo: form.tipo, formDataEvento: form.data, formConvidados: form.convidados, formMensagem: form.mensagem,
+      onNome: e => this.setState(st => ({ form: { ...st.form, nome: e.target.value } })),
+      onEmail: e => this.setState(st => ({ form: { ...st.form, email: e.target.value } })),
+      onTelefone: e => this.setState(st => ({ form: { ...st.form, telefone: e.target.value } })),
+      onTipo: e => this.setState(st => ({ form: { ...st.form, tipo: e.target.value } })),
+      onData: e => this.setState(st => ({ form: { ...st.form, data: e.target.value } })),
+      onConvidados: e => this.setState(st => ({ form: { ...st.form, convidados: e.target.value } })),
+      onMensagem: e => this.setState(st => ({ form: { ...st.form, mensagem: e.target.value } })),
+      onSubmit: e => {
+        e.preventDefault();
+        const errs = this.validate();
+        if (Object.keys(errs).length) { this.setState({ formErrors: errs }); return; }
+        this.setState({ formStatus: 'submitting', formErrors: {} });
+        setTimeout(() => this.setState({ formStatus: 'success' }), 1600);
+      },
+      errNome: formErrors.nome, errEmail: formErrors.email, errTelefone: formErrors.telefone, errTipo: formErrors.tipo,
+      isSuccess: formStatus === 'success', showForm: formStatus !== 'success',
+      submitDisabled: formStatus === 'submitting', submitLabel: formStatus === 'submitting' ? 'Enviando...' : 'Enviar Solicitação',
+      inputNomeStyle: inp(!!formErrors.nome), inputEmailStyle: inp(!!formErrors.email), inputTelStyle: inp(!!formErrors.telefone), inputDateStyle: inp(false),
+      selectTipoStyle: sel(!!formErrors.tipo), selectConvStyle: sel(false),
+      textareaStyle: { ...inp(false), resize: 'vertical', lineHeight: '1.75' },
+      submitStyle: { background: formStatus === 'submitting' ? 'rgba(81,3,3,0.5)' : '#510303', color: '#F9F8F4', border: 'none', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2.5px', textTransform: 'uppercase', padding: m ? '15px 28px' : '14px 32px', cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer', transition: 'background 0.2s', width: m ? '100%' : 'auto' },
+    };
+  }
+}
+</script>
+</body>
+</html>
