@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029194952"></script>
+<script src="./support.js?v=20261029201715"></script>
 </head>
 <body>
 <x-dc>
@@ -111,9 +111,12 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:12px">
           <sc-for list="{{ ocasioesSummary }}" as="oc" hint-placeholder-count="6">
-            <a href="{{ oc.href }}" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border:1px solid rgba(249,248,244,0.1);text-decoration:none;transition:all 0.2s" style-hover="border-color:rgba(249,248,244,0.3);background:rgba(249,248,244,0.04)">
-              <span style="font-family:'General Sans',sans-serif;font-size:13px;color:rgba(249,248,244,0.75)">{{ oc.name }}</span>
-              <span style="font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(249,248,244,0.35)">{{ oc.cap }}</span>
+            <a href="{{ oc.href }}" style="display:flex;align-items:center;gap:16px;min-height:44px;padding:14px 20px;border:1px solid rgba(249,248,244,0.14);text-decoration:none;transition:all 0.2s" style-hover="border-color:rgba(249,248,244,0.35);background:rgba(249,248,244,0.05)">
+              <span style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:0">
+                <span style="font-family:'General Sans',sans-serif;font-size:15px;line-height:1.3;color:#F9F8F4">{{ oc.name }}</span>
+                <span style="font-family:'General Sans',sans-serif;font-size:12px;line-height:1.4;letter-spacing:1px;text-transform:uppercase;color:rgba(249,248,244,0.6)">{{ oc.cap }}</span>
+              </span>
+              <span aria-hidden="true" style="flex-shrink:0;font-family:'General Sans',sans-serif;font-size:16px;color:rgba(249,248,244,0.6)">&rarr;</span>
             </a>
           </sc-for>
         </div>
@@ -332,7 +335,7 @@ const OCASIOES_DATA = [
   },
   {
     num: '03', tag: 'Social',
-    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-2.webp', name: 'Bodas', href: 'bodas.dc.html',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_304_1x.webp', name: 'Bodas', href: 'bodas.dc.html',
     capacity: 'até 350 convidados em jantar',
     desc: 'A celebração dos anos de casamento com a família inteira à mesa. Renovação de votos, jantar e festa no mesmo endereço, com um menu provado antes da data.',
     features: ['Renovação de votos', 'Menu para três gerações', 'Vista do 19º e do 34º andar'],
@@ -380,7 +383,7 @@ const OCASIOES_DATA = [
   },
   {
     num: '07', tag: 'Social',
-    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', name: 'Bat Mitzvah', href: 'bat-mitzvah.dc.html',
+    img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_311_1x.webp', name: 'Bat Mitzvah', href: 'bat-mitzvah.dc.html',
     capacity: 'até 650 convidados',
     desc: 'A celebração dos 12 anos com a família e as amigas reunidas. Menu kosher certificado pela Beit Yaacov, gastronomia própria e espaços que se adaptam do jantar à festa.',
     features: ['Cozinha kosher certificada','Jantar e festa','Até 650 convidados'],
