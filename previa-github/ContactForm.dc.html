@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="background:#F9F8F4;padding:{{ pad }}">
+  <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="padding:40px 0;text-align:center">
+      <h3 style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:30px;color:#510303;margin:0 0 10px">Recebemos sua solicitação</h3>
+      <p style="font-family:'General Sans',sans-serif;font-size:15px;color:#231D1A;margin:0">Nossa equipe retorna em até 24 horas úteis.</p>
+    </div>
+  </sc-if>
+  <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{ submit }}" noValidate="" style="display:grid;grid-template-columns:{{ cols }};gap:18px">
+      <sc-for list="{{ fields }}" as="fd" hint-placeholder-count="6">
+        <div style="{{ fd.wrap }}">
+          <label for="{{ fd.id }}" style="font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#231D1A">{{ fd.label }}</label>
+          <sc-if value="{{ fd.isInput }}" hint-placeholder-val="{{ true }}">
+            <input id="{{ fd.id }}" type="{{ fd.type }}" value="{{ fd.value }}" onChange="{{ fd.onChange }}" aria-invalid="{{ fd.invalid }}" style="{{ fd.style }}">
+          </sc-if>
+          <sc-if value="{{ fd.isSelect }}" hint-placeholder-val="{{ false }}">
+            <select id="{{ fd.id }}" value="{{ fd.value }}" onChange="{{ fd.onChange }}" aria-invalid="{{ fd.invalid }}" style="{{ fd.style }}">
+              <sc-for list="{{ fd.options }}" as="op" hint-placeholder-count="3"><option value="{{ op.v }}">{{ op.l }}</option></sc-for>
+            </select>
+          </sc-if>
+          <sc-if value="{{ fd.isArea }}" hint-placeholder-val="{{ false }}">
+            <textarea id="{{ fd.id }}" rows="4" value="{{ fd.value }}" onChange="{{ fd.onChange }}" style="{{ fd.style }}"></textarea>
+          </sc-if>
+          <sc-if value="{{ fd.err }}" hint-placeholder-val="{{ false }}">
+            <span role="alert" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;color:#510303">{{ fd.err }}</span>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="grid-column:1 / -1;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:6px">
+        <button type="submit" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:17px 30px;background:#510303;color:#F9F8F4;border:none;cursor:pointer">Enviar solicitação</button>
+        <span style="font-family:'Chivo Mono',monospace;font-size:12px;color:#231D1A">Resposta em até 24h úteis</span>
+      </div>
+    </form>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;640px&quot;,&quot;height&quot;:&quot;560px&quot;},&quot;tipos&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tipoLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Tipo de evento&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;idPrefix&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;cf&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, f: { nome: '', email: '', tel: '', tipo: '', espaco: '', data: '', conv: '', msg: '' }, errs: {}, sent: false };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const { w, f, errs, sent } = this.state;
+    const m = w < 700;
+    const tipos = (this.props.tipos || 'Casamento,Mini wedding,Festa de 15 anos,Aniversário,Bar ou Bat Mitzvah,Evento corporativo,Outro').split(',');
+    const set = k => e => this.setState(st => ({ f: { ...st.f, [k]: e.target.value }, errs: { ...st.errs, [k]: undefined } }));
+    const inp = k => ({ width: '100%', padding: '13px 14px', fontFamily: "'General Sans',sans-serif", fontSize: '15px', color: '#231D1A', background: '#FFFFFF', border: '1px solid ' + (errs[k] ? '#510303' : 'rgba(35,29,26,0.3)'), borderRadius: 0, outline: 'none' });
+    const FD = [['nome', 'Nome completo *', 'text'], ['email', 'E-mail *', 'email'], ['tel', 'Telefone *', 'tel'], ['tipo', (this.props.tipoLabel || 'Tipo de evento') + ' *', 'select'], ['data', 'Data prevista', 'date'], ['conv', 'Nº de convidados', 'conv'], ['msg', 'Mensagem', 'area']];
+    return {
+      sent, notSent: !sent, pad: m ? '24px 20px' : '40px', cols: m ? '1fr' : '1fr 1fr',
+      fields: FD.map(([k, label, type]) => ({
+        id: (this.props.idPrefix || 'cf') + '-' + k, label, value: f[k], onChange: set(k),
+        type: ['select', 'conv', 'area'].includes(type) ? 'text' : type,
+        isInput: !['select', 'conv', 'area'].includes(type), isSelect: type === 'select' || type === 'conv', isArea: type === 'area',
+        invalid: errs[k] ? 'true' : 'false', err: errs[k], style: inp(k),
+        wrap: { display: 'flex', flexDirection: 'column', gap: '7px', gridColumn: type === 'area' ? '1 / -1' : 'auto' },
+        options: [{ v: '', l: 'Selecione' }].concat((type === 'select' ? tipos : ['Até 50', '50 a 100', '100 a 200', '200 a 400', 'Mais de 400']).map(x => ({ v: x, l: x }))),
+      })),
+      submit: e => {
+        e.preventDefault();
+        const er = {};
+        if (f.nome.trim().length < 3) er.nome = 'Informe seu nome completo';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) er.email = 'Informe um e-mail válido';
+        if (f.tel.replace(/\D/g, '').length < 10) er.tel = 'Informe um telefone com DDD';
+        if (!f.tipo) er.tipo = 'Selecione uma opção';
+        if (Object.keys(er).length) return this.setState({ errs: er });
+        this.setState({ sent: true });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

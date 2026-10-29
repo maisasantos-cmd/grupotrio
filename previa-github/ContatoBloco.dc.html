@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section id="{{ sectionId }}" aria-labelledby="{{ h2Id }}" style="{{ lightSection }}">
+    <div style="{{ container }}">
+      <div style="{{ contactGrid }}">
+        <div style="padding-top:4px">
+          <div style="{{ eyebrowRow }}">
+            <div style="width:40px;height:1px;background:#510303"></div>
+            <span style="{{ eyebrow }}">Contato</span>
+          </div>
+          <h2 id="{{ h2Id }}" style="{{ h2Dark }}">Vamos planejar<br>seu evento juntos?</h2>
+          <p style="{{ subtextDark }}">Preencha o formulário ou entre em contato diretamente. Nossa equipe retorna em até 24 horas úteis com uma proposta personalizada.</p>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-top:32px">
+            <div><span style="{{ contactLabel }}">WhatsApp</span><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:#510303">(11) 94343-3813</a></div>
+            <div><span style="{{ contactLabel }}">Telefone</span><a href="tel:+5511995601287" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:#510303">(11) 99560-1287</a></div>
+            <div><span style="{{ contactLabel }}">E-mail</span><a href="mailto:eventos@grupotrio.com.br" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:#231D1A;text-decoration:none" style-hover="color:#510303">eventos@grupotrio.com.br</a></div>
+          </div>
+        </div>
+        <div>
+          <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:48px;background:#510303;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px">
+              <div style="width:52px;height:52px;border:1px solid #F9F8F4;border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F9F8F4" stroke-width="1.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              <h3 style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:26px;font-weight:400;color:#F9F8F4;margin:0">Mensagem enviada!</h3>
+              <p style="font-family:'General Sans',sans-serif;font-size:14px;color:#F9F8F4;margin:0;line-height:1.7">Nossa equipe entrará em contato em breve.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ onSubmit }}" noValidate="" style="display:flex;flex-direction:column;gap:20px" aria-label="Formulário de orçamento">
+              <div style="{{ formGrid }}">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idNome }}" style="{{ formLabel }}">Nome Completo *</label>
+                  <input id="{{ idNome }}" type="text" value="{{ formNome }}" onChange="{{ onNome }}" placeholder="Seu nome completo" style="{{ inputNomeStyle }}" required="">
+                  <sc-if value="{{ errNome }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errNome }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idEmail }}" style="{{ formLabel }}">E-mail *</label>
+                  <input id="{{ idEmail }}" type="email" value="{{ formEmail }}" onChange="{{ onEmail }}" placeholder="seu@email.com" style="{{ inputEmailStyle }}" required="">
+                  <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errEmail }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idTel }}" style="{{ formLabel }}">Telefone *</label>
+                  <input id="{{ idTel }}" type="tel" value="{{ formTelefone }}" onChange="{{ onTelefone }}" placeholder="(11) 99999-9999" style="{{ inputTelStyle }}" required="">
+                  <sc-if value="{{ errTelefone }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTelefone }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idTipo }}" style="{{ formLabel }}">Tipo de Evento *</label>
+                  <select id="{{ idTipo }}" value="{{ formTipo }}" onChange="{{ onTipo }}" style="{{ selectTipoStyle }}" required="">
+                    <option value="">Selecione...</option>
+                    <option value="casamento">Casamento</option>
+                    <option value="mini-wedding">Mini Wedding</option>
+                    <option value="aniversario">Aniversário</option>
+                    <option value="15anos">Festa de 15 Anos</option>
+                    <option value="bar-bat-mitzvah">Bar / Bat Mitzvah</option>
+                    <option value="corporativo">Corporativo</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                  <sc-if value="{{ errTipo }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTipo }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idData }}" style="{{ formLabel }}">Data Prevista</label>
+                  <input id="{{ idData }}" type="date" value="{{ formDataEvento }}" onChange="{{ onData }}" style="{{ inputDateStyle }}">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="{{ idConv }}" style="{{ formLabel }}">Nº de Convidados</label>
+                  <select id="{{ idConv }}" value="{{ formConvidados }}" onChange="{{ onConvidados }}" style="{{ selectConvStyle }}">
+                    <option value="">Selecione...</option>
+                    <option value="ate50">Até 50</option>
+                    <option value="50-100">50 a 100</option>
+                    <option value="100-200">100 a 200</option>
+                    <option value="200-400">200 a 400</option>
+                    <option value="400+">Mais de 400</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="{{ idMsg }}" style="{{ formLabel }}">Mensagem</label>
+                <textarea id="{{ idMsg }}" value="{{ formMensagem }}" onChange="{{ onMensagem }}" rows="4" placeholder="Conte mais sobre o seu evento..." style="{{ textareaStyle }}"></textarea>
+              </div>
+              <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+                <button type="submit" disabled="{{ submitDisabled }}" style="{{ submitStyle }}">{{ submitLabel }}</button>
+                <span style="font-family:'General Sans',sans-serif;font-size:12px;color:#231D1A">Resposta em até 24h úteis</span>
+              </div>
+            </form>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1200px&quot;,&quot;height&quot;:&quot;760px&quot;},&quot;sectionId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;contato&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;prefix&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ct&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200, form: { nome: '', email: '', telefone: '', tipo: '', data: '', convidados: '', mensagem: '' }, formErrors: {}, formStatus: 'idle' };
+  componentDidMount() { this._r = () => this.setState({ windowWidth: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  validate() {
+    const f = this.state.form, e = {};
+    if (!f.nome || f.nome.trim().length < 2) e.nome = 'Nome obrigatório';
+    if (!f.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) e.email = 'E-mail inválido';
+    if (!f.telefone || f.telefone.replace(/\D/g, '').length < 8) e.telefone = 'Telefone obrigatório';
+    if (!f.tipo) e.tipo = 'Selecione o tipo de evento';
+    return e;
+  }
+  renderVals() {
+    const { windowWidth, form, formErrors, formStatus } = this.state;
+    const m = windowWidth < 768;
+    const px = this.props.prefix || 'ct';
+    const inp = (e) => ({ background: 'transparent', border: 'none', borderBottom: `1px solid ${e ? '#510303' : 'rgba(35,29,26,0.22)'}`, padding: '10px 0', fontFamily: "'General Sans',sans-serif", fontSize: '15px', color: '#231D1A', outline: 'none', width: '100%' });
+    const sel = (e) => ({ ...inp(e), WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', cursor: 'pointer' });
+    const set = k => e => { const v = e.target.value; this.setState(st => ({ form: { ...st.form, [k]: v }, formErrors: { ...st.formErrors, [k === 'telefone' ? 'telefone' : k]: undefined } })); };
+    return {
+      sectionId: this.props.sectionId || 'contato', h2Id: px + '-contato-h2',
+      idNome: px + '-nome', idEmail: px + '-email', idTel: px + '-tel', idTipo: px + '-tipo', idData: px + '-data', idConv: px + '-conv', idMsg: px + '-msg',
+      lightSection: { background: '#F9F8F4', padding: m ? '60px 0' : '100px 0' },
+      container: { maxWidth: '1240px', margin: '0 auto', padding: m ? '0 20px' : '0 48px' },
+      contactGrid: m ? { display: 'flex', flexDirection: 'column', gap: '40px' } : { display: 'grid', gridTemplateColumns: '2fr 3fr', gap: '80px', alignItems: 'flex-start' },
+      eyebrowRow: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' },
+      eyebrow: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '4px', textTransform: 'uppercase', color: '#510303' },
+      h2Dark: { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 400, fontSize: 'clamp(32px,3.5vw,52px)', lineHeight: 1.1, color: '#510303', margin: '0 0 20px' },
+      subtextDark: { fontFamily: "'General Sans',sans-serif", fontSize: '15px', lineHeight: 1.8, color: '#231D1A', margin: '0 0 16px' },
+      contactLabel: { display: 'block', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase', color: '#510303', marginBottom: '5px' },
+      formLabel: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2.5px', textTransform: 'uppercase', color: '#231D1A' },
+      formGrid: { display: 'grid', gridTemplateColumns: m ? '1fr' : '1fr 1fr', gap: '20px' },
+      isSuccess: formStatus === 'success', showForm: formStatus !== 'success',
+      formNome: form.nome, formEmail: form.email, formTelefone: form.telefone, formTipo: form.tipo, formDataEvento: form.data, formConvidados: form.convidados, formMensagem: form.mensagem,
+      onNome: set('nome'), onEmail: set('email'), onTelefone: set('telefone'), onTipo: set('tipo'), onData: set('data'), onConvidados: set('convidados'), onMensagem: set('mensagem'),
+      inputNomeStyle: inp(!!formErrors.nome), inputEmailStyle: inp(!!formErrors.email), inputTelStyle: inp(!!formErrors.telefone), inputDateStyle: inp(false),
+      selectTipoStyle: sel(!!formErrors.tipo), selectConvStyle: sel(false), textareaStyle: { ...inp(false), resize: 'vertical', lineHeight: '1.75' },
+      errNome: formErrors.nome, errEmail: formErrors.email, errTelefone: formErrors.telefone, errTipo: formErrors.tipo,
+      submitDisabled: formStatus === 'submitting',
+      submitLabel: formStatus === 'submitting' ? 'Enviando...' : 'Enviar Solicitação',
+      submitStyle: { minHeight: '48px', background: formStatus === 'submitting' ? 'rgba(81,3,3,0.5)' : '#510303', color: '#F9F8F4', border: 'none', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2.5px', textTransform: 'uppercase', padding: m ? '15px 28px' : '14px 36px', cursor: formStatus === 'submitting' ? 'not-allowed' : 'pointer', transition: 'background 0.2s', width: m ? '100%' : 'auto' },
+      onSubmit: e => { e.preventDefault(); const errs = this.validate(); if (Object.keys(errs).length) { this.setState({ formErrors: errs }); return; } this.setState({ formStatus: 'submitting', formErrors: {} }); setTimeout(() => this.setState({ formStatus: 'success' }), 1600); },
+    };
+  }
+}
+</script>
+</body>
+</html>
