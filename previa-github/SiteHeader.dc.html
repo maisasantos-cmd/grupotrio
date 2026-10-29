@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261029201715"></script>
+<script src="./support.js?v=20261029213120"></script>
 </head>
 <body>
 <x-dc>
@@ -63,7 +63,7 @@
             <a href="trio-garden.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Garden</a>
           </div>
         </div>
-        <a href="https://www.grupotrio.com.br/corporativo/" style="{{ ddBtnLinkStyle }}" style-hover="color:#F9F8F4">Corporativo</a>
+        <a href="corporativo.dc.html" style="{{ ddBtnLinkStyle }}" style-hover="color:#F9F8F4">Corporativo</a>
         <div onMouseEnter="{{ openOcasioes }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
           <a href="ocasioes.dc.html" style="{{ ddSplitLink }}" style-hover="color:#F9F8F4">Ocasiões</a><button aria-label="Abrir submenu de ocasiões" style="{{ ddArrow }}"><svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div onMouseEnter="{{ openOcasioes }}" onMouseLeave="{{ closeDD }}" style="{{ ddOcasioes }}" role="menu">
@@ -134,7 +134,7 @@
           <a href="trio-garden.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Garden</a>
         </div>
         </sc-if>
-        <a href="https://www.grupotrio.com.br/corporativo/" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Corporativo</a>
+        <a href="corporativo.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Corporativo</a>
         <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(249,248,244,0.08)">
           <a href="ocasioes.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;flex:1">Ocasiões</a>
           <button onClick="{{ toggleMobileOcasioes }}" aria-label="Expandir ocasiões" aria-expanded="{{ mobileOcasioesOpen }}" style="width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;background:none;border:none;padding:0;color:rgba(249,248,244,0.5);cursor:pointer">
@@ -173,7 +173,7 @@ const MENU = [
   { key: 'trio', label: 'Grupo Trio', href: L.sobre, sub: [['Sobre nós', L.sobre], ['Blog', 'https://www.grupotrio.com.br/blog/']] },
   { key: 'espacos', label: 'Nossos espaços', href: L.espacos, sub: [...SP.map(([k, n]) => ['TRIO | ' + n.toUpperCase(), L.esp(k)]), ['Ver todos os espaços', L.espacos]] },
   { key: 'restaurantes', label: 'Restaurantes', href: L.esp('dezenove'), sub: [['Trio Dezenove', L.esp('dezenove')], ['Trio Garden', L.esp('garden')]] },
-  { key: 'corporativo', label: 'Corporativo', href: 'https://www.grupotrio.com.br/corporativo/', sub: [] },
+  { key: 'corporativo', label: 'Corporativo', href: 'corporativo.dc.html', sub: [] },
   { key: 'ocasioes', label: 'Ocasiões', href: L.ocasioes, sub: [['Aniversário', 'aniversario.dc.html'], ['Bar Mitzvah', 'bar-mitzvah.dc.html'], ['Bat Mitzvah', 'bat-mitzvah.dc.html'], ['Casamentos', 'casamentos.dc.html'], ['Festa de 15 anos', 'festa-de-15-anos.dc.html'], ['Mini wedding', 'mini-wedding.dc.html'], ['Bodas', 'bodas.dc.html'], ['Todas as ocasiões', L.ocasioes]] },
 ];
 

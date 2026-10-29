@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029201715"></script>
+<script src="./support.js?v=20261029213120"></script>
 </head>
 <body>
 <x-dc>
@@ -38,6 +38,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   
   <style>
+    @keyframes qs-parc { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { [style*="qs-parc"] { animation: none !important; } }
     @media (max-width: 767px) {
       main a[style*="uppercase"], main a[style*="letter-spacing"][style*="padding"], main form button, main button[style*="uppercase"][style*="padding"]:not([role="tab"]):not([aria-pressed]) { display: flex !important; width: 100% !important; min-height: 44px !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; }
       main form button[type="submit"] { flex: 1 1 100% !important; }
@@ -208,10 +210,12 @@
         </div>
       </div>
       <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#510303;margin:48px 0 18px">Marcas que já celebraram conosco</span>
-      <div aria-roledescription="carousel" aria-label="Marcas que já celebraram com o Grupo TRIO" onMouseEnter="{{ marcasPause }}" onMouseLeave="{{ marcasPlay }}" style="position:relative;overflow:hidden;border-top:1px solid rgba(81,3,3,0.18);border-bottom:1px solid rgba(81,3,3,0.18)">
-        <div style="{{ marcasTrack }}">
-          <sc-for list="{{ marcasLoop }}" as="mk" hint-placeholder-count="7">
-            <div style="{{ marcaCell }}"><span style="{{ mk.style }}">{{ mk.name }}</span></div>
+      <div aria-roledescription="carousel" aria-label="Marcas que já celebraram com o Grupo TRIO" style="overflow:hidden;border-top:1px solid rgba(81,3,3,0.15);border-bottom:1px solid rgba(81,3,3,0.15);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)">
+        <div style="display:flex;align-items:center;width:max-content;animation:qs-parc 28s linear infinite" style-hover="animation-play-state:paused">
+          <sc-for list="{{ parcLoop }}" as="l" hint-placeholder-count="7">
+            <div aria-hidden="{{ l.dup }}" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:{{ parcItemW }};height:96px;padding:0 28px;box-sizing:border-box">
+              <img src="{{ l.src }}" alt="{{ l.alt }}" loading="lazy" style="max-width:100%;max-height:44px;object-fit:contain;filter:grayscale(1);opacity:0.85">
+            </div>
           </sc-for>
         </div>
       </div>
@@ -265,35 +269,7 @@
   </section>
 
   <!-- ONDE ESTAMOS -->
-  <section id="qs-espacos" aria-labelledby="qs-esp-h2" style="{{ lightSection }}">
-    <div style="{{ container }}">
-      <div style="max-width:100%;margin-bottom:40px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><div style="width:30px;height:1px;background:#510303"></div><span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#510303">Onde estamos</span></div>
-        <h2 id="qs-esp-h2" style="{{ h2Dark }}">10 espaços nos melhores endereços de São Paulo</h2>
-        <p style="{{ bodyDark }}">Cada espaço tem gerente próprio, identidade e estrutura pensadas para um formato de evento. Todos com a mesma cozinha e o mesmo padrão de atendimento.</p>
-      </div>
-      <div style="position:relative">
-      <div ref="{{ espRef }}" aria-roledescription="carousel" aria-label="Espaços do Grupo TRIO" style="display:grid;grid-auto-flow:column;grid-auto-columns:{{ espCol }};gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px">
-        
-        <sc-for list="{{ espacos }}" as="e" hint-placeholder-count="10">
-          <a href="{{ e.href }}" style="scroll-snap-align:start;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid rgba(81,3,3,0.14);text-decoration:none;height:100%;box-sizing:border-box;overflow:hidden" style-hover="border-color:#510303;background:#FFFFFF">
-            <div style="position:relative;aspect-ratio:4/3;background:#BFB8AF;overflow:hidden">
-              <sc-if value="{{ e.img }}" hint-placeholder-val="{{ false }}"><img src="{{ e.img }}" alt="{{ e.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
-              <span style="position:absolute;top:12px;left:12px;padding:5px 10px;background:#510303;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#F9F8F4">{{ e.bairro }}</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:8px;padding:20px 20px 22px;flex:1">
-            <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:26px;line-height:1.1;color:#510303">{{ e.name }}</span>
-            <address style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.55;font-style:normal;color:#231D1A">{{ e.end }}</address>
-            <span style="margin-top:auto;padding-top:10px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#510303">Conhecer espaço</span>
-            </div>
-          </a>
-        </sc-for>
-      </div>
-        <button onClick="{{ espPrev }}" aria-label="Espaços anteriores" style="position:absolute;top:calc(50% - 22px);left:{{ espBtnOff }};z-index:2;width:44px;height:44px;border-radius:50%;border:none;background:#510303;color:#F9F8F4;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(35,29,26,0.25)" style-hover="background:#3a0202;color:#F9F8F4">‹</button>
-        <button onClick="{{ espNext }}" aria-label="Próximos espaços" style="position:absolute;top:calc(50% - 22px);right:{{ espBtnOff }};z-index:2;width:44px;height:44px;border-radius:50%;border:none;background:#510303;color:#F9F8F4;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(35,29,26,0.25)" style-hover="background:#3a0202;color:#F9F8F4">›</button>
-      </div>
-    </div>
-  </section>
+  <dc-import name="EspacosCarrossel" section-id="qs-espacos" hint-size="100%,720px"></dc-import>
 
   <!-- FAQ -->
   <section aria-labelledby="qs-faq-h2" style="{{ faqSection }}">
@@ -398,7 +374,8 @@ class Component extends DCLogic {
     clearInterval(this._mkIv); this._off && this._off(); clearTimeout(this._t); }
 
   renderVals() {
-    const { w, scrolled, dd, menuOpen, mobileOpen, faq } = this.state;
+    const { scrolled, dd, menuOpen, mobileOpen, faq } = this.state;
+    const w = typeof window !== 'undefined' ? window.innerWidth : (this.state.w || 1200);
     const m = w < 768, t = w < 1024;
     const pad = m ? '0 20px' : '0 48px';
     const sec = m ? '64px 0' : '96px 0';
@@ -406,6 +383,8 @@ class Component extends DCLogic {
     const line = (r, hide, ty) => ({ display: 'block', width: '22px', height: '1.5px', background: '#F9F8F4', transition: 'all .25s', transform: menuOpen ? (hide ? 'scaleX(0)' : `rotate(${r}deg) translateY(${ty}px)`) : 'none', opacity: menuOpen && hide ? 0 : 1 });
 
     return {
+      parcItemW: m ? '150px' : '190px',
+      parcLoop: [{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/McKinsey.png","alt":"McKinsey","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Visa.png","alt":"Visa","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Votorantim.png","alt":"Votorantim","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/XP.png","alt":"XP","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Arezzo.png","alt":"Arezzo","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/BTG.png","alt":"BTG","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Google.png","alt":"Google","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/McKinsey.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Visa.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Votorantim.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/XP.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Arezzo.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/BTG.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Google.png","alt":"","dup":"true"}],
       reels: [this.props.reel1 || 'videos/mara.mp4', this.props.reel2 || 'videos/eduardo.mp4', this.props.reel3 || 'videos/monique.mp4'].map((u, i) => { const bad = (this.state.reelOk || {})[u] !== true; return { n: i + 1, src: u, hasUrl: !bad, noUrl: !!bad, title: 'Vídeo de ' + ['Mara Linhares', 'Eduardo Linhares', 'Monique Katz'][i], caption: ['Mara Linhares, sócia-fundadora', 'Eduardo Linhares, sócio-fundador', 'Monique Katz, sócia'][i] }; }),
       reelsGrid: { display: 'grid', gridTemplateColumns: (this.state.w || 1280) < 600 ? 'minmax(0,1fr)' : 'repeat(3,minmax(0,1fr))', gap: (this.state.w || 1280) < 600 ? '28px' : '20px', maxWidth: (this.state.w || 1280) < 600 ? '360px' : 'none', margin: (this.state.w || 1280) < 600 ? '0 auto' : 0 },
       fundPad: (this.state.w || 1280) < 900 ? '64px 20px' : '100px 48px',

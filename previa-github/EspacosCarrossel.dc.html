@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js?v=20261029213120"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+  </style>
+</helmet>
+<section id="{{ sectionId }}" aria-labelledby="{{ hid }}" style="{{ wrap }}">
+  <div style="{{ container }}">
+    <div style="{{ head }}">
+      <div style="max-width:860px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><div style="width:30px;height:1px;background:#510303"></div><span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#510303">{{ eyebrow }}</span></div>
+        <h2 id="{{ hid }}" style="{{ h2 }}">{{ title }}</h2>
+        <sc-if value="{{ lead }}" hint-placeholder-val="{{ true }}"><p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.75;color:#231D1A;margin:0;text-wrap:pretty">{{ lead }}</p></sc-if>
+      </div>
+      <a href="nossos-espacos.dc.html" style="{{ verTodos }}" style-hover="background:#3a0202;color:#F9F8F4">Ver todos os espaços</a>
+    </div>
+  </div>
+  <div style="position:relative">
+  <div aria-roledescription="carousel" aria-label="Espaços do Grupo TRIO" onMouseEnter="{{ pause }}" onMouseLeave="{{ play }}" onTouchStart="{{ pause }}" onTouchEnd="{{ playLater }}" style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)">
+    <div ref="{{ trackRef }}" style="{{ track }}">
+      <sc-for list="{{ loop }}" as="e" hint-placeholder-count="6">
+        <a href="{{ e.href }}" aria-hidden="{{ e.dup }}" tabIndex="{{ e.tab }}" style="{{ card }}" style-hover="border-color:#510303">
+          <div style="position:relative;aspect-ratio:4/3;background:#BFB8AF;overflow:hidden">
+            <sc-if value="{{ e.img }}" hint-placeholder-val="{{ false }}"><img src="{{ e.img }}" alt="{{ e.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+            <sc-if value="{{ e.noImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#231D1A">Lançamento</span></sc-if>
+            <span style="position:absolute;top:12px;left:12px;padding:5px 10px;background:#510303;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">{{ e.bairro }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:20px 20px 22px;flex:1">
+            <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:24px;line-height:1.1;color:#510303">{{ e.name }}</span>
+            <address style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.55;font-style:normal;color:#231D1A;white-space:normal">{{ e.end }}</address>
+            <span style="margin-top:auto;padding-top:10px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#510303">Conhecer espaço</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  <button onClick="{{ prev }}" aria-label="Espaços anteriores" style="{{ btnL }}" style-hover="background:#3a0202;color:#F9F8F4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"></path></svg></button>
+  <button onClick="{{ next }}" aria-label="Próximos espaços" style="{{ btnR }}" style-hover="background:#3a0202;color:#F9F8F4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"></path></svg></button>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;720px&quot;},&quot;exclude&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Onde estamos&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;10 espaços nos melhores endereços de São Paulo&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lead&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sectionId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;espacos-carrossel&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const ESPACOS = [
+  { name: 'TRIO Pérgola', bairro: 'Berrini', end: 'Av. Engenheiro Luís Carlos Berrini, 105, 8º andar - Cidade Monções, São Paulo - SP, 04571-010', href: 'trio-pergola.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-2.webp' },
+  { name: 'TRIO One', bairro: 'Berrini', end: 'Av. Engenheiro Luís Carlos Berrini, 105, 8º andar - Cidade Monções, São Paulo - SP, 04571-010', href: 'trio-one.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/intro_banner_1.webp' },
+  { name: 'TRIO Sky Lounge', bairro: 'Berrini', end: 'Av. Engenheiro Luís Carlos Berrini, 105, 34º andar - Cidade Monções, São Paulo - SP, 04571-010', href: 'trio-skylounge.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2026/01/Trio-48.jpg' },
+  { name: 'TRIO Dezenove', bairro: 'Vila Olímpia', end: 'R. Funchal, 418, 19º andar - Vila Olímpia, São Paulo - SP, 04551-060', href: 'trio-dezenove.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_2_1.webp' },
+  { name: 'TRIO SP Hall', bairro: 'Vila Nova Conceição', end: 'Av. Presidente Juscelino Kubitschek, 1909 - Vila Nova Conceição, São Paulo - SP, 04543-907', href: 'trio-sp-hall.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_323_1x.webp' },
+  { name: 'TRIO Metropolitan', bairro: 'Jardim Europa', end: 'R. Amauri, 255 - Jardim Europa, São Paulo - SP, 01448-000', href: 'trio-metropolitan.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/Grupo-267_1x.webp' },
+  { name: 'TRIO Garden', bairro: 'Butantã', end: 'R. Gerivatiba, 207, térreo - Butantã, São Paulo - SP, 05501-030', href: 'trio-garden.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2026/01/trio-garden-nova-1.jpg' },
+  { name: 'TRIO River One', bairro: 'Butantã', end: 'R. Gerivatiba, 207 - Butantã, São Paulo - SP, 05501-030', href: 'trio-river-one.dc.html', img: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-4.webp' },
+  { name: 'TRIO Trivento', bairro: 'Bela Vista', end: 'R. Capitão-Mor Roque Barreto, 46 - Bela Vista, São Paulo - SP, 01323-030', href: 'trio-trivento.dc.html', img: 'img/trivento.webp' },
+  { name: 'TRIO Auri', bairro: 'Itaim Bibi', end: 'R. Fiandeiras, 930 - Itaim Bibi, São Paulo - SP · Lançamento', href: 'trio-auri.dc.html', img: '' },
+];
+class Component extends DCLogic {
+  componentDidMount() {
+    this._r = () => this.forceUpdate(); window.addEventListener('resize', this._r, { passive: true });
+    this._off = 0; this._paused = false; this._rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let last = performance.now();
+    const tick = now => { const dt = Math.min(64, now - last); last = now; const el = this._trackRef && this._trackRef.current;
+      if (el) { const half = el.scrollWidth / 2; if (!this._paused && !this._rm && !this._jumping) this._off += dt * 0.04; if (half > 0) { if (this._off >= half) this._off -= half; if (this._off < 0) this._off += half; } if (!this._jumping) { el.style.transition = 'none'; el.style.transform = 'translateX(' + (-this._off) + 'px)'; } }
+      this._raf = requestAnimationFrame(tick); };
+    this._raf = requestAnimationFrame(tick);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); cancelAnimationFrame(this._raf); clearTimeout(this._jt); clearTimeout(this._pt); }
+  step(dir) { const el = this._trackRef && this._trackRef.current; if (!el) return; const card = el.firstElementChild; const s = card ? card.getBoundingClientRect().width + 16 : 316; const half = el.scrollWidth / 2;
+    if (dir < 0 && this._off - s < 0) { this._off += half; el.style.transition = 'none'; el.style.transform = 'translateX(' + (-this._off) + 'px)'; void el.offsetWidth; }
+    this._off += dir * s; this._jumping = true; el.style.transition = 'transform .5s ease'; el.style.transform = 'translateX(' + (-this._off) + 'px)';
+    clearTimeout(this._jt); this._jt = setTimeout(() => { this._jumping = false; }, 520); }
+  renderVals() {
+    const w = typeof window !== 'undefined' ? window.innerWidth : 1280;
+    const m = w < 768;
+    const ex = (this.props.exclude || '').toLowerCase();
+    const list = ESPACOS.filter(e => !ex || e.name.toLowerCase() !== ex).map(e => ({ ...e, noImg: !e.img, alt: 'Espaço de eventos ' + e.name + ', em ' + e.bairro + ', São Paulo' }));
+    const cw = m ? 260 : 300;
+    return {
+      sectionId: this.props.sectionId || 'espacos-carrossel', hid: (this.props.sectionId || 'espacos-carrossel') + '-h2',
+      eyebrow: this.props.eyebrow || 'Onde estamos',
+      title: this.props.title || '10 espaços nos melhores endereços de São Paulo',
+      lead: this.props.lead === undefined ? 'Cada espaço tem gerente próprio, identidade e estrutura pensadas para um formato de evento. Todos com a mesma cozinha e o mesmo padrão de atendimento.' : this.props.lead,
+      loop: list.map(e => ({ ...e, dup: 'false', tab: 0 })).concat(list.map(e => ({ ...e, dup: 'true', tab: -1 }))),
+      wrap: { background: '#F9F8F4', padding: m ? '64px 0' : '96px 0', borderTop: '1px solid rgba(81,3,3,0.12)', overflow: 'hidden' },
+      container: { maxWidth: '1240px', margin: '0 auto', padding: m ? '0 20px' : '0 48px', boxSizing: 'border-box' },
+      head: { display: 'flex', flexDirection: m ? 'column' : 'row', alignItems: m ? 'stretch' : 'flex-end', justifyContent: 'space-between', gap: m ? '24px' : '48px', marginBottom: m ? '32px' : '44px' },
+      h2: { fontFamily: "'Miller Headline','Playfair Display',Georgia,serif", fontWeight: 400, fontSize: m ? '32px' : 'clamp(34px,3.4vw,48px)', lineHeight: 1.1, color: '#510303', margin: '0 0 18px', textWrap: 'balance' },
+      verTodos: { flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: '44px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '16px 28px', background: '#510303', color: '#F9F8F4', textDecoration: 'none', textAlign: 'center' },
+      trackRef: this._trackRef || (this._trackRef = React.createRef()),
+      pause: () => { this._paused = true; clearTimeout(this._pt); }, play: () => { this._paused = false; }, playLater: () => { clearTimeout(this._pt); this._pt = setTimeout(() => { this._paused = false; }, 2500); },
+      prev: () => this.step(-1), next: () => this.step(1),
+      btnL: { position: 'absolute', top: 'calc(50% - 22px)', left: m ? '8px' : '24px', zIndex: 2, width: '44px', height: '44px', borderRadius: '50%', border: 'none', background: '#510303', color: '#F9F8F4', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 18px rgba(35,29,26,0.25)' },
+      btnR: { position: 'absolute', top: 'calc(50% - 22px)', right: m ? '8px' : '24px', zIndex: 2, width: '44px', height: '44px', borderRadius: '50%', border: 'none', background: '#510303', color: '#F9F8F4', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 18px rgba(35,29,26,0.25)' },
+      track: { display: 'flex', gap: '16px', width: 'max-content', padding: '0 16px', willChange: 'transform' },
+      card: { flex: `0 0 ${cw}px`, display: 'flex', flexDirection: 'column', background: '#FFFFFF', border: '1px solid rgba(81,3,3,0.14)', textDecoration: 'none', boxSizing: 'border-box', overflow: 'hidden' },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261029201715"></script>
+<script src="./support.js?v=20261029213120"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261029201715"></script>
-  <script src="ocasioes-data.js?v=20261029201715"></script>
+  <script src="trio-data.js?v=20261029213120"></script>
+  <script src="ocasioes-data.js?v=20261029213120"></script>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Chivo+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
+    @keyframes cas-parc { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { [style*="cas-parc"] { animation: none !important; } }
     @media (max-width: 767px) {
       main a[style*="uppercase"], main a[style*="letter-spacing"][style*="padding"], main form button, main button[style*="uppercase"][style*="padding"]:not([role="tab"]):not([aria-pressed]) { display: flex !important; width: 100% !important; min-height: 44px !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; }
       main form button[type="submit"] { flex: 1 1 100% !important; }
@@ -117,6 +119,51 @@
     </div>
   </section>
 
+  <!-- TIPOS -->
+  <sc-if value="{{ hasTipos }}" hint-placeholder-val="{{ false }}">
+  <section id="cas-tipos" aria-labelledby="cas-tipos-h2" style="{{ tiposSection }}">
+    <div style="{{ container }}">
+      <div style="max-width:none;margin-bottom:{{ tiposHeadMb }}">
+        <div style="{{ eyebrowRow }}">
+          <div style="width:40px;height:1px;background:#510303"></div>
+          <span style="{{ eyebrow }}">{{ tipos.eyebrow }}</span>
+        </div>
+        <h2 id="cas-tipos-h2" style="{{ h2Dark }}">{{ tipos.title }}</h2>
+        <p style="{{ tiposLead }}">{{ tipos.lead }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:{{ tiposGap }}">
+        <sc-for list="{{ tiposItems }}" as="t" hint-placeholder-count="4">
+          <article aria-labelledby="{{ t.hid }}" style="{{ t.grid }}">
+            <div style="{{ t.textCol }}">
+              <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#510303;margin-bottom:14px">{{ t.num }} · {{ t.eyebrow }}</span>
+              <h3 id="{{ t.hid }}" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.15;color:#510303;margin:0 0 20px;text-wrap:balance">{{ t.title }}</h3>
+              <sc-for list="{{ t.paras }}" as="p" hint-placeholder-count="2"><p style="{{ subtextDark }}">{{ p }}</p></sc-for>
+              <a href="#cas-contato" style="{{ tiposCta }}" style-hover="background:#3a0202;color:#F9F8F4">Faça um orçamento</a>
+            </div>
+            <div style="{{ t.mediaCol }}" aria-roledescription="carousel" aria-label="{{ t.carLabel }}">
+              <div style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#BFB8AF">
+                <sc-for list="{{ t.slides }}" as="s" hint-placeholder-count="1">
+                  <sc-if value="{{ s.src }}" hint-placeholder-val="{{ false }}"><img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" aria-hidden="{{ s.hidden }}" style="{{ s.style }}"></sc-if>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0 0;border-bottom:1px solid rgba(81,3,3,0.15);padding-bottom:16px">
+                <div style="min-width:0">
+                  <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#510303;margin-bottom:4px">{{ t.cur.bairro }}</span>
+                  <span style="display:block;font-family:'General Sans',sans-serif;font-size:15px;font-weight:600;color:#231D1A">{{ t.cur.name }} · <span style="font-weight:400">{{ t.cur.cap }}</span></span>
+                </div>
+                <div style="display:flex;gap:8px;flex-shrink:0">
+                  <button onClick="{{ t.prev }}" aria-label="Foto anterior" style="width:44px;height:44px;border:1px solid #510303;background:transparent;color:#510303;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#510303;color:#F9F8F4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"></path></svg></button>
+                  <button onClick="{{ t.next }}" aria-label="Próxima foto" style="width:44px;height:44px;border:1px solid #510303;background:transparent;color:#510303;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#510303;color:#F9F8F4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"></path></svg></button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
   <!-- ESPAÇOS -->
   <section id="cas-espacos" aria-labelledby="cas-esp-h2" style="{{ darkSection }}">
     <div style="{{ container }}">
@@ -174,6 +221,7 @@
   </section>
 
   <!-- SKYLINE -->
+  <sc-if value="{{ hasVista }}" hint-placeholder-val="{{ true }}">
   <section id="cas-skyline" aria-labelledby="skyline-h2" style="background:#510303;overflow:hidden">
     <div style="{{ skylineGrid }}">
       <div style="{{ skylineImg }}">
@@ -196,6 +244,7 @@
       </div>
     </div>
   </section>
+  </sc-if>
 
   <!-- GASTRONOMIA -->
   <section id="cas-gastro" aria-labelledby="gastro-h2" style="{{ lightSection }}">
@@ -222,8 +271,45 @@
     </div>
   </section>
 
+  <!-- PARCEIROS -->
+  <sc-if value="{{ hasParceiros }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="cas-parc-h2" style="background:#F9F8F4;padding:{{ parcPad }};border-top:1px solid rgba(81,3,3,0.12)">
+    <div style="{{ container }}">
+      <h2 id="cas-parc-h2" style="{{ parcH2 }}">{{ parceiros.title }}</h2>
+      <div aria-roledescription="carousel" aria-label="Parceiros que confiam no Grupo TRIO" style="overflow:hidden;margin-top:32px;border-top:1px solid rgba(81,3,3,0.15);border-bottom:1px solid rgba(81,3,3,0.15);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)">
+        <div style="display:flex;align-items:center;width:max-content;animation:cas-parc 28s linear infinite" style-hover="animation-play-state:paused">
+          <sc-for list="{{ parcLoop }}" as="l" hint-placeholder-count="7">
+            <div aria-hidden="{{ l.dup }}" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:{{ parcItemW }};height:96px;padding:0 28px;box-sizing:border-box">
+              <img src="{{ l.src }}" alt="{{ l.alt }}" loading="lazy" style="max-width:100%;max-height:44px;object-fit:contain;filter:grayscale(1);opacity:0.85">
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- LEED -->
+  <sc-if value="{{ hasLeed }}" hint-placeholder-val="{{ false }}">
+  <section aria-labelledby="cas-leed-h2" style="background:#510303;padding:{{ parcPad }}">
+    <div style="{{ container }}">
+      <div style="{{ leedGrid }}">
+        <div style="{{ leedBox }}">
+          <img src="{{ leed.img }}" alt="Selo de certificação LEED" loading="lazy" style="display:block;width:100%;height:auto;object-fit:contain">
+        </div>
+        <div>
+          <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#F9F8F4;margin-bottom:14px">{{ leed.eyebrow }}</span>
+          <h2 id="cas-leed-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,42px);line-height:1.15;color:#F9F8F4;margin:0 0 20px">{{ leed.title }}</h2>
+          <sc-for list="{{ leed.paras }}" as="p" hint-placeholder-count="2"><p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.75;color:#F9F8F4;margin:0 0 14px;max-width:640px">{{ p }}</p></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
   <!-- FAQ -->
 
+  <sc-if value="{{ hasFaq }}" hint-placeholder-val="{{ true }}">
   <section id="cas-faq" aria-labelledby="faq-h2" style="{{ faqSection }}">
     <div style="{{ faqLayout }}">
       <div>
@@ -251,6 +337,7 @@
       </div>
     </div>
   </section>
+  </sc-if>
 
   <!-- CONTATO -->
   <section id="cas-contato" aria-labelledby="cas-form-h2" style="{{ lightSection }}">
@@ -343,13 +430,13 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;o&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;casamento&quot;,&quot;15anos&quot;,&quot;aniversario&quot;,&quot;barmitzvah&quot;],&quot;default&quot;:&quot;casamento&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 
 
-const TIPOS = { casamento: ['Casamento', 'Mini wedding', 'Cerimônia e festa no mesmo local', 'Renovação de votos', 'Outro'], '15anos': ['Festa de 15 anos', 'Jantar de 15 anos', 'Outro'], aniversario: ['Aniversário com jantar', 'Aniversário com coquetel', 'Outro'], barmitzvah: ['Cerimônia e festa', 'Só a festa', 'Jantar com a família', 'Outro'], batmitzvah: ['Cerimônia e festa', 'Só a festa', 'Jantar com a família', 'Outro'], bodas: ['Bodas de prata (25 anos)', 'Bodas de pérola (30 anos)', 'Bodas de ouro (50 anos)', 'Bodas de diamante (60 anos)', 'Outra data'], miniwedding: ['Cerimônia e festa no mesmo ambiente', 'Só a festa', 'Jantar para poucos convidados', 'Outro'] };
-const CRUMB = { casamento: 'Casamentos', '15anos': 'Festa de 15 anos', aniversario: 'Aniversário', barmitzvah: 'Bar Mitzvah', batmitzvah: 'Bat Mitzvah', bodas: 'Bodas', miniwedding: 'Mini wedding' };
-const HERO_IMG = { casamento: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_scaled_1x.webp', '15anos': 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_1x.webp', aniversario: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1_1x.webp', barmitzvah: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', batmitzvah: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_311_1x.webp', bodas: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-2.webp', miniwedding: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/img_1555_zzz_1x.webp' };
-const HERO_PHOTO = { casamento: 'pergola', '15anos': 'trivento', aniversario: 'skylounge', barmitzvah: 'sphall', batmitzvah: 'sphall', bodas: 'pergola', miniwedding: 'garden' };
+const TIPOS = { corporativo: ['Confraternização', 'Premiação', 'Plenária', 'Lançamento', 'Convenção ou treinamento', 'Outro'], casamento: ['Casamento', 'Mini wedding', 'Cerimônia e festa no mesmo local', 'Renovação de votos', 'Outro'], '15anos': ['Festa de 15 anos', 'Jantar de 15 anos', 'Outro'], aniversario: ['Aniversário com jantar', 'Aniversário com coquetel', 'Outro'], barmitzvah: ['Cerimônia e festa', 'Só a festa', 'Jantar com a família', 'Outro'], batmitzvah: ['Cerimônia e festa', 'Só a festa', 'Jantar com a família', 'Outro'], bodas: ['Bodas de prata (25 anos)', 'Bodas de pérola (30 anos)', 'Bodas de ouro (50 anos)', 'Bodas de diamante (60 anos)', 'Outra data'], miniwedding: ['Cerimônia e festa no mesmo ambiente', 'Só a festa', 'Jantar para poucos convidados', 'Outro'] };
+const CRUMB = { corporativo: 'Corporativo', casamento: 'Casamentos', '15anos': 'Festa de 15 anos', aniversario: 'Aniversário', barmitzvah: 'Bar Mitzvah', batmitzvah: 'Bat Mitzvah', bodas: 'Bodas', miniwedding: 'Mini wedding' };
+const HERO_IMG = { corporativo: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_420_min_1x.webp', casamento: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_scaled_1x.webp', '15anos': 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_1x.webp', aniversario: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1_1x.webp', barmitzvah: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_9_1x.webp', batmitzvah: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/grupo_311_1x.webp', bodas: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/banner_desktop_1x-2.webp', miniwedding: 'https://www.grupotrio.com.br/wp-content/uploads/2024/11/img_1555_zzz_1x.webp' };
+const HERO_PHOTO = { corporativo: 'sphall', casamento: 'pergola', '15anos': 'trivento', aniversario: 'skylounge', barmitzvah: 'sphall', batmitzvah: 'sphall', bodas: 'pergola', miniwedding: 'garden' };
 const EMPTY_SP = { name: '', bairro: '', area: '', capacidade: '', destaque: '', img: '', photo: '', diferenciais: [], slug: '#' };
 const EMPTY = { eyebrow: '', title: '', paras: [], cards: [], spaces: [], faqs: [], numbers: [], cta1: '', cta2: '', link: '', lead: '' };
-const mkWS = (B) => B('locais').spaces.filter(s => s.key !== 'metropolitan').map(s => { const t = window.TRIO.spaces.find(x => x.key === s.key) || {}; const cp = (t.caps || {}); const o2 = {}; o2.id = s.key; o2.name = 'Trio ' + s.name.replace(/^TRIO \| /,'').toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()).replace('Sp Hall','SP Hall'); o2.slug = ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[s.key] + '.dc.html'; o2.bairro = t.bairro || ''; o2.endereco = t.endereco || ''; o2.area = t.area || ''; o2.capacidade = cp.coquetel ? 'até ' + cp.coquetel + ' pessoas' : (cp.ate ? 'até ' + cp.ate + ' pessoas' : 'A confirmar'); o2.img = ''; o2.photo = t.photo || ''; o2.diferenciais = s.feats; o2.destaque = s.paras[0] || ''; return o2; });
+const mkWS = (B, keepAll) => B('locais').spaces.filter(s => keepAll || s.key !== 'metropolitan').map(s => { const t = window.TRIO.spaces.find(x => x.key === s.key) || {}; const cp = (t.caps || {}); const o2 = {}; o2.id = s.key; o2.name = 'Trio ' + s.name.replace(/^TRIO \| /,'').toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()).replace('Sp Hall','SP Hall'); o2.slug = ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[s.key] + '.dc.html'; o2.bairro = t.bairro || ''; o2.endereco = t.endereco || ''; o2.area = t.area || ''; o2.capacidade = cp.coquetel ? 'até ' + cp.coquetel + ' pessoas' : (cp.ate ? 'até ' + cp.ate + ' pessoas' : 'A confirmar'); o2.img = ''; o2.photo = t.photo || ''; o2.diferenciais = s.feats; o2.destaque = s.paras[0] || ''; return o2; });
 
 class Component extends DCLogic {
   injectSchema() {
@@ -413,7 +500,7 @@ class Component extends DCLogic {
     const o = this.props.o || 'casamento';
     const D = this.state.ready && window.TRIO_OCASIOES[o];
     const B = k => (D && D.blocks.find(b => b.key === k)) || EMPTY;
-    const WS = D ? mkWS(B) : [];
+    const WS = D ? mkWS(B, o === 'corporativo') : [];
     const FAQS = B('faq').faqs.map(f => ({ q: f.q, a: f.a.map(x => x.t).join(' '), parts: f.a.map(x => (x.li ? '• ' : '') + x.t) }));
     const hp = D && window.TRIO.spaces.find(s => s.key === HERO_PHOTO[o]);
     const sp = WS[activeSpace] || EMPTY_SP;
@@ -448,6 +535,25 @@ class Component extends DCLogic {
     const burgerLine = (rotate, hide, ty) => ({ display: 'block', width: '22px', height: '1.5px', background: '#F9F8F4', transition: 'all 0.25s', transform: menuOpen ? (hide ? 'scaleX(0)' : `rotate(${rotate}deg) translateY(${ty}px)`) : 'none', opacity: menuOpen && hide ? 0 : 1 });
 
     return {
+      hasTipos: !!(B('tipos').items && B('tipos').items.length), tipos: B('tipos'),
+      hasVista: !!B('vista').title, hasFaq: B('faq').faqs.length > 0,
+      hasParceiros: !!(B('parceiros').logos && B('parceiros').logos.length), parceiros: Object.assign({ logos: [] }, B('parceiros')),
+      hasLeed: !!B('leed').title, leed: Object.assign({ img: '' }, B('leed')),
+      tiposSection: Object.assign({}, lightSection, { borderTop: '1px solid rgba(81,3,3,0.12)' }), parcH2: Object.assign({}, h2Dark, { textAlign: 'center' }),
+      tiposLead: Object.assign({}, subtextDark, { maxWidth: '860px' }),
+      leedBox: { width: '100%', maxWidth: m ? '160px' : '200px', margin: m ? '0' : '0 auto' },
+      parcItemW: m ? '150px' : '190px',
+      parcLoop: (() => { const l = (B('parceiros').logos || []); return l.map(x => ({ src: x.src, alt: x.n, dup: 'false' })).concat(l.map(x => ({ src: x.src, alt: '', dup: 'true' }))); })(),
+      tiposHeadMb: m ? '40px' : '64px', tiposGap: m ? '56px' : '88px',
+      tiposCta: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: '44px', marginTop: '12px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', padding: '15px 28px', background: '#510303', color: '#F9F8F4', textDecoration: 'none', width: m ? '100%' : 'auto', boxSizing: 'border-box' },
+      parcPad: m ? '56px 0' : '88px 0',
+      parcGrid: { display: 'grid', gridTemplateColumns: m ? 'repeat(2,minmax(0,1fr))' : 'repeat(7,minmax(0,1fr))', gap: '12px', marginTop: '32px' },
+      leedGrid: { display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : '220px minmax(0,1fr)', gap: m ? '28px' : '64px', alignItems: 'center' },
+      tiposItems: (B('tipos').items || []).map((t, i) => { const n = t.slides.length; const idx = ((this.state.tipoIdx || {})[i] || 0) % n; const go = d => () => this.setState(st => ({ tipoIdx: Object.assign({}, st.tipoIdx, { [i]: (((st.tipoIdx || {})[i] || 0) + d + n) % n }) })); const rev = !m && i % 2 === 1;
+        return { num: '0' + (i + 1), hid: 'cas-tipo-' + i, eyebrow: t.eyebrow, title: t.title, paras: t.paras, carLabel: 'Fotos de ' + t.eyebrow.toLowerCase(), cur: t.slides[idx], prev: go(-1), next: go(1),
+          slides: t.slides.map((s, j) => ({ src: s.src, alt: s.alt, hidden: j === idx ? 'false' : 'true', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: j === idx ? 1 : 0, transition: 'opacity .6s ease' } })),
+          grid: { display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1.15fr)', gap: m ? '24px' : '72px', alignItems: 'center' },
+          textCol: { order: m ? 2 : (rev ? 2 : 1), minWidth: 0 }, mediaCol: { order: m ? 1 : (rev ? 1 : 2), minWidth: 0 } }; }),
       o, crumb: CRUMB[o], hero: B('hero'), heroLead: (B('hero').paras || []).join(' ').replace(/\s*—\s*/g, ', '), isDesktop: !navM, showHeroWa: (typeof window !== 'undefined' ? window.innerWidth : 1280) >= 768, n0: (B('hero').numbers[0] || { value: '', label: '' }), n1: (B('hero').numbers[1] || { value: '', label: '' }), n2: (B('hero').numbers[2] || { value: '', label: '' }),
       heroPhoto: HERO_IMG[o] || '', heroAlt: CRUMB[o] + ' no Grupo TRIO',
       sobre: B('sobre'), locais: B('locais'), locaisLead: B('locais').lead, vista: B('vista'), gastro: B('gastro'), faq: B('faq'), contato: B('contato'),
@@ -479,9 +585,9 @@ class Component extends DCLogic {
       heroP: { fontFamily: "'Miller Headline','Cormorant Garamond','Cormorant',Georgia,serif", fontStyle: 'italic', fontWeight: 400, fontSize: m ? '19px' : '24px', lineHeight: 1.55, color: '#E6D6CF', margin: '0 0 36px', maxWidth: '620px' },
       heroCtas: { display: 'flex', gap: m ? '12px' : '14px', alignItems: m ? 'stretch' : 'center', flexWrap: 'wrap', flexDirection: m ? 'column' : 'row' },
       heroWa: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', letterSpacing: '1.5px', textTransform: 'uppercase', padding: m ? '14px' : '14px 8px', color: 'rgba(249,248,244,0.55)', textDecoration: 'none', textAlign: m ? 'center' : 'left' },
-      heroStats: { position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: m ? 'repeat(3,minmax(0,1fr))' : 'repeat(3,max-content)', borderTop: '1px solid rgba(249,248,244,0.22)', width: m ? 'calc(100% - 40px)' : 'min(1150px, calc(100% - 96px))', margin: m ? '40px auto 0' : '48px auto 0' },
-      statCard: { padding: m ? '20px 12px 8px 0' : '28px 32px 20px 0', borderRight: '1px solid rgba(249,248,244,0.22)' },
-      statCard2: { padding: m ? '20px 12px 8px 12px' : '28px 32px 20px 32px', borderRight: '1px solid rgba(249,248,244,0.22)' },
+      heroStats: { position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: m ? '1fr' : 'repeat(3,max-content)', borderTop: '1px solid rgba(249,248,244,0.22)', width: m ? 'calc(100% - 40px)' : 'min(1150px, calc(100% - 96px))', margin: m ? '40px auto 0' : '48px auto 0' },
+      statCard: m ? { display: 'grid', gridTemplateColumns: '92px 1fr', alignItems: 'center', padding: '16px 0', borderBottom: '1px solid rgba(249,248,244,0.22)' } : { padding: '28px 32px 20px 0', borderRight: '1px solid rgba(249,248,244,0.22)' },
+      statCard2: m ? { display: 'grid', gridTemplateColumns: '92px 1fr', alignItems: 'center', padding: '16px 0', borderBottom: '1px solid rgba(249,248,244,0.22)' } : { padding: '28px 32px 20px 32px', borderRight: '1px solid rgba(249,248,244,0.22)' },
 
       twoCol: m ? { display: 'flex', flexDirection: 'column', gap: '32px' } : { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'flex-start' },
       twoColHeader, introCtas,

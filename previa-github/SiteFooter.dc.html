@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261029201715"></script>
+<script src="./support.js?v=20261029213120"></script>
 </head>
 <body>
 <x-dc>
@@ -64,7 +64,7 @@
 const E = k => ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[k] + '.dc.html';
 const COLS = [
   { title: 'Espaços', links: [['Trio Pérgola','pergola'],['Trio One','one'],['Trio Sky Lounge','skylounge'],['Trio Dezenove','dezenove'],['Trio Metropolitan','metropolitan'],['Trio SP Hall','sphall'],['Trio Trivento','trivento'],['Trio Garden','garden'],['Trio River One','riverone'],['Trio Auri','auri']].map(([label,k]) => ({ label, href: k === 'garden' ? 'trio-garden.dc.html' : E(k) })) },
-  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','mini-wedding.dc.html'],['Bodas','bodas.dc.html'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar Mitzvah','bar-mitzvah.dc.html'],['Bat Mitzvah','bat-mitzvah.dc.html'],['Corporativo','https://www.grupotrio.com.br/corporativo/']].map(([label,href]) => ({ label, href })) },
+  { title: 'Ocasiões', links: [['Casamentos','casamentos.dc.html'],['Mini Wedding','mini-wedding.dc.html'],['Bodas','bodas.dc.html'],['Festa de 15 Anos','festa-de-15-anos.dc.html'],['Aniversários','aniversario.dc.html'],['Bar Mitzvah','bar-mitzvah.dc.html'],['Bat Mitzvah','bat-mitzvah.dc.html'],['Corporativo','corporativo.dc.html']].map(([label,href]) => ({ label, href })) },
 ];
 class Component extends DCLogic {
   state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280 };
@@ -76,7 +76,7 @@ class Component extends DCLogic {
       cols: COLS, showFabText: !m,
       wrap: { background: this.props.accent || '#510303', padding: m ? '48px 20px 96px' : '64px 48px 32px' },
       grid: m ? { display: 'flex', flexDirection: 'column', gap: '36px', marginBottom: '36px' } : { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '48px', marginBottom: '52px' },
-      fab: { display: 'inline-flex', alignItems: 'center', minHeight: '44px', position: 'fixed', right: m ? '16px' : '24px', bottom: m ? '16px' : '24px', zIndex: 900, display: 'flex', alignItems: 'center', gap: '10px', height: '56px', padding: m ? 0 : '0 22px 0 18px', width: m ? '56px' : 'auto', justifyContent: 'center', borderRadius: '28px', background: '#510303', textDecoration: 'none', boxShadow: '0 10px 30px rgba(35,29,26,0.3)', border: '1px solid rgba(249,248,244,0.25)' },
+      fab: { position: 'fixed', right: m ? '16px' : '24px', bottom: m ? '16px' : '24px', zIndex: 900, display: 'flex', alignItems: 'center', gap: '10px', height: '56px', padding: m ? 0 : '0 22px 0 18px', width: m ? '56px' : 'auto', justifyContent: 'center', borderRadius: '28px', background: '#510303', textDecoration: 'none', boxShadow: '0 10px 30px rgba(35,29,26,0.3)', border: '1px solid rgba(249,248,244,0.25)' },
     };
   }
 }
