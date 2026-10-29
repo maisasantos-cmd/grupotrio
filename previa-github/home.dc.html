@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script src="./support.js?v=20261029193645"></script>
+<script src="./support.js?v=20261029194952"></script>
 </head>
 <body>
 <x-dc>
@@ -103,7 +103,7 @@
       <div style="{{ heroCtas }}">
         <a href="#gt-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:#510303;text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6e0">Faça um Orçamento</a>
         <a href="#gt-espacos" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;background:transparent;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none;transition:all 0.2s" style-hover="background:rgba(249,248,244,0.1)">Ver Espaços</a>
-        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;{{ heroWa }}" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="{{ heroWa }}" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
       </div>
     </div>
     <div style="position:absolute;left:0;right:0;bottom:24px;z-index:2;display:flex;justify-content:center;gap:10px" role="group" aria-label="Selecionar foto">
@@ -615,7 +615,7 @@ class Component extends DCLogic {
         if (Math.abs(dx) > 40) this.goHero((this.state.heroIdx || 0) + (dx < 0 ? 1 : -1));
       },
       heroSep: { display: m ? 'none' : 'block', width: '1px', height: '20px', background: 'rgba(249,248,244,0.6)', margin: '0 4px', flexShrink: 0 },
-      heroWa: { fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase', padding: '15px 28px', background: 'rgba(249,248,244,0.18)', border: '1px solid rgba(249,248,244,0.18)', color: '#F9F8F4', textDecoration: 'none', textAlign: 'center', backdropFilter: 'blur(4px)' },
+      heroWa: { display: 'inline-flex', alignItems: 'center', minHeight: '44px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 500, letterSpacing: '2px', textTransform: 'uppercase', padding: '15px 28px', background: 'rgba(249,248,244,0.18)', border: '1px solid rgba(249,248,244,0.18)', color: '#F9F8F4', textDecoration: 'none', textAlign: 'center', backdropFilter: 'blur(4px)' },
 
       // Numbers
       numbersGrid: { maxWidth: '1240px', margin: '0 auto', padding: pad, display: 'grid', gridTemplateColumns: m ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))' },
