@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section aria-labelledby="dep-h2" style="{{ wrap }}">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px">
+      <div>
+        <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#510303;margin-bottom:14px">Depoimentos</span>
+        <h2 id="dep-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.1;color:#510303;margin:0">{{ title }}</h2>
+      </div>
+    </div>
+    <div style="{{ grid }}">
+      <sc-for list="{{ items }}" as="d" hint-placeholder-count="3">
+        <figure style="margin:0;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid rgba(35,29,26,0.1);min-width:0">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#510303;overflow:hidden">
+            <sc-if value="{{ d.playing }}" hint-placeholder-val="{{ false }}">
+              <iframe src="{{ d.embed }}" title="{{ d.aria }}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+              <a href="{{ d.watch }}" target="_blank" rel="noopener" style="position:absolute;right:10px;bottom:10px;z-index:2;display:inline-flex;align-items:center;min-height:36px;padding:0 14px;background:#510303;color:#F9F8F4;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none" style-hover="background:#3a0202;color:#F9F8F4">Abrir no YouTube</a>
+            </sc-if>
+            <sc-if value="{{ d.notPlaying }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ d.play }}" aria-label="{{ d.aria }}" style="position:absolute;inset:0;display:block;width:100%;height:100%;background:#510303;border:none;padding:0;cursor:pointer">
+                <sc-if value="{{ d.thumb }}" hint-placeholder-val="{{ false }}"><img src="{{ d.thumb }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></sc-if>
+                <span style="position:absolute;inset:0;background:rgba(35,29,26,0.25)"></span>
+                <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:60px;height:60px;border-radius:50%;background:#F9F8F4;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#510303" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span></span>
+                <sc-if value="{{ d.dur }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;bottom:12px;font-family:'Chivo Mono',monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#F9F8F4">Vídeo · {{ d.dur }}</span></sc-if>
+              </button>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;padding:22px 22px 24px;flex:1">
+            <sc-if value="{{ d.isQuote }}" hint-placeholder-val="{{ true }}"><blockquote style="margin:0;font-family:'General Sans',sans-serif;font-size:15px;line-height:1.65;color:#231D1A;flex:1">“{{ d.t }}”</blockquote></sc-if>
+            <sc-if value="{{ d.isDesc }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-family:'General Sans',sans-serif;font-size:15px;line-height:1.65;color:#231D1A;flex:1">{{ d.t }}</p></sc-if>
+            <figcaption style="display:flex;flex-direction:column;gap:3px;padding-top:14px;border-top:1px solid rgba(81,3,3,0.18)">
+              <span style="font-family:'General Sans',sans-serif;font-size:14px;font-weight:600;color:#510303">{{ d.n }}</span>
+              <span style="font-family:'General Sans',sans-serif;font-size:12px;color:#231D1A">{{ d.e }}</span>
+            </figcaption>
+          </div>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1200px&quot;,&quot;height&quot;:&quot;700px&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Quem já celebrou com a gente&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;ocasiao&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;geral&quot;,&quot;casamento&quot;,&quot;15anos&quot;,&quot;aniversario&quot;,&quot;barmitzvah&quot;],&quot;default&quot;:&quot;geral&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const SETS = {
+  geral: [
+    { yt: '68OG3qZW6mo', desc: true, t: 'A cerimônia aconteceu no Trio One e a festa no Trio Pérgola. O heliponto virou cenário para as fotos do casal.', n: 'Alessandra e Diego', e: 'Casamento · Trio One e Trio Pérgola', dur: '' },
+    { yt: 'aXkx2uwdxsM', desc: true, t: 'Nos bastidores, o assessor de casamentos da Múltipla Eventos conta como é trabalhar com a equipe do Grupo TRIO.', n: 'Vinícius Favale', e: 'Assessor de casamentos · Múltipla Eventos', dur: '' },
+    { yt: 'l0da_yxzM38', desc: true, t: 'Fotógrafo de casamentos, Ricardo Hara fala sobre os eventos que registrou no Trio Pérgola.', n: 'Ricardo Hara', e: 'Fotógrafo de casamentos · Trio Pérgola', dur: '' }],
+  casamento: [
+    { yt: '68OG3qZW6mo', desc: true, t: 'A cerimônia aconteceu no Trio One e a festa no Trio Pérgola. O heliponto virou cenário para as fotos do casal.', n: 'Alessandra e Diego', e: 'Casamento · Trio One e Trio Pérgola', dur: '' },
+    { yt: 'aXkx2uwdxsM', desc: true, t: 'Nos bastidores, o assessor de casamentos da Múltipla Eventos conta como é trabalhar com a equipe do Grupo TRIO.', n: 'Vinícius Favale', e: 'Assessor de casamentos · Múltipla Eventos', dur: '' },
+    { yt: 'l0da_yxzM38', desc: true, t: 'Fotógrafo de casamentos, Ricardo Hara fala sobre os eventos que registrou no Trio Pérgola.', n: 'Ricardo Hara', e: 'Fotógrafo de casamentos · Trio Pérgola', dur: '' }],
+  '15anos': [
+    { t: 'A festa de 15 anos da nossa filha foi exatamente como ela sonhou, e nós conseguimos aproveitar a noite.', n: 'Família Andrade', e: 'Festa de 15 anos · Trio Trivento', dur: '1:05' },
+    { t: 'A entrada no salão foi de arrepiar. A equipe pensou em cada momento com a gente.', n: 'Beatriz, 15 anos', e: 'Festa de 15 anos · Trio Pérgola', dur: '0:47' },
+    { t: 'Os amigos dela dançaram a noite toda e os avós amaram o jantar. Todo mundo saiu feliz.', n: 'Família Costa', e: 'Festa de 15 anos · Trio SP Hall', dur: '1:12' }],
+  aniversario: [
+    { t: 'Comemorei meus 50 anos com a vista da cidade e um jantar impecável. Foi do jeito que eu imaginei.', n: 'Renata L.', e: 'Aniversário de 50 anos · Trio Sky Lounge', dur: '0:58' },
+    { t: 'Reunimos a família inteira para os 80 anos da minha mãe. O cuidado da equipe com ela foi o que mais marcou.', n: 'Família Moraes', e: 'Aniversário de 80 anos · Trio Garden', dur: '1:04' },
+    { t: 'Uma festa para 200 amigos, com pista cheia até o fim. Ninguém esqueceu.', n: 'Marcelo T.', e: 'Aniversário de 40 anos · Trio Trivento', dur: '0:49' }],
+  barmitzvah: [
+    { t: 'O menu kosher foi impecável e a equipe respeitou cada momento da tradição.', n: 'Família Cohen', e: 'Bar Mitzvah · Trio Pérgola', dur: '1:15' },
+    { t: 'A celebração da nossa filha foi emocionante do começo ao fim. Os convidados elogiam até hoje.', n: 'Família Levy', e: 'Bat Mitzvah · Trio SP Hall', dur: '1:02' },
+    { t: 'Do planejamento à festa, nos sentimos acompanhados o tempo todo.', n: 'Família Klein', e: 'Bar Mitzvah · Trio Trivento', dur: '0:55' }],
+};
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, playing: null };
+  componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+  renderVals() {
+    const w = this.state.w;
+    return {
+      title: this.props.title || 'Quem já celebrou com a gente',
+      items: (SETS[this.props.ocasiao] || SETS.geral).map((d, i) => { const on = this.state.playing === i && !!d.yt; return { ...d, aria: 'Assistir vídeo de ' + d.n, isQuote: !d.desc, isDesc: !!d.desc, watch: d.yt ? 'https://www.youtube.com/watch?v=' + d.yt : '', thumb: d.yt ? 'https://i.ytimg.com/vi/' + d.yt + '/hqdefault.jpg' : '', embed: d.yt ? 'https://www.youtube.com/embed/' + d.yt + '?autoplay=1&rel=0&playsinline=1' + (typeof location !== 'undefined' && /^https?:/.test(location.origin) ? '&origin=' + encodeURIComponent(location.origin) : '') : '', playing: on, notPlaying: !on, play: () => { if (d.yt) this.setState({ playing: i }); } }; }),
+      wrap: { background: '#F9F8F4', padding: w < 768 ? '64px 20px' : '96px 48px', borderTop: '1px solid rgba(81,3,3,0.14)' },
+      grid: { display: 'grid', gridTemplateColumns: w < 680 ? 'minmax(0,1fr)' : w < 1060 ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))', gap: '20px', alignItems: 'stretch' },
+    };
+  }
+}
+</script>
+</body>
+</html>
