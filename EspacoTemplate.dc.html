@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261029201715"></script>
+<script src="./support.js?v=20261029213120"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261029201715"></script>
-  <script src="espacos-data.js?v=20261029201715"></script>
+  <script src="trio-data.js?v=20261029213120"></script>
+  <script src="espacos-data.js?v=20261029213120"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
@@ -262,24 +262,7 @@
   </section>
 
   <!-- ── OUTROS ESPAÇOS ── -->
-  <section aria-label="Outros espaços Grupo Trio" style="{{ mSecOutros }}">
-    <div style="{{ mWrap }}">
-      <div style="{{ mHeadRow32 }}">
-        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.5)">Outros Espaços</span>
-        <a href="nossos-espacos.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:var(--ac);text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:var(--ac)">Ver todos</a>
-      </div>
-      <div style="overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)">
-        <div style="display:flex;gap:12px;width:max-content;animation:tg-marquee 40s linear infinite" style-hover="animation-play-state:paused">
-          <sc-for list="{{ outrosLoop }}" as="sp" hint-placeholder-count="9">
-            <a href="{{ sp.href }}" aria-hidden="{{ sp.dup }}" tabIndex="{{ sp.tab }}" style="flex:0 0 220px;display:flex;flex-direction:column;justify-content:center;min-height:88px;padding:20px 22px;background:rgba(249,248,244,0.08);border:1px solid rgba(249,248,244,0.18);text-decoration:none" style-hover="background:rgba(249,248,244,0.16)">
-              <span style="display:block;font-family:'General Sans',sans-serif;font-size:15px;font-weight:600;color:#F9F8F4;margin-bottom:4px">{{ sp.name }}</span>
-              <span style="font-family:'General Sans',sans-serif;font-size:13px;color:rgba(249,248,244,0.85)">{{ sp.bairro }}</span>
-            </a>
-          </sc-for>
-        </div>
-      </div>
-    </div>
-  </section>
+  <dc-import name="EspacosCarrossel" section-id="tg-outros" eyebrow="Outros espaços" title="Conheça os outros espaços do Grupo TRIO" lead="" exclude="{{ excludeName }}" hint-size="100%,720px"></dc-import>
 
   <!-- ── FAQ ── -->
   <section id="tg-faq" aria-labelledby="tg-faq-h2" style="{{ faqSection }}">
@@ -530,6 +513,7 @@ class Component extends DCLogic {
     const sel = (hasErr) => ({ ...inp(hasErr), WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', cursor: 'pointer' });
 
     return {
+      excludeName: 'TRIO ' + String(E.name || '').replace(/^Trio\s+/i, ''),
       sigRow: { display: 'flex', flexDirection: m ? 'column' : 'row', alignItems: m ? 'flex-start' : 'center', gap: m ? '10px' : '20px', marginBottom: m ? '24px' : '32px' },
       sigTrio: { fontFamily: "'General Sans',sans-serif", fontSize: m ? '40px' : 'clamp(44px,5vw,72px)', fontWeight: 500, letterSpacing: m ? '6px' : '8px', color: '#F9F8F4', lineHeight: 1 },
       sigBar: m ? { width: '40px', height: '1px', background: 'rgba(249,248,244,0.4)' } : { width: '1px', height: '56px', background: 'rgba(249,248,244,0.4)' },
