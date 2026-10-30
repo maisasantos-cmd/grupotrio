@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261030145936"></script>
+<script src="./support.js?v=20261030152951"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261030145936"></script>
-  <script src="espacos-data.js?v=20261030145936"></script>
+  <script src="trio-data.js?v=20261030152951"></script>
+  <script src="espacos-data.js?v=20261030152951"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
@@ -541,7 +541,7 @@ class Component extends DCLogic {
     const E = (isCorp && E0.corp) ? Object.assign({}, E0, E0.corp) : E0;
     const cc = CORP[E.key] || ['', 0, 0, 0, 0];
     const corpStats = [{ v: cc[0], l: 'Área total' }].concat([[cc[2], 'Auditório'], [cc[3], 'Meia-lua'], [cc[4], 'Escolar'], [cc[1], 'Coquetel']].filter(x => x[0]).map(x => ({ v: String(x[0]), l: x[1] })));
-    const ST = isCorp ? (E0.corp && E0.corp.stats ? E0.corp.stats : corpStats) : E.stats;
+    const ST = (() => { const f = x => (x || []).filter(s => !/m²/.test(String(s.v)) && !/^área/i.test(String(s.l))); const a = f(isCorp ? (E0.corp && E0.corp.stats ? E0.corp.stats : corpStats) : E.stats); return a.length ? a : f(E0.stats); })();
     const OC = isCorp ? CORP_OC : E.ocasioes;
     const base = String(E.file || '').replace('.dc.html', '');
     const bairroC = String(E.bairro || '').split(' · ')[0];
