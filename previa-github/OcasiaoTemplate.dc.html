@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261030153901"></script>
+<script src="./support.js?v=20261030175740"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261030153901"></script>
-  <script src="ocasioes-data.js?v=20261030153901"></script>
+  <script src="trio-data.js?v=20261030175740"></script>
+  <script src="ocasioes-data.js?v=20261030175740"></script>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -437,7 +437,7 @@ const HERO_IMG = { corporativo: 'https://www.grupotrio.com.br/wp-content/uploads
 const HERO_PHOTO = { corporativo: 'sphall', casamento: 'pergola', '15anos': 'trivento', aniversario: 'skylounge', barmitzvah: 'sphall', batmitzvah: 'sphall', bodas: 'pergola', miniwedding: 'garden' };
 const EMPTY_SP = { name: '', bairro: '', area: '', capacidade: '', destaque: '', img: '', photo: '', diferenciais: [], slug: '#' };
 const EMPTY = { eyebrow: '', title: '', paras: [], cards: [], spaces: [], faqs: [], numbers: [], cta1: '', cta2: '', link: '', lead: '' };
-const mkWS = (B, keepAll) => B('locais').spaces.filter(s => keepAll || s.key !== 'metropolitan').map(s => { const t = window.TRIO.spaces.find(x => x.key === s.key) || {}; const cp = (t.caps || {}); const o2 = {}; o2.id = s.key; o2.name = 'Trio ' + s.name.replace(/^TRIO \| /,'').toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()).replace('Sp Hall','SP Hall'); o2.slug = ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[s.key] + '.dc.html'; o2.bairro = t.bairro || ''; o2.endereco = t.endereco || ''; o2.area = t.area || ''; o2.capacidade = cp.coquetel ? 'até ' + cp.coquetel + ' pessoas' : (cp.ate ? 'até ' + cp.ate + ' pessoas' : 'A confirmar'); o2.img = ''; o2.photo = t.photo || ''; o2.diferenciais = s.feats; o2.destaque = s.paras[0] || ''; return o2; });
+const mkWS = (B, keepAll) => B('locais').spaces.filter(s => true).map(s => { const t = window.TRIO.spaces.find(x => x.key === s.key) || {}; const cp = (t.caps || {}); const o2 = {}; o2.id = s.key; o2.name = 'Trio ' + s.name.replace(/^TRIO \| /,'').toLowerCase().replace(/(^|\s)\S/g, x => x.toUpperCase()).replace('Sp Hall','SP Hall'); o2.slug = ({dezenove:'trio-dezenove',garden:'trio-garden',metropolitan:'trio-metropolitan',one:'trio-one',pergola:'trio-pergola',riverone:'trio-river-one',skylounge:'trio-skylounge',sphall:'trio-sp-hall',trivento:'trio-trivento',auri:'trio-auri'})[s.key] + '.dc.html'; o2.bairro = t.bairro || ''; o2.endereco = t.endereco || ''; o2.area = t.area || ''; o2.capacidade = cp.coquetel ? 'até ' + cp.coquetel + ' pessoas' : (cp.ate ? 'até ' + cp.ate + ' pessoas' : 'A confirmar'); o2.img = ''; o2.photo = t.photo || ''; o2.diferenciais = s.feats; o2.destaque = s.paras[0] || ''; return o2; });
 
 class Component extends DCLogic {
   injectSchema() {
