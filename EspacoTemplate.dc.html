@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261029213120"></script>
+<script src="./support.js?v=20261030131942"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261029213120"></script>
-  <script src="espacos-data.js?v=20261029213120"></script>
+  <script src="trio-data.js?v=20261030131942"></script>
+  <script src="espacos-data.js?v=20261030131942"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
@@ -43,7 +43,45 @@
 <main id="tg-main">
 
   <!-- ── HERO ── -->
-  <section id="tg-hero" role="region" aria-labelledby="tg-h1" style="position:relative;min-height:100vh;display:flex;align-items:flex-end;background:var(--ac);overflow:hidden;;padding:{{ mHeroPad }};box-sizing:border-box">
+  <sc-if value="{{ isPortal }}" hint-placeholder-val="{{ false }}">
+  <section id="tg-portal" aria-labelledby="tg-portal-h1" style="{{ ptSection }}">
+    <sc-if value="{{ e.heroImg }}" hint-placeholder-val="{{ false }}"><img src="{{ e.heroImg }}" alt="{{ e.heroAlt }}" fetchpriority="high" loading="eager" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"></sc-if>
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,color-mix(in srgb, var(--ac) 92%, transparent) 0%,color-mix(in srgb, var(--ac) 70%, transparent) 50%,color-mix(in srgb, var(--ac) 40%, transparent) 100%)"></div>
+    <nav aria-label="Breadcrumb" style="{{ mCrumb }}">
+      <ol style="display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1px">
+        <li><a href="home.dc.html" style="display:inline-flex;align-items:center;min-height:44px;min-width:44px;margin:-14px 0;color:rgba(249,248,244,0.85);text-decoration:none" style-hover="color:#F9F8F4">Início</a></li>
+        <li style="color:rgba(249,248,244,0.6)" aria-hidden="true">/</li>
+        <li><a href="nossos-espacos.dc.html" style="display:inline-flex;align-items:center;min-height:44px;margin:-14px 0;color:rgba(249,248,244,0.85);text-decoration:none" style-hover="color:#F9F8F4">Nossos Espaços</a></li>
+        <li style="color:rgba(249,248,244,0.6)" aria-hidden="true">/</li>
+        <li><span aria-current="page" style="color:#F9F8F4">{{ e.name }}</span></li>
+      </ol>
+    </nav>
+    <div style="{{ ptInner }}">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px"><span style="width:30px;height:1px;background:rgba(249,248,244,0.6)"></span><span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#F9F8F4">{{ e.territorio }}</span></div>
+      <div style="{{ sigRow }}">
+        <span style="{{ sigTrio }}">TRIO</span>
+        <div style="{{ sigBar }}"></div>
+        <span style="{{ sigName }}">{{ e.upper }}</span>
+      </div>
+      <h1 id="tg-portal-h1" style="{{ ptH1 }}">{{ ptTitle }}</h1>
+      <p style="font-family:'General Sans',sans-serif;font-size:15px;line-height:1.6;color:#F9F8F4;margin:0 0 20px">Escolha o tipo de evento para conhecer o espaço:</p>
+      <div style="{{ ptGrid }}">
+        <a href="{{ socialHref }}" style="{{ ptCard }}" style-hover="background:#F9F8F4;color:#231D1A">
+          <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:32px;line-height:1;color:inherit">Social</span>
+          <span style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.55;color:inherit">Casamentos, festas de 15 anos, aniversários, Bar e Bat Mitzvah e celebrações</span>
+          <span style="margin-top:auto;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:inherit">Ver espaço social →</span>
+        </a>
+        <a href="{{ corpHref }}" style="{{ ptCard }}" style-hover="background:#F9F8F4;color:#231D1A">
+          <span style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:32px;line-height:1;color:inherit">Corporativo</span>
+          <span style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.55;color:inherit">Convenções, treinamentos, lançamentos e confraternizações de empresa</span>
+          <span style="margin-top:auto;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:inherit">Ver espaço corporativo →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</sc-if>
+<sc-if value="{{ notPortal }}" hint-placeholder-val="{{ true }}">
+<section id="tg-hero" role="region" aria-labelledby="tg-h1" style="position:relative;min-height:100vh;display:flex;align-items:flex-end;background:var(--ac);overflow:hidden;;padding:{{ mHeroPad }};box-sizing:border-box">
 
     <sc-if value="{{ e.heroImg }}" hint-placeholder-val="{{ false }}"><img src="{{ e.heroImg }}" alt="{{ e.heroAlt }}" fetchpriority="high" loading="eager" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></sc-if>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb, var(--ac) 92%, transparent) 0%,color-mix(in srgb, var(--ac) 70%, transparent) 45%,color-mix(in srgb, var(--ac) 35%, transparent) 100%)"></div>
@@ -59,7 +97,9 @@
         <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
         <li><a href="nossos-espacos.dc.html" style="display:inline-flex;align-items:center;min-height:44px;min-width:44px;margin:-14px 0;font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.8);text-decoration:none" style-hover="color:#F9F8F4">Nossos Espaços</a></li>
         <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
-        <li><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#F9F8F4" aria-current="page">{{ e.name }}</span></li>
+        <li><a href="{{ portalHref }}" style="display:inline-flex;align-items:center;min-height:44px;margin:-14px 0;font-family:'General Sans',sans-serif;font-size:12px;color:#F9F8F4;text-decoration:underline;text-underline-offset:3px" style-hover="color:#F9F8F4">{{ e.name }}</a></li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
+        <li><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#F9F8F4" aria-current="page">{{ variantLabel }}</span></li>
       </ol>
     </nav>
 
@@ -70,7 +110,7 @@
         <!-- Territory badge -->
         <div style="display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border:1px solid rgba(249,248,244,0.2);margin-bottom:32px">
           <span style="width:6px;height:6px;background:#F9F8F4;border-radius:50%;display:block"></span>
-          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:rgba(249,248,244,0.75)">{{ e.territorio }}</span>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:rgba(249,248,244,0.75)">{{ e.territorio }} · {{ variantLabel }}</span>
         </div>
 
         <!-- Logo mark: TRIO | GARDEN -->
@@ -80,12 +120,16 @@
           <span style="{{ sigName }}">{{ e.upper }}</span>
         </div>
 
-        <h1 id="tg-h1" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.6;color:rgba(249,248,244,0.72);max-width:440px;margin:0 0 40px">{{ e.h1 }}</h1>
+        <h1 id="tg-h1" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.6;color:rgba(249,248,244,0.72);max-width:440px;margin:0 0 40px">{{ heroH1 }}</h1>
 
         <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
           <a href="#tg-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6df">Quero fazer meu evento</a>
           <a href="#tg-caracteristicas" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 32px;background:transparent;border:1px solid rgba(249,248,244,0.35);color:#F9F8F4;text-decoration:none;transition:border-color 0.2s" style-hover="border-color:#F9F8F4">Ver Características</a>
         </div>
+        <nav aria-label="Versão do espaço" style="{{ swWrap }}">
+          <a href="{{ socialHref }}" aria-current="{{ swSocialCur }}" style="{{ swSocial }}">Social</a>
+          <a href="{{ corpHref }}" aria-current="{{ swCorpCur }}" style="{{ swCorp }}">Corporativo</a>
+        </nav>
       </div>
 
       <!-- Hero right: large placeholder -->
@@ -244,18 +288,28 @@
         <div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
             <div style="width:40px;height:1px;background:var(--ac)"></div>
-            <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">Ocasiões</span>
+            <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--ac)">{{ ocEyebrow }}</span>
           </div>
-          <h2 id="tg-oc-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.5vw,40px);line-height:1.1;color:#231D1A;margin:0">O {{ e.name }} recebe</h2>
+          <h2 id="tg-oc-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.5vw,40px);line-height:1.1;color:#231D1A;margin:0">{{ ocTitle }}</h2>
         </div>
-        <a href="ocasioes.dc.html" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:var(--ac);color:#F9F8F4;text-decoration:none;text-align:center" style-hover="background:var(--ac2);color:#F9F8F4">Ver todas as ocasiões</a>
+        <sc-if value="{{ ocShowLink }}" hint-placeholder-val="{{ true }}">
+        <a href="{{ ocHref }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:var(--ac);color:#F9F8F4;text-decoration:none;text-align:center" style-hover="background:var(--ac2);color:#F9F8F4">{{ ocLinkLabel }}</a>
+        </sc-if>
       </div>
       <div style="{{ mOcGrid }}">
         <sc-for list="{{ ocasioes }}" as="oc" hint-placeholder-count="4">
+          <sc-if value="{{ ocLinks }}" hint-placeholder-val="{{ true }}">
           <a href="{{ oc.href }}" style="display:block;padding:32px 28px;background:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:var(--ac2)">
             <span style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-size:24px;color:#F9F8F4;margin-bottom:8px">{{ oc.name }}</span>
             <span style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6);line-height:1.5">{{ oc.desc }}</span>
           </a>
+          </sc-if>
+          <sc-if value="{{ ocStatic }}" hint-placeholder-val="{{ false }}">
+          <div style="display:block;padding:32px 28px;background:var(--ac)">
+            <h3 style="display:block;margin:0 0 8px;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:24px;color:#F9F8F4">{{ oc.name }}</h3>
+            <p style="margin:0;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);line-height:1.5">{{ oc.desc }}</p>
+          </div>
+          </sc-if>
         </sc-for>
       </div>
     </div>
@@ -397,14 +451,22 @@
     </div>
   </section>
 
+</sc-if>
 </main>
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <div style="height:1px;background:rgba(249,248,244,0.2)"></div>
 <dc-import name="SiteFooter" accent="{{ accentHex }}" hint-size="100%,520px"></dc-import>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;espaco&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dezenove&quot;,&quot;garden&quot;,&quot;metropolitan&quot;,&quot;one&quot;,&quot;pergola&quot;,&quot;riverone&quot;,&quot;skylounge&quot;,&quot;sphall&quot;,&quot;trivento&quot;,&quot;auri&quot;],&quot;default&quot;:&quot;garden&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;modo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;portal&quot;,&quot;social&quot;,&quot;corporativo&quot;],&quot;default&quot;:&quot;social&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 const EMPTY_E = { key: '', name: '', upper: '', territorio: '', h1: '', heroImg: '', heroAlt: '', slides: [], carImg: '', carAlt: '', introTitle: '', introParas: [], area: '', end1: '', end2: '', ref: '', endereco: '', cert: '', stats: [], feats: [], galTitle: '', galText: '', gallery: [{}, {}, {}, {}, {}], mapEmbed: '', mapLink: '', ocasioes: [], faqs: [], ac: '#510303', color: '#510303' };
+const CORP = { trivento: ['620 m²', 600, 520, 200, 175], sphall: ['840 m²', 650, 450, 200, 150], pergola: ['800 m²', 500, 350, 200, 150], one: ['230 m²', 200, 130, 80, 72], skylounge: ['280 m²', 180, 0, 0, 0], dezenove: ['280 m²', 200, 80, 0, 0], garden: ['270 m²', 200, 0, 0, 0], riverone: ['370 m²', 200, 100, 80, 40], metropolitan: ['4 salas', 150, 150, 120, 108], auri: ['A confirmar', 0, 0, 0, 0] };
+const CORP_OC = [
+  { name: 'Convenções', href: 'corporativo.dc.html', desc: 'Auditório, palco e estrutura técnica' },
+  { name: 'Treinamentos e workshops', href: 'corporativo.dc.html', desc: 'Formatos escolar e meia-lua' },
+  { name: 'Lançamentos de produto', href: 'corporativo.dc.html', desc: 'Cenografia e ativação de marca' },
+  { name: 'Confraternizações', href: 'corporativo.dc.html', desc: 'Coquetel e jantar para a equipe' },
+];
 class Component extends DCLogic {
   state = {
     windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200,
@@ -474,7 +536,15 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const E = (this.state.ready && window.TRIO_ESPACOS[this.getKey()]) || EMPTY_E;
+    const E0 = (this.state.ready && window.TRIO_ESPACOS[this.getKey()]) || EMPTY_E;
+    const modo = this.props.modo || 'social'; const isCorp = modo === 'corporativo';
+    const E = (isCorp && E0.corp) ? Object.assign({}, E0, E0.corp) : E0;
+    const cc = CORP[E.key] || ['', 0, 0, 0, 0];
+    const corpStats = [{ v: cc[0], l: 'Área total' }].concat([[cc[2], 'Auditório'], [cc[3], 'Meia-lua'], [cc[4], 'Escolar'], [cc[1], 'Coquetel']].filter(x => x[0]).map(x => ({ v: String(x[0]), l: x[1] })));
+    const ST = isCorp ? (E0.corp && E0.corp.stats ? E0.corp.stats : corpStats) : E.stats;
+    const OC = isCorp ? CORP_OC : E.ocasioes;
+    const base = String(E.file || '').replace('.dc.html', '');
+    const bairroC = String(E.bairro || '').split(' · ')[0];
     const nS = Math.max(E.slides.length, 1);
     const { windowWidth, navScrolled, menuOpen, openDropdown, form, formErrors, formStatus } = this.state;
     const m = windowWidth < 768;
@@ -513,6 +583,24 @@ class Component extends DCLogic {
     const sel = (hasErr) => ({ ...inp(hasErr), WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', cursor: 'pointer' });
 
     return {
+      isPortal: modo === 'portal', notPortal: modo !== 'portal',
+      variantLabel: isCorp ? 'Corporativo' : 'Social',
+      portalHref: E.file || '#', socialHref: base + '-social.dc.html', corpHref: base + '-corporativo.dc.html',
+      heroH1: isCorp ? ((ST[0] ? ST[0].v : cc[0]) + ' para convenções, treinamentos e lançamentos em ' + bairroC + ((ST.find(x => x.l === 'Auditório') || {}).v ? ', com auditório para até ' + ST.find(x => x.l === 'Auditório').v + ' pessoas.' : '.')) : E.h1,
+      ocEyebrow: isCorp ? 'Eventos corporativos' : 'Ocasiões',
+      ocTitle: isCorp ? 'Formatos corporativos no ' + E.name : 'O ' + E.name + ' recebe',
+      ocHref: isCorp ? 'corporativo.dc.html' : 'ocasioes.dc.html',
+      ocLinkLabel: isCorp ? 'Ver eventos corporativos' : 'Ver todas as ocasiões',
+      ocShowLink: !isCorp, ocLinks: !isCorp, ocStatic: isCorp,
+      swWrap: { display: 'flex', marginTop: '20px', border: '1px solid rgba(249,248,244,0.5)', width: m ? '100%' : 'fit-content' },
+      swSocial: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: '44px', padding: '0 22px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', textDecoration: 'none', flex: m ? 1 : 'none', background: !isCorp ? '#F9F8F4' : 'transparent', color: !isCorp ? '#231D1A' : '#F9F8F4' }, swCorp: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: '44px', padding: '0 22px', fontFamily: "'General Sans',sans-serif", fontSize: '12px', fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', textDecoration: 'none', flex: m ? 1 : 'none', background: isCorp ? '#F9F8F4' : 'transparent', color: isCorp ? '#231D1A' : '#F9F8F4' },
+      swSocialCur: isCorp ? undefined : 'page', swCorpCur: isCorp ? 'page' : undefined,
+      ptTitle: E.name + ': espaço para eventos sociais e corporativos em ' + bairroC + ', São Paulo',
+      ptSection: { position: 'relative', minHeight: m ? '100svh' : '100vh', display: 'flex', alignItems: 'center', background: 'var(--ac)', overflow: 'hidden', padding: m ? '130px 0 48px' : '150px 0 80px', boxSizing: 'border-box' },
+      ptInner: { position: 'relative', zIndex: 1, width: '100%', maxWidth: '1240px', margin: '0 auto', padding: pad, boxSizing: 'border-box' },
+      ptH1: { fontFamily: "'General Sans',sans-serif", fontWeight: 400, fontSize: m ? '17px' : '20px', lineHeight: 1.5, color: '#F9F8F4', margin: '0 0 40px', maxWidth: '620px' },
+      ptGrid: { display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : 'repeat(2,minmax(0,320px))', gap: '16px' },
+      ptCard: { display: 'flex', flexDirection: 'column', gap: '12px', minHeight: m ? '170px' : '220px', padding: m ? '24px' : '30px', border: '1px solid rgba(249,248,244,0.55)', background: 'rgba(249,248,244,0.08)', color: '#F9F8F4', textDecoration: 'none', boxSizing: 'border-box', transition: 'background .2s, color .2s' },
       excludeName: 'TRIO ' + String(E.name || '').replace(/^Trio\s+/i, ''),
       sigRow: { display: 'flex', flexDirection: m ? 'column' : 'row', alignItems: m ? 'flex-start' : 'center', gap: m ? '10px' : '20px', marginBottom: m ? '24px' : '32px' },
       sigTrio: { fontFamily: "'General Sans',sans-serif", fontSize: m ? '40px' : 'clamp(44px,5vw,72px)', fontWeight: 500, letterSpacing: m ? '6px' : '8px', color: '#F9F8F4', lineHeight: 1 },
@@ -545,7 +633,7 @@ class Component extends DCLogic {
       carGrid: { display: 'grid', gridTemplateColumns: (typeof window !== 'undefined' && window.innerWidth < 900) ? '1fr' : '1fr 1.1fr', minHeight: (typeof window !== 'undefined' && window.innerWidth < 900) ? 'auto' : '680px' },
       carPhoto: { position: 'relative', minHeight: (typeof window !== 'undefined' && window.innerWidth < 900) ? '280px' : '100%' },
       carText: { padding: (typeof window !== 'undefined' && window.innerWidth < 900) ? '56px 20px' : '88px max(48px, calc((100vw - 1240px) / 2)) 88px 72px', display: 'flex', flexDirection: 'column', justifyContent: 'center' },
-      carStats: { display: 'grid', gridTemplateColumns: 'repeat(' + (windowWidth < 600 ? Math.min(E.stats.length, 2) : Math.max(E.stats.length, 1)) + ',minmax(0,1fr))', borderTop: '1px solid rgba(249,248,244,0.2)', borderBottom: '1px solid rgba(249,248,244,0.2)' },
+      carStats: { display: 'grid', gridTemplateColumns: 'repeat(' + (windowWidth < 600 ? Math.min(ST.length, 2) : Math.max(ST.length, 1)) + ',minmax(0,1fr))', borderTop: '1px solid rgba(249,248,244,0.2)', borderBottom: '1px solid rgba(249,248,244,0.2)' },
       carList: { listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: (typeof window !== 'undefined' && window.innerWidth < 600) ? '1fr' : '1fr 1fr', columnGap: '32px' },
       // Nav
       isMobile: m, isDesktop: !m,
@@ -629,7 +717,7 @@ class Component extends DCLogic {
       // Space data
       diferenciais: E.feats,
 
-      ocasioes: E.ocasioes,
+      ocasioes: OC,
 
       outrosEspacos: Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })),
       outrosLoop: (() => { const l = Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })); return l.map(x => ({ ...x, dup: 'false', tab: 0 })).concat(l.map(x => ({ ...x, dup: 'true', tab: -1 }))); })(),
@@ -637,7 +725,7 @@ class Component extends DCLogic {
       carouselLabel: 'Fotos do ' + E.name, mapTitle: 'Mapa do ' + E.name,
       introTitleLines: (E.introTitle || '').split('\n'),
       waLink: 'https://wa.me/5511943433813?text=' + encodeURIComponent('Olá, gostaria de saber mais sobre o ' + E.name + '.'),
-      statsList: E.stats.map((st, i) => ({ v: st.v, l: st.l, cell: (windowWidth < 600) ? { minWidth: 0, padding: i % 2 === 0 ? '20px 12px 20px 0' : '20px 0 20px 16px', borderRight: i % 2 === 0 ? '1px solid rgba(249,248,244,0.2)' : 'none', borderTop: i > 1 ? '1px solid rgba(249,248,244,0.2)' : 'none' } : { minWidth: 0, padding: i === 0 ? '22px 16px 22px 0' : (i === E.stats.length - 1 ? '22px 0 22px 16px' : '22px 16px'), borderRight: i === E.stats.length - 1 ? 'none' : '1px solid rgba(249,248,244,0.2)' } })),
+      statsList: ST.map((st, i) => ({ v: st.v, l: st.l, cell: (windowWidth < 600) ? { minWidth: 0, padding: i % 2 === 0 ? '20px 12px 20px 0' : '20px 0 20px 16px', borderRight: i % 2 === 0 ? '1px solid rgba(249,248,244,0.2)' : 'none', borderTop: i > 1 ? '1px solid rgba(249,248,244,0.2)' : 'none' } : { minWidth: 0, padding: i === 0 ? '22px 16px 22px 0' : (i === ST.length - 1 ? '22px 0 22px 16px' : '22px 16px'), borderRight: i === ST.length - 1 ? 'none' : '1px solid rgba(249,248,244,0.2)' } })),
       g0: { src: (E.gallery[0] || {}).src || '', alt: (E.gallery[0] || {}).alt || '', empty: !(E.gallery[0] || {}).src },
       g1: { src: (E.gallery[1] || {}).src || '', alt: (E.gallery[1] || {}).alt || '', empty: !(E.gallery[1] || {}).src },
       g2: { src: (E.gallery[2] || {}).src || '', alt: (E.gallery[2] || {}).alt || '', empty: !(E.gallery[2] || {}).src },
