@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <style id="gt-mobile">input,select,textarea{min-height:44px;box-sizing:border-box}</style>
-<script src="./support.js?v=20261104211445"></script>
+<script src="./support.js?v=20261104214807"></script>
 </head>
 <body>
 <x-dc>
@@ -104,11 +104,11 @@
   <section aria-labelledby="qs-video-h2" style="{{ lightSection }}">
     <div style="{{ container }}">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><div style="width:30px;height:1px;background:#510303"></div><span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#510303">Quem faz o TRIO</span></div>
-      <h2 id="qs-video-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.1;color:#510303;margin:0 0 40px">Nas palavras de quem construiu o TRIO</h2>
+      <h2 id="qs-video-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.1;color:#510303;margin:0 0 40px">Ouça de quem construiu o TRIO</h2>
       <div style="display:flex;flex-direction:column;gap:{{ socioListGap }};margin:0">
         <article aria-label="Depoimento de Mara Linhares" style="display:grid;grid-template-columns:{{ socioCols }};gap:{{ socioGap }};align-items:center">
-          <div style="position:relative;width:100%;aspect-ratio:{{ socioAspect }};overflow:hidden;background:#BFB8AF">
-            <img src="img/socio-mara.webp" alt="Mara Linhares, sócia-fundadora do Grupo TRIO" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%">
+          <div style="position:relative;width:100%;max-width:{{ socioVidMax }};margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;background:#510303">
+            <video src="videos/mara.mp4" poster="img/poster-mara.webp" controls="controls" playsInline="playsinline" preload="none" aria-label="Vídeo de Mara Linhares" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#510303"></video>
           </div>
           <figure style="margin:0;min-width:0">
             <blockquote style="margin:0">
@@ -119,8 +119,8 @@
           </figure>
         </article>
         <article aria-label="Depoimento de Eduardo Linhares" style="display:grid;grid-template-columns:{{ socioColsRev }};gap:{{ socioGap }};align-items:center">
-          <div style="order:{{ socioImgOrder }};position:relative;width:100%;aspect-ratio:{{ socioAspect }};overflow:hidden;background:#BFB8AF">
-            <img src="img/socio-eduardo.webp" alt="Eduardo Linhares, sócio-fundador do Grupo TRIO" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%">
+          <div style="order:{{ socioImgOrder }};position:relative;width:100%;max-width:{{ socioVidMax }};margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;background:#510303">
+            <video src="videos/eduardo.mp4" poster="img/poster-eduardo.webp" controls="controls" playsInline="playsinline" preload="none" aria-label="Vídeo de Eduardo Linhares" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#510303"></video>
           </div>
           <figure style="margin:0;min-width:0">
             <blockquote style="margin:0">
@@ -131,8 +131,8 @@
           </figure>
         </article>
         <article aria-label="Depoimento de Monique Katz" style="display:grid;grid-template-columns:{{ socioCols }};gap:{{ socioGap }};align-items:center">
-          <div style="position:relative;width:100%;aspect-ratio:{{ socioAspect }};overflow:hidden;background:#BFB8AF">
-            <img src="img/socio-monique.webp" alt="Monique Katz, sócia do Grupo TRIO" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%">
+          <div style="position:relative;width:100%;max-width:{{ socioVidMax }};margin:0 auto;aspect-ratio:9 / 16;overflow:hidden;background:#510303">
+            <video src="videos/monique.mp4" poster="img/poster-monique.webp" controls="controls" playsInline="playsinline" preload="none" aria-label="Vídeo de Monique Katz" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#510303"></video>
           </div>
           <figure style="margin:0;min-width:0">
             <blockquote style="margin:0">
@@ -407,7 +407,7 @@ class Component extends DCLogic {
       parcItemW: m ? '150px' : '190px',
       parcLoop: [{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/McKinsey.png","alt":"McKinsey","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Visa.png","alt":"Visa","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Votorantim.png","alt":"Votorantim","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/XP.png","alt":"XP","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Arezzo.png","alt":"Arezzo","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/BTG.png","alt":"BTG","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Google.png","alt":"Google","dup":"false"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/McKinsey.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Visa.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Votorantim.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/XP.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Arezzo.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/BTG.png","alt":"","dup":"true"},{"src":"https://www.grupotrio.com.br/wp-content/uploads/2024/11/Google.png","alt":"","dup":"true"}],
       reels: [this.props.reel1 || 'videos/mara.mp4', this.props.reel2 || 'videos/eduardo.mp4', this.props.reel3 || 'videos/monique.mp4'].map((u, i) => { const bad = (this.state.reelOk || {})[u] !== true; return { n: i + 1, src: u, hasUrl: !bad, noUrl: !!bad, title: 'Vídeo de ' + ['Mara Linhares', 'Eduardo Linhares', 'Monique Katz'][i], caption: ['Mara Linhares, sócia-fundadora', 'Eduardo Linhares, sócio-fundador', 'Monique Katz, sócia'][i] }; }),
-      socioCols: (this.state.w || 1280) < 768 ? 'minmax(0,1fr)' : 'minmax(0,5fr) minmax(0,7fr)', socioColsRev: (this.state.w || 1280) < 768 ? 'minmax(0,1fr)' : 'minmax(0,7fr) minmax(0,5fr)', socioImgOrder: (this.state.w || 1280) < 768 ? '0' : '2', socioGap: (this.state.w || 1280) < 768 ? '24px' : '64px', socioAspect: (this.state.w || 1280) < 768 ? '1 / 1' : '4 / 5', socioListGap: (this.state.w || 1280) < 768 ? '56px' : '96px', reelsGrid: { display: 'grid', gridTemplateColumns: (this.state.w || 1280) < 600 ? 'minmax(0,1fr)' : 'repeat(3,minmax(0,1fr))', gap: (this.state.w || 1280) < 600 ? '28px' : '20px', maxWidth: (this.state.w || 1280) < 600 ? '360px' : 'none', margin: (this.state.w || 1280) < 600 ? '0 auto' : 0 },
+      socioCols: (this.state.w || 1280) < 768 ? 'minmax(0,1fr)' : 'minmax(0,4fr) minmax(0,7fr)', socioColsRev: (this.state.w || 1280) < 768 ? 'minmax(0,1fr)' : 'minmax(0,7fr) minmax(0,4fr)', socioImgOrder: (this.state.w || 1280) < 768 ? '0' : '2', socioGap: (this.state.w || 1280) < 768 ? '24px' : '64px', socioAspect: (this.state.w || 1280) < 768 ? '1 / 1' : '4 / 5', socioVidMax: (this.state.w || 1280) < 768 ? '320px' : '380px', socioListGap: (this.state.w || 1280) < 768 ? '56px' : '96px', reelsGrid: { display: 'grid', gridTemplateColumns: (this.state.w || 1280) < 600 ? 'minmax(0,1fr)' : 'repeat(3,minmax(0,1fr))', gap: (this.state.w || 1280) < 600 ? '28px' : '20px', maxWidth: (this.state.w || 1280) < 600 ? '360px' : 'none', margin: (this.state.w || 1280) < 600 ? '0 auto' : 0 },
       fundPad: (this.state.w || 1280) < 900 ? '64px 20px' : '100px 48px',
       fundGrid: { maxWidth: '1240px', margin: '0 auto', display: 'grid', gridTemplateColumns: (this.state.w || 1280) < 900 ? '1fr' : '0.9fr 1.1fr', gap: (this.state.w || 1280) < 900 ? '36px' : '72px', alignItems: 'center' },
       fundCols: (this.state.w || 1280) < 600 ? '1fr' : 'repeat(3,1fr)',
