@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261030175740"></script>
+<script src="./support.js?v=20261104211445"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261030175740"></script>
-  <script src="ocasioes-data.js?v=20261030175740"></script>
+  <script src="trio-data.js?v=20261104211445"></script>
+  <script src="ocasioes-data.js?v=20261104211445"></script>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -68,7 +68,7 @@
       <div style="{{ heroCtas }}">
         <a href="#cas-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:#510303;text-decoration:none" style-hover="background:#BFB8AF;color:#510303">{{ hero.cta1 }}</a>
         <a href="#cas-espacos" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 32px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">{{ hero.cta2 }}</a>
-        <sc-if value="{{ showHeroWa }}" hint-placeholder-val="{{ true }}"><a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:rgba(249,248,244,0.18);border:1px solid rgba(249,248,244,0.18);color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.28);color:#F9F8F4">Falar no WhatsApp</a></sc-if>
+        
       </div>
     </div>
     <!-- Stats strip -->
@@ -101,7 +101,6 @@
           <sc-for list="{{ sobre.paras }}" as="p" hint-placeholder-count="3"><p style="{{ subtextDark }}">{{ p }}</p></sc-for>
           <div style="{{ introCtas }}">
             <a href="#cas-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;background:#510303;color:#F9F8F4;text-decoration:none;transition:background 0.2s" style-hover="background:#3a0202">{{ sobre.cta1 }}</a>
-            <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 28px;border:1px solid #510303;color:#510303;text-decoration:none;text-align:center" style-hover="background:#510303;color:#F9F8F4">Falar no WhatsApp</a>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:1px">
