@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js?v=20261110122124"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F9F8F4; color: #231D1A; font-family: 'General Sans', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: #510303; } a:hover { color: #231D1A; }
+    @media (max-width: 767px) {
+      main a[data-btn] { display: flex !important; width: 100% !important; justify-content: center !important; }
+    }
+  </style>
+</helmet>
+<dc-import name="SiteHeader" active="restaurantes" accent="{{ ac }}" orcamento-href="home.dc.html#gt-contato" hint-size="100%,72px"></dc-import>
+<main id="rs-main">
+
+  <section id="rs-hero" aria-labelledby="rs-h1" style="{{ heroSec }}">
+    <sc-if value="{{ r.hero }}" hint-placeholder-val="{{ false }}"><img src="{{ r.hero }}" alt="{{ r.heroAlt }}" fetchpriority="high" loading="eager" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></sc-if>
+    <div aria-hidden="true" style="{{ heroShade }}"></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,29,26,0.35) 0%,rgba(35,29,26,0) 35%,rgba(35,29,26,0) 60%,rgba(35,29,26,0.45) 100%)"></div>
+    <nav aria-label="Breadcrumb" style="{{ crumb }}">
+      <ol style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;list-style:none;padding:0;margin:0">
+        <li><a href="home.dc.html" style="display:inline-flex;align-items:center;min-height:44px;min-width:44px;margin:-14px 0;font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.85);text-decoration:none" style-hover="color:#F9F8F4">Início</a></li>
+        <li aria-hidden="true" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
+        <li style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.85)">Restaurantes</li>
+        <li aria-hidden="true" style="font-family:'General Sans',sans-serif;font-size:12px;color:rgba(249,248,244,0.6)">/</li>
+        <li aria-current="page" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;color:#F9F8F4">{{ r.name }}</li>
+      </ol>
+    </nav>
+    <div style="{{ heroInner }}">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+        <div style="width:40px;height:1px;background:rgba(249,248,244,0.6)"></div>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:#F9F8F4">{{ r.eyebrow }}</span>
+      </div>
+      <h1 id="rs-h1" style="{{ h1 }}">{{ r.h1 }}</h1>
+      <p style="{{ heroP }}">{{ r.heroLead }}</p>
+      <div style="{{ btnRow }}">
+        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
+        <a data-btn="" href="#rs-menu" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Ver menus</a>
+      </div>
+    </div>
+    <div style="{{ infoBar }}">
+      <div style="{{ infoGrid }}">
+      <sc-for list="{{ info }}" as="it" hint-placeholder-count="3">
+        <div style="{{ it.cell }}">
+          <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:rgba(249,248,244,0.85);margin-bottom:6px">{{ it.l }}</span>
+          <span style="display:block;font-family:'General Sans',sans-serif;font-size:15px;line-height:1.5;color:#F9F8F4">{{ it.v }}</span>
+        </div>
+      </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="rs-sobre" aria-labelledby="rs-sobre-h2" style="{{ secBege }}">
+    <div style="{{ grid2 }}">
+      <div aria-roledescription="carousel" aria-label="{{ carLabel }}" onMouseEnter="{{ carPause }}" onMouseLeave="{{ carPlay }}" onTouchStart="{{ carTs }}" onTouchEnd="{{ carTe }}" style="position:relative;width:100%;aspect-ratio:4/5;max-height:620px;background:{{ ac }};overflow:hidden">
+        <sc-for list="{{ slides }}" as="s" hint-placeholder-count="0">
+          <img src="{{ s.src }}" alt="{{ s.alt }}" loading="lazy" width="800" height="1000" aria-hidden="{{ s.hidden }}" style="{{ s.style }}">
+        </sc-for>
+        <button onClick="{{ carPrev }}" aria-label="Foto anterior" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(249,248,244,0.92);color:{{ ac }};font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center">‹</button>
+        <button onClick="{{ carNext }}" aria-label="Próxima foto" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(249,248,244,0.92);color:{{ ac }};font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center">›</button>
+        <div style="position:absolute;left:0;right:0;bottom:6px;z-index:3;display:flex;justify-content:center">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
+            <button onClick="{{ d.go }}" aria-label="{{ d.label }}" aria-current="{{ d.current }}" style="width:44px;height:44px;background:none;border:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center"><span style="{{ d.dot }}"></span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:{{ ac }}"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Sobre o restaurante</span>
+        </div>
+        <h2 id="rs-sobre-h2" style="{{ h2 }}">{{ r.sobreTitle }}</h2>
+        <sc-for list="{{ r.sobre }}" as="p" hint-placeholder-count="2">
+          <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 0 18px;text-wrap:pretty">{{ p }}</p>
+        </sc-for>
+        <div style="margin-top:12px">
+          <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rs-executivo" aria-labelledby="rs-exec-h2" style="{{ secBegeLine }}">
+    <div style="{{ narrow }}">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px">
+        <div style="width:40px;height:1px;background:{{ ac }}"></div>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Almoço executivo</span>
+        <div style="width:40px;height:1px;background:{{ ac }}"></div>
+      </div>
+      <h2 id="rs-exec-h2" style="{{ h2c }}">{{ r.execTitle }}</h2>
+      <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 auto 28px;max-width:640px;text-wrap:pretty">{{ r.exec }}</p>
+      <div style="display:flex;justify-content:center">
+        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="rs-menu" aria-labelledby="rs-menu-h2" style="{{ secAc }}">
+    <div style="{{ grid2rev }}">
+      <div style="{{ menuText }}">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:rgba(249,248,244,0.6)"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:#F9F8F4">Menus</span>
+        </div>
+        <h2 id="rs-menu-h2" style="{{ h2Light }}">{{ r.menuTitle }}</h2>
+        <sc-for list="{{ r.menu }}" as="p" hint-placeholder-count="2">
+          <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#F9F8F4;margin:0 0 18px;text-wrap:pretty">{{ p }}</p>
+        </sc-for>
+        <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:#F9F8F4;margin:12px 0 14px">Consulte nossos menus</span>
+        <div style="{{ btnRow }}">
+          <a data-btn="" href="{{ r.menuPt }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Menu almoço (PT)</a>
+          <a data-btn="" href="{{ r.menuEn }}" target="_blank" rel="noopener" lang="en" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 26px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Lunch menu (EN)</a>
+        </div>
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(249,248,244,0.2)">
+          <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
+        </div>
+      </div>
+      <div style="{{ menuPics }}">
+        <sc-for list="{{ r.menuImgs }}" as="im" hint-placeholder-count="2">
+          <div style="{{ im.box }}"><img src="{{ im.src }}" alt="{{ im.alt }}" loading="lazy" width="700" height="900" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="rs-local" aria-labelledby="rs-local-h2" style="{{ secBege }}">
+    <div style="{{ grid2 }}">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="width:40px;height:1px;background:{{ ac }}"></div>
+          <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Horário e localização</span>
+        </div>
+        <h2 id="rs-local-h2" style="{{ h2 }}">Como chegar ao {{ r.name }}</h2>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(35,29,26,0.15);margin-bottom:28px">
+          <div style="padding:16px 0;border-bottom:1px solid rgba(35,29,26,0.15)">
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }};margin-bottom:6px">Endereço</span>
+            <address style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.6;color:#231D1A;font-style:normal">{{ r.end1 }}<br>{{ r.end2 }}</address>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid rgba(35,29,26,0.15)">
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }};margin-bottom:6px">Funcionamento</span>
+            <span style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.6;color:#231D1A">Segunda a sexta, das 11h30 às 15h</span>
+          </div>
+          <div style="padding:16px 0;border-bottom:1px solid rgba(35,29,26,0.15)">
+            <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }};margin-bottom:6px">Reservas</span>
+            <a href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;margin:-10px 0;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A">WhatsApp {{ r.tel }}</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px">
+          <a href="{{ r.mapLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Google Maps</a>
+          <a href="{{ appleMap }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Apple Maps</a>
+        </div>
+      </div>
+      <div style="{{ mapBox }}">
+        <iframe title="{{ mapTitle }}" src="{{ r.mapEmbed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Frase do Grupo TRIO" style="{{ secAc }}">
+    <div style="{{ grid2 }}">
+      <div style="position:relative;width:100%;aspect-ratio:4/3;background:rgba(249,248,244,0.08);overflow:hidden">
+        <sc-if value="{{ r.quoteImg }}" hint-placeholder-val="{{ false }}"><img src="{{ r.quoteImg }}" alt="{{ r.quoteAlt }}" loading="lazy" width="900" height="675" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+      </div>
+      <figure style="margin:0">
+        <span aria-hidden="true" style="display:block;font-family:'Miller Headline','Playfair Display',Georgia,serif;font-size:72px;line-height:0.6;color:#F9F8F4;margin-bottom:12px">“</span>
+        <blockquote style="{{ quote }}">A gastronomia nos une, nos abraça e nos traz afeto. A comida nos traz sempre algumas lembranças boas, pode ser uma viagem inesquecível ou um simples almoço em família.</blockquote>
+        <figcaption style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:#F9F8F4">Grupo TRIO</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+
+  <sc-if value="{{ r.pet }}" hint-placeholder-val="{{ false }}">
+    <section id="rs-pet" aria-labelledby="rs-pet-h2" style="{{ secBegeLine }}">
+      <div style="{{ grid2 }}">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+            <div style="width:40px;height:1px;background:{{ ac }}"></div>
+            <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Pet friendly</span>
+          </div>
+          <h2 id="rs-pet-h2" style="{{ h2 }}">Um espaço pet friendly, feito para vocês</h2>
+          <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0;text-wrap:pretty">O TRIO Garden é pet friendly, para entregar uma experiência ainda mais acolhedora. Aqui, seu companheiro de quatro patas é bem-vindo para compartilhar momentos de descontração em um espaço cercado pelo verde.</p>
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:4/3;background:{{ ac }};overflow:hidden">
+          <img src="{{ r.petImg }}" alt="Área verde do restaurante Trio Garden, aberta a pets" loading="lazy" width="900" height="675" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section aria-labelledby="rs-ev-h2" style="{{ evSec }}">
+    <div style="{{ evInner }}">
+      <div style="max-width:620px">
+        <h2 id="rs-ev-h2" style="{{ h2Light }}">Eventos no {{ r.spaceName }}</h2>
+        <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.75;color:#F9F8F4;margin:0">{{ r.evText }}</p>
+      </div>
+      <a data-btn="" href="{{ r.spaceHref }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 30px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Conhecer o espaço para eventos</a>
+    </div>
+  </section>
+</main>
+<dc-import name="SiteFooter" accent="{{ ac }}" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;r&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dezenove&quot;,&quot;garden&quot;],&quot;default&quot;:&quot;dezenove&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const U = 'https://www.grupotrio.com.br/wp-content/uploads/';
+const R = {
+  dezenove: {
+    name: 'Restaurante Trio Dezenove', spaceName: 'TRIO Dezenove', ac: '#253746',
+    eyebrow: 'Restaurante · Vila Olímpia · 19º andar',
+    h1: 'Restaurante na Vila Olímpia | TRIO Dezenove',
+    heroLead: 'Almoço executivo no 19º andar do Edifício E-Tower, com gastronomia autoral e a cidade de São Paulo pela janela.',
+    hero: U + '2024/11/WhatsApp-Image-2024-07-29-at-11.30.53.jpeg', heroAlt: 'Salão do restaurante Trio Dezenove com vista para a Vila Olímpia',
+    sobreTitle: 'Uma pausa na rotina, com vista para a cidade',
+    sobre: ['O restaurante TRIO Dezenove oferece muito mais do que uma pausa na rotina: é uma experiência gastronômica que une praticidade e sabor, acompanhada por uma vista privilegiada da cidade.'],
+    sobreImg: U + '2024/11/img_7625_1x.webp', sobreAlt: 'Prato servido no restaurante Trio Dezenove',
+    slides: [[U + '2024/11/img_7625_1x.webp', 'Prato servido no restaurante Trio Dezenove'], [U + '2024/11/img_6824_1x.webp', 'Ambiente do restaurante Trio Dezenove'], [U + '2025/03/novaa.jpg', 'Prato da gastronomia autoral do restaurante Trio Dezenove']],
+    menuTitle: 'Almoce com a cidade aos seus pés',
+    menu: ['Localizado no 19º andar do edifício E-Tower, o espaço convida para um almoço executivo em ambiente elegante, descontraído e sempre acolhedor. Cada detalhe do menu foi pensado para transformar o momento em um respiro prazeroso no meio do dia.', 'Nossa gastronomia autoral se reflete em pratos que equilibram criatividade e leveza para quem busca uma refeição memorável.'],
+    menuImgs: [[U + '2024/11/sky1.jpeg', 'Mesa posta no restaurante Trio Dezenove'], [U + '2024/11/sky2_1.webp', 'Vista da Vila Olímpia a partir do restaurante Trio Dezenove']],
+    menuPt: U + '2026/03/TRIO_Cardapio_DEZENOVE_DIGITAL.pdf', menuEn: U + '2026/03/TRIO_Cardapio_DEZENOVE_INGLES.pdf',
+    quoteImg: U + '2025/03/novaa.jpg', quoteAlt: 'Prato da gastronomia autoral do Grupo TRIO',
+    execTitle: 'Menu executivo para um almoço especial',
+    exec: 'Nosso menu executivo inclui entrada, prato principal e sobremesa, permitindo diferentes combinações para um almoço versátil e cheio de sabor. Ideal para quem deseja unir eficiência, cuidado e prazer em uma refeição.',
+    reserva: 'https://wa.me/5511916311138?text=Quero%20fazer%20uma%20reserva%20no%20restaurante%20Trio%20Dezenove', tel: '(11) 91631-1138', telIntl: '+55-11-91631-1138',
+    end1: 'R. Funchal, 418, 19º andar', end2: 'Vila Olímpia, São Paulo - SP, 04551-060', street: 'R. Funchal, 418, 19º andar', bairro: 'Vila Olímpia', cep: '04551-060',
+    mapEmbed: 'https://www.google.com/maps?q=R.%20Funchal%2C%20418%2C%2019%C2%BA%20andar%20-%20Vila%20Ol%C3%ADmpia%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004551-060&output=embed',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=R.%20Funchal%2C%20418%2C%2019%C2%BA%20andar%20-%20Vila%20Ol%C3%ADmpia%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004551-060',
+    pet: false, petImg: '',
+    spaceHref: 'trio-dezenove.dc.html',
+    evText: 'O mesmo 19º andar recebe lançamentos, reuniões, confraternizações e celebrações sociais para até 200 convidados, com a gastronomia do Grupo TRIO.',
+    url: 'restaurante-trio-dezenove.dc.html',
+  },
+  garden: {
+    name: 'Restaurante Trio Garden', spaceName: 'TRIO Garden', ac: '#354C2C',
+    eyebrow: 'Restaurante · Butantã',
+    h1: 'Restaurante no Butantã | TRIO Garden',
+    heroLead: 'Almoço executivo no Butantã, com luz natural, paisagismo e um cardápio que valoriza frescor e diversidade.',
+    hero: U + '2024/11/grupo_de_mascara_3_min_1x.webp', heroAlt: 'Salão do restaurante Trio Garden cercado de plantas',
+    sobreTitle: 'Gastronomia e natureza em harmonia',
+    sobre: ['No TRIO Garden, gastronomia e natureza se encontram em perfeita harmonia. Localizado no Butantã, o restaurante oferece um ambiente iluminado por luz natural e cercado por um paisagismo exuberante, criando uma atmosfera única para quem busca bem-estar aliado a sabores marcantes.', 'O espaço integra arquitetura contemporânea, vegetação envolvente e um cardápio ímpar que valoriza diversidade e frescor. O resultado é uma experiência gastronômica singular, com um almoço executivo que traduz criatividade, leveza e sabor em cada prato.'],
+    sobreImg: U + '2024/11/grupo_420_min_1x-1.webp', sobreAlt: 'Prato servido no restaurante Trio Garden',
+    slides: [[U + '2024/11/grupo_420_min_1x-1.webp', 'Prato servido no restaurante Trio Garden'], [U + '2024/11/grupo_427_min_1x.webp', 'Ambiente do restaurante Trio Garden cercado de plantas'], [U + '2025/05/Sem-titulo-113.png', 'Prato da gastronomia do restaurante Trio Garden']],
+    menuTitle: 'Um refúgio gastronômico na cidade',
+    menu: ['O TRIO Garden convida para uma pausa especial no meio do dia. Com menus que unem praticidade e sofisticação, o restaurante transforma o almoço em uma experiência única, cercada por natureza e hospitalidade.'],
+    menuImgs: [[U + '2024/11/grupo_425_min_1x.webp', 'Mesa do restaurante Trio Garden'], [U + '2024/11/grupo_424_min_1x.webp', 'Ambiente do restaurante Trio Garden com plantas']],
+    menuPt: U + '2026/04/TRIO_Cardapio_GARDEN_DIGITAL.pdf', menuEn: U + '2026/04/TRIO_Cardapio_GARDEN_INGLES.pdf',
+    quoteImg: U + '2025/05/Sem-titulo-113.png', quoteAlt: 'Prato da gastronomia do restaurante Trio Garden',
+    execTitle: 'A cada pausa, um novo sabor',
+    exec: 'Do almoço ao coquetel, o TRIO Garden oferece variedade, conforto e hospitalidade. Uma experiência gastronômica completa, em que cada visita revela novas possibilidades de saborear a vida em meio à natureza.',
+    reserva: 'https://wa.me/5511917688131?text=Quero%20fazer%20uma%20reserva%20no%20restaurante%20Trio%20Garden', tel: '(11) 91768-8131', telIntl: '+55-11-91768-8131',
+    end1: 'R. Gerivatiba, 207, térreo', end2: 'Butantã, São Paulo - SP, 05501-030', street: 'R. Gerivatiba, 207, térreo', bairro: 'Butantã', cep: '05501-030',
+    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.9605467657343!2d-46.7085319276835!3d-23.569860415014684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce57380911b0b3%3A0x8c48b2423cccc6b0!2sTrio%20Garden!5e0!3m2!1spt-BR!2sbr!4v1729618804196!5m2!1spt-BR!2sbr',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=R.%20Gerivatiba%2C%20207%20-%20Butant%C3%A3%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2005501-030',
+    pet: true, petImg: U + '2024/11/banner_1_min_1x.webp',
+    spaceHref: 'trio-garden.dc.html',
+    evText: 'O salão cercado por mais de 25 espécies de plantas também recebe almoços corporativos, workshops, mini weddings e celebrações para até 200 convidados.',
+    url: 'restaurante-trio-garden.dc.html',
+  },
+};
+
+class Component extends DCLogic {
+  state = { idx: 0 };
+  play() { clearInterval(this._iv); if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; this._iv = setInterval(() => this.step(1), 5000); }
+  step(d) { const n = ((R[this.props.r] || R.dezenove).slides || []).length || 1; this.setState(s => ({ idx: (s.idx + d + n) % n })); }
+  componentDidMount() {
+    this.play();
+    this._r = () => this.forceUpdate();
+    window.addEventListener('resize', this._r);
+    this.schema();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); clearInterval(this._iv); }
+  schema() {
+    const r = R[this.props.r] || R.dezenove;
+    const ld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'Restaurant', name: r.name, url: r.url, image: r.hero, telephone: r.telIntl, servesCuisine: 'Contemporânea', priceRange: '$$$', acceptsReservations: 'True',
+        hasMenu: r.menuPt, address: { '@type': 'PostalAddress', streetAddress: r.street, addressLocality: 'São Paulo', addressRegion: 'SP', postalCode: r.cep, addressCountry: 'BR' },
+        openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:30', closes: '15:00' }],
+        parentOrganization: { '@type': 'Organization', name: 'Grupo TRIO Eventos e Gastronomia', url: 'home.dc.html' } },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Início', item: 'home.dc.html' },
+        { '@type': 'ListItem', position: 2, name: r.name, item: r.url }] }] };
+    let s = document.getElementById('ld-restaurante');
+    if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-restaurante'; document.head.appendChild(s); }
+    s.textContent = JSON.stringify(ld);
+  }
+  renderVals() {
+    const w = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const m = w < 768, t = w < 1024;
+    const r = R[this.props.r] || R.dezenove;
+    const ac = r.ac;
+    const pad = m ? '0 20px' : '0 48px';
+    const wrap = { maxWidth: '1240px', margin: '0 auto', padding: pad, boxSizing: 'border-box' };
+    const serif = "'Miller Headline','Playfair Display',Georgia,serif";
+    const idx = this.state.idx;
+    const SL = r.slides || [];
+    return {
+      carLabel: 'Fotos do ' + r.name,
+      slides: SL.map(([src, alt], i) => ({ src, alt, hidden: i === idx ? 'false' : 'true', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: i === idx ? 1 : 0, transition: 'opacity .8s ease' } })),
+      dots: SL.map((_, i) => ({ label: 'Ir para a foto ' + (i + 1), current: i === idx ? 'true' : 'false', go: () => { this.setState({ idx: i }); this.play(); }, dot: { width: '9px', height: '9px', borderRadius: '50%', border: '1.5px solid #F9F8F4', background: i === idx ? '#F9F8F4' : 'transparent' } })),
+      carPrev: () => { this.step(-1); this.play(); }, carNext: () => { this.step(1); this.play(); },
+      carPause: () => clearInterval(this._iv), carPlay: () => this.play(),
+      carTs: e => { this._x = e.touches[0].clientX; }, carTe: e => { const dx = e.changedTouches[0].clientX - (this._x || 0); if (Math.abs(dx) > 40) { this.step(dx < 0 ? 1 : -1); this.play(); } },
+      r: { ...r, menuImgs: r.menuImgs.map(([src, alt], i) => ({ src, alt, box: { position: 'relative', overflow: 'hidden', background: 'rgba(249,248,244,0.08)', aspectRatio: m ? '4/3' : '3/4', marginTop: !m && i === 1 ? '64px' : 0 } })) },
+      ac, ls: m ? '1.5px' : '3px',
+      heroSec: { position: 'relative', minHeight: m ? '100svh' : '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', background: ac, overflow: 'hidden', padding: m ? '128px 0 0' : '160px 0 0', boxSizing: 'border-box' },
+      heroShade: { position: 'absolute', inset: 0, background: `linear-gradient(90deg, ${ac}E6 0%, ${ac}A8 50%, ${ac}59 100%)` },
+      crumb: { position: 'absolute', top: m ? '84px' : '104px', left: 0, right: 0, zIndex: 2, ...wrap },
+      heroInner: { position: 'relative', zIndex: 1, width: '100%', ...wrap, paddingBottom: m ? '40px' : '56px' },
+      h1: { fontFamily: serif, fontStyle: 'italic', fontWeight: 400, fontSize: m ? 'clamp(38px,11vw,52px)' : 'clamp(52px,5.2vw,84px)', lineHeight: 1.05, color: '#F9F8F4', margin: '0 0 20px', maxWidth: '760px', textWrap: 'balance' },
+      heroP: { fontFamily: "'General Sans',sans-serif", fontSize: m ? '16px' : '18px', lineHeight: 1.7, color: '#F9F8F4', margin: '0 0 32px', maxWidth: '560px', textWrap: 'pretty' },
+      btnRow: { display: 'flex', flexDirection: m ? 'column' : 'row', flexWrap: 'wrap', gap: '12px' },
+      infoBar: { position: 'relative', zIndex: 1, width: '100%', background: 'rgba(35,29,26,0.35)', borderTop: '1px solid rgba(249,248,244,0.22)' },
+      infoGrid: { ...wrap, display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : 'repeat(3,minmax(0,1fr))' },
+      info: [['Endereço', r.street.replace(/, (19º andar|térreo)$/, '') + ' · ' + r.bairro], ['Funcionamento', 'Segunda a sexta'], ['Horário', '11h30 às 15h']].map(([l, v], i) => ({ l, v, cell: m
+        ? { minWidth: 0, padding: '16px 0', borderTop: i ? '1px solid rgba(249,248,244,0.15)' : 'none' }
+        : { minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: i === 0 ? '24px 32px 24px 0' : '24px 32px', borderLeft: i ? '1px solid rgba(249,248,244,0.15)' : 'none' } })),
+      secBege: { background: '#F9F8F4', padding: m ? '64px 0' : '104px 0' },
+      secBegeLine: { background: '#F9F8F4', padding: m ? '64px 0' : '104px 0', borderTop: '1px solid rgba(35,29,26,0.1)' },
+      secAc: { background: ac, padding: m ? '64px 0' : '104px 0' },
+      grid2: { ...wrap, display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)', gap: m ? '36px' : (t ? '48px' : '80px'), alignItems: 'center' },
+      grid2rev: { ...wrap, display: 'grid', gridTemplateColumns: m ? 'minmax(0,1fr)' : 'minmax(0,1.05fr) minmax(0,1fr)', gap: m ? '36px' : (t ? '48px' : '72px'), alignItems: 'center' },
+      menuText: { order: m ? 2 : 1 },
+      menuPics: { order: m ? 1 : 2, display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: m ? '8px' : '12px', alignItems: 'start' },
+      mapBox: { position: 'relative', width: '100%', aspectRatio: m ? '1/1' : '4/3', background: '#BFB8AF', overflow: 'hidden' },
+      mapTitle: 'Mapa de localização do ' + r.name,
+      appleMap: 'https://maps.apple.com/?q=' + encodeURIComponent(r.name) + '&address=' + encodeURIComponent(r.end1 + ' - ' + r.end2),
+      narrow: { maxWidth: '820px', margin: '0 auto', padding: pad, textAlign: 'center', boxSizing: 'border-box' },
+      h2: { fontFamily: serif, fontStyle: 'italic', fontWeight: 400, fontSize: m ? '32px' : 'clamp(34px,3.2vw,48px)', lineHeight: 1.15, color: ac, margin: '0 0 22px', textWrap: 'balance' },
+      h2c: { fontFamily: serif, fontStyle: 'italic', fontWeight: 400, fontSize: m ? '32px' : 'clamp(34px,3.2vw,48px)', lineHeight: 1.15, color: ac, margin: '0 0 20px', textWrap: 'balance' },
+      h2Light: { fontFamily: serif, fontStyle: 'italic', fontWeight: 400, fontSize: m ? '32px' : 'clamp(34px,3.2vw,48px)', lineHeight: 1.15, color: '#F9F8F4', margin: '0 0 22px', textWrap: 'balance' },
+      quote: { margin: '0 0 20px', fontFamily: serif, fontStyle: 'italic', fontSize: m ? '24px' : 'clamp(26px,2.4vw,34px)', lineHeight: 1.45, color: '#F9F8F4', textWrap: 'pretty' },
+      evSec: { background: ac, padding: m ? '56px 0' : '80px 0', borderTop: '1px solid rgba(249,248,244,0.14)' },
+      evInner: { ...wrap, display: 'flex', flexDirection: m ? 'column' : 'row', alignItems: m ? 'stretch' : 'center', justifyContent: 'space-between', gap: m ? '24px' : '48px' },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261104214807"></script>
+<script src="./support.js?v=20261110122124"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261104214807"></script>
-  <script src="espacos-data.js?v=20261104214807"></script>
+  <script src="trio-data.js?v=20261110122124"></script>
+  <script src="espacos-data.js?v=20261110122124"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
     @media (max-width: 767px) {
       main a[style*="uppercase"], main a[style*="letter-spacing"][style*="padding"], main form button, main button[style*="uppercase"][style*="padding"]:not([role="tab"]):not([aria-pressed]) { display: flex !important; width: 100% !important; min-height: 44px !important; justify-content: center !important; align-items: center !important; text-align: center !important; box-sizing: border-box !important; }
       main form button[type="submit"] { flex: 1 1 100% !important; }
+      main [data-maps] a { width: auto !important; padding: 12px 8px !important; }
       [style*="position: sticky"], [style*="position:sticky"] { position: static !important; }
       main span[style*="letter-spacing: 2.5px"], main span[style*="letter-spacing:2.5px"], main span[style*="letter-spacing: 3px"], main span[style*="letter-spacing:3px"], main span[style*="letter-spacing: 3.5px"], main span[style*="letter-spacing:3.5px"] { letter-spacing: 1.2px !important; }
       main form div:has(> button[type="submit"]) { flex-wrap: wrap !important; }
@@ -265,10 +266,16 @@
             <span style="font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.65);line-height:1.6">{{ e.cert }}</span>
           </div></sc-if>
         </div>
-        <a href="{{ e.mapLink }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
+        <div data-maps="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px">
+        <a href="{{ e.mapLink }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           Abrir no Google Maps
         </a>
+        <a href="{{ appleMap }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
+          
+          Abrir no Apple Maps
+        </a>
+        </div>
       </div>
 
       <!-- Google Maps embed -->
@@ -719,6 +726,7 @@ class Component extends DCLogic {
       ocasioes: OC,
 
       outrosEspacos: Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })),
+      appleMap: 'https://maps.apple.com/?q=' + encodeURIComponent(E.name || '') + '&address=' + encodeURIComponent(E.endereco || ((E.end1 || '') + ' - ' + (E.end2 || ''))),
       outrosLoop: (() => { const l = Object.values(window.TRIO_ESPACOS || {}).filter(x => x.key !== E.key).map(x => ({ name: x.name, href: x.file, bairro: x.bairro })); return l.map(x => ({ ...x, dup: 'false', tab: 0 })).concat(l.map(x => ({ ...x, dup: 'true', tab: -1 }))); })(),
       e: E, accentHex: E.ac, multiSlides: E.slides.length > 1,
       carouselLabel: 'Fotos do ' + E.name, mapTitle: 'Mapa do ' + E.name,

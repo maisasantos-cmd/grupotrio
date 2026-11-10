@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261104214807"></script>
+<script src="./support.js?v=20261110122124"></script>
 </head>
 <body>
 <x-dc>
@@ -59,8 +59,8 @@
         <div onMouseEnter="{{ openRestaurantes }}" onMouseLeave="{{ closeDD }}" style="position:relative;display:flex;align-items:center">
           <button style="{{ ddBtnStyle }}">Restaurantes <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div onMouseEnter="{{ openRestaurantes }}" onMouseLeave="{{ closeDD }}" style="{{ ddRestaurantes }}" role="menu">
-            <a href="trio-dezenove.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Dezenove</a>
-            <a href="trio-garden.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Trio Garden</a>
+            <a href="restaurante-trio-dezenove.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Restaurante Trio Dezenove</a>
+            <a href="restaurante-trio-garden.dc.html" style="{{ ddLinkStyle }}" style-hover="color:#F9F8F4;background:rgba(249,248,244,0.06)">Restaurante Trio Garden</a>
           </div>
         </div>
         <a href="corporativo.dc.html" style="{{ ddBtnLinkStyle }}" style-hover="color:#F9F8F4">Corporativo</a>
@@ -127,8 +127,8 @@
         </button>
         <sc-if value="{{ mobileRestOpen }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-direction:column;padding:4px 0 8px;border-bottom:1px solid rgba(249,248,244,0.08)">
-          <a href="trio-dezenove.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Dezenove</a>
-          <a href="trio-garden.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Trio Garden</a>
+          <a href="restaurante-trio-dezenove.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Restaurante Trio Dezenove</a>
+          <a href="restaurante-trio-garden.dc.html" onClick="{{ closeMenu }}" style="display:flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:14px;color:rgba(249,248,244,0.85);text-decoration:none;padding-left:16px">Restaurante Trio Garden</a>
         </div>
         </sc-if>
         <a href="corporativo.dc.html" onClick="{{ closeMenu }}" style="font-family:'General Sans',sans-serif;font-size:15px;letter-spacing:1px;color:rgba(249,248,244,0.7);text-decoration:none;padding:16px 0;border-bottom:1px solid rgba(249,248,244,0.08)">Corporativo</a>
