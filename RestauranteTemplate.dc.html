@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261110140842"></script>
+<script src="./support.js?v=20261110142130"></script>
 </head>
 <body>
 <x-dc>
@@ -91,20 +91,6 @@
     </div>
   </section>
 
-  <section id="rs-executivo" aria-labelledby="rs-exec-h2" style="{{ secBegeLine }}">
-    <div style="{{ narrow }}">
-      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px">
-        <div style="width:40px;height:1px;background:{{ ac }}"></div>
-        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Almoço executivo</span>
-        <div style="width:40px;height:1px;background:{{ ac }}"></div>
-      </div>
-      <h2 id="rs-exec-h2" style="{{ h2c }}">{{ r.execTitle }}</h2>
-      <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 auto 28px;max-width:640px;text-wrap:pretty">{{ r.exec }}</p>
-      <div style="display:flex;justify-content:center">
-        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
-      </div>
-    </div>
-  </section>
 
   <section id="rs-menu" aria-labelledby="rs-menu-h2" style="{{ secAc }}">
     <div style="{{ grid2rev }}">
@@ -207,6 +193,20 @@
         <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.75;color:#F9F8F4;margin:0">{{ r.evText }}</p>
       </div>
       <a data-btn="" href="{{ r.spaceHref }}" style="flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 30px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Conhecer o espaço para eventos</a>
+    </div>
+  </section>
+  <section id="rs-executivo" aria-labelledby="rs-exec-h2" style="{{ secBege }}">
+    <div style="{{ narrow }}">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px">
+        <div style="width:40px;height:1px;background:{{ ac }}"></div>
+        <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }}">Almoço executivo</span>
+        <div style="width:40px;height:1px;background:{{ ac }}"></div>
+      </div>
+      <h2 id="rs-exec-h2" style="{{ h2c }}">{{ r.execTitle }}</h2>
+      <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 auto 28px;max-width:640px;text-wrap:pretty">{{ r.exec }}</p>
+      <div style="display:flex;justify-content:center">
+        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
+      </div>
     </div>
   </section>
 </main>
