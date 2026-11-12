@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261111170049"></script>
+<script src="./support.js?v=20261112150956"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261111170049"></script>
-  <script src="ocasioes-data.js?v=20261111170049"></script>
-  <link rel="stylesheet" href="fontes-trio.css?v=20261111170049">
+  <script src="trio-data.js?v=20261112150956"></script>
+  <script src="ocasioes-data.js?v=20261112150956"></script>
+  <link rel="stylesheet" href="fontes-trio.css?v=20261112150956">
   <style>
     @keyframes cas-parc { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { [style*="cas-parc"] { animation: none !important; } }
@@ -144,9 +144,9 @@
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0 0;border-bottom:1px solid rgba(81,3,3,0.15);padding-bottom:16px">
                 <div style="min-width:0">
-                  <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#510303;margin-bottom:4px">{{ t.cur.bairro }}</span>
+                  <sc-if value="{{ capInfo }}" hint-placeholder-val="{{ true }}"><span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#510303;margin-bottom:4px">{{ t.cur.bairro }}</span>
                   <span style="display:block;font-family:'General Sans',sans-serif;font-size:15px;font-weight:600;color:#231D1A">{{ t.cur.name }}</span>
-                  <span style="display:block;font-family:'General Sans',sans-serif;font-size:14px;color:#231D1A">{{ t.cur.cap }}</span>
+                  <span style="display:block;font-family:'General Sans',sans-serif;font-size:14px;color:#231D1A">{{ t.cur.cap }}</span></sc-if>
                 </div>
                 <div style="display:flex;gap:8px;flex-shrink:0">
                   <button onClick="{{ t.prev }}" aria-label="Foto anterior" style="width:44px;height:44px;border:1px solid #510303;background:transparent;color:#510303;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#510303;color:#F9F8F4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"></path></svg></button>
@@ -532,6 +532,7 @@ class Component extends DCLogic {
     const burgerLine = (rotate, hide, ty) => ({ display: 'block', width: '22px', height: '1.5px', background: '#F9F8F4', transition: 'all 0.25s', transform: menuOpen ? (hide ? 'scaleX(0)' : `rotate(${rotate}deg) translateY(${ty}px)`) : 'none', opacity: menuOpen && hide ? 0 : 1 });
 
     return {
+      capInfo: o !== 'corporativo',
       hasTipos: !!(B('tipos').items && B('tipos').items.length), tipos: B('tipos'),
       hasVista: !!B('vista').title, hasFaq: B('faq').faqs.length > 0,
       hasParceiros: !!(B('parceiros').logos && B('parceiros').logos.length), parceiros: Object.assign({ logos: [] }, B('parceiros')),
