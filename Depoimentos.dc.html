@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261117160848"></script>
+<script src="./support.js?v=20261117161632"></script>
 </head>
 <body>
 <x-dc>
@@ -26,15 +26,8 @@
             </figcaption>
             <div style="display:flex;flex-wrap:wrap;align-items:center;column-gap:20px;margin-top:6px">
               <a href="{{ d.href }}" style="display:inline-flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:13px;color:#510303;text-decoration:underline;text-underline-offset:3px" style-hover="color:#231D1A">{{ d.esp }}</a>
-              <sc-if value="{{ d.semVideo }}" hint-placeholder-val="{{ true }}">
-                <button type="button" onClick="{{ abrir }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;background:none;border:0;cursor:pointer;font-family:'General Sans',sans-serif;font-size:13px;color:#231D1A;text-decoration:underline;text-underline-offset:3px" style-hover="color:#510303"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>Assistir ao depoimento</button>
-              </sc-if>
+              <a href="{{ d.watch }}" target="_blank" rel="noopener" aria-label="{{ d.aria }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:'General Sans',sans-serif;font-size:13px;color:#231D1A;text-decoration:underline;text-underline-offset:3px" style-hover="color:#510303"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>Assistir ao depoimento</a>
             </div>
-            <sc-if value="{{ d.comVideo }}" hint-placeholder-val="{{ false }}">
-              <div style="position:relative;width:100%;aspect-ratio:16/9;margin-top:12px;background:#231D1A">
-                <iframe src="{{ d.embed }}" title="{{ d.aria }}" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
-              </div>
-            </sc-if>
           </figure>
         </sc-for>
       </div>
@@ -50,21 +43,18 @@ const DEPOIMENTOS = [
   { yt: 'l0da_yxzM38', t: 'Eu já realizei muitos casamentos aqui no Trio Pérgola (...). A luz da cidade à noite é realmente maravilhosa. Isso traz imagens impactantes para os clientes.', n: 'Ricardo Hara', e: 'Fotógrafo de casamentos', esp: 'Trio Pérgola', href: 'trio-pergola.dc.html' },
 ];
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, i: 0, video: false };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, i: 0 };
   componentDidMount() { this._r = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this._r); }
   componentWillUnmount() { window.removeEventListener('resize', this._r); }
-  ir(i) { const n = DEPOIMENTOS.length; this.setState({ i: (i + n) % n, video: false }); }
+  ir(i) { const n = DEPOIMENTOS.length; this.setState({ i: (i + n) % n }); }
   renderVals() {
     const w = this.state.w, mob = w < 700, n = DEPOIMENTOS.length, d = DEPOIMENTOS[this.state.i];
-    const origem = typeof location !== 'undefined' && /^https?:/.test(location.origin) ? '&origin=' + encodeURIComponent(location.origin) : '';
     return {
       title: this.props.title || 'Quem já celebrou com a gente',
-      atual: [{ ...d, pos: (this.state.i + 1) + ' de ' + n, aria: 'Vídeo do depoimento de ' + d.n, comVideo: this.state.video, semVideo: !this.state.video,
-        embed: 'https://www.youtube.com/embed/' + d.yt + '?autoplay=1&rel=0&playsinline=1' + origem }],
+      atual: [{ ...d, pos: (this.state.i + 1) + ' de ' + n, aria: 'Assistir ao depoimento de ' + d.n + ' no YouTube (abre em nova aba)', watch: 'https://www.youtube.com/watch?v=' + d.yt }],
       prev: () => this.ir(this.state.i - 1),
       next: () => this.ir(this.state.i + 1),
-      abrir: () => this.setState({ video: true }),
-      wrap: { background: '#BFB8AF', padding: mob ? '64px 12px' : '96px 48px' },
+      wrap: { background: '#F9F8F4', padding: mob ? '64px 12px' : '96px 48px', borderTop: '1px solid rgba(81,3,3,0.14)' },
       grade: { display: 'grid', gridTemplateColumns: '44px minmax(0,1fr) 44px', gap: mob ? '8px' : '32px', alignItems: 'center' },
       gapTitulo: mob ? '40px' : '56px', recuo: mob ? '22px' : '44px', aspas: mob ? '44px' : '72px',
     };
