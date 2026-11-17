@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261117165429"></script>
+<script src="./support.js?v=20261117173455"></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-  <script src="trio-data.js?v=20261117165429"></script>
-  <script src="espacos-data.js?v=20261117165429"></script>
-  <link rel="stylesheet" href="fontes-trio.css?v=20261117165429">
+  <script src="trio-data.js?v=20261117173455"></script>
+  <script src="espacos-data.js?v=20261117173455"></script>
+  <link rel="stylesheet" href="fontes-trio.css?v=20261117173455">
   
   <style>
     @media (max-width: 767px) {
@@ -121,7 +121,7 @@
         <h1 id="tg-h1" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.6;color:rgba(249,248,244,0.72);max-width:440px;margin:0 0 40px">{{ heroH1 }}</h1>
 
         <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-          <a href="#tg-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6df">Quero fazer meu evento</a>
+          <a data-gtm-cta="orcamento" href="#tg-contato" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:15px 36px;background:#F9F8F4;color:var(--ac);text-decoration:none;transition:background 0.2s" style-hover="background:#e8e6df">Quero fazer meu evento</a>
           <a href="#tg-caracteristicas" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;padding:14px 32px;background:transparent;border:1px solid rgba(249,248,244,0.35);color:#F9F8F4;text-decoration:none;transition:border-color 0.2s" style-hover="border-color:#F9F8F4">Ver Características</a>
         </div>
         <nav aria-label="Versão do espaço" style="{{ swWrap }}">
@@ -185,7 +185,7 @@
         </div>
 
         <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <a href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;background:var(--ac);color:#F9F8F4;text-decoration:none" style-hover="background:var(--ac2);color:#F9F8F4">Solicitar Orçamento</a>
+          <a data-gtm-cta="orcamento" href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 28px;background:var(--ac);color:#F9F8F4;text-decoration:none" style-hover="background:var(--ac2);color:#F9F8F4">Solicitar Orçamento</a>
         </div>
       </div>
     </div>
@@ -264,11 +264,11 @@
           </div></sc-if>
         </div>
         <div data-maps="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px">
-        <a href="{{ e.mapLink }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
+        <a data-gtm-cta="como_chegar" href="{{ e.mapLink }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
           Abrir no Google Maps
         </a>
-        <a href="{{ appleMap }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
+        <a data-gtm-cta="como_chegar" href="{{ appleMap }}" target="_blank" rel="noopener" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;justify-content:center;text-align:center;border:1px solid rgba(249,248,244,0.25);color:rgba(249,248,244,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s" style-hover="border-color:#F9F8F4;color:#F9F8F4">
           
           Abrir no Apple Maps
         </a>
@@ -330,7 +330,7 @@
           <span style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:rgba(249,248,244,0.5)">FAQ</span>
         </div>
         <h2 id="tg-faq-h2" style="font-family:'Miller Headline','Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,2.8vw,42px);line-height:1.1;color:#F9F8F4;margin:0 0 20px">Perguntas sobre<br>o {{ e.name }}</h2>
-        <a href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:var(--ac);text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:var(--ac)">Falar com a equipe</a>
+        <a data-gtm-cta="orcamento" href="#tg-contato" style="display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:13px 26px;background:#F9F8F4;color:var(--ac);text-decoration:none;text-align:center" style-hover="background:#BFB8AF;color:var(--ac)">Falar com a equipe</a>
       </div>
       <div style="border-top:1px solid rgba(249,248,244,0.1)">
         <sc-for list="{{ faqs }}" as="faq" hint-placeholder-count="5">
@@ -341,17 +341,18 @@
                 <span style="font-family:'General Sans',sans-serif;font-size:18px;font-weight:300;color:rgba(249,248,244,0.6);line-height:1">{{ faq.icon }}</span>
               </div>
             </button>
-            <sc-if value="{{ faq.isOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="{{ faq.ansStyle }}">
               <div style="padding:4px 56px 28px 0">
                 <p style="font-family:'General Sans',sans-serif;font-size:14px;line-height:1.9;color:rgba(249,248,244,0.6);margin:0;border-left:2px solid var(--ac);padding-left:20px">{{ faq.answer }}</p>
               </div>
-            </sc-if>
+            </div>
           </div>
         </sc-for>
       </div>
     </div>
   </section>
 
+</sc-if>
   <!-- ── FORMULÁRIO ── -->
   <section id="tg-contato" aria-labelledby="tg-form-h2" style="{{ mSecBege }}">
     <div style="{{ container }}">
@@ -366,11 +367,11 @@
         <div style="display:flex;flex-direction:column;gap:20px">
           <div>
             <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">WhatsApp</span>
-            <a href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">(11) 94343-3813</a>
+            <a data-gtm-cta="whatsapp" href="https://wa.me/5511943433813" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">(11) 94343-3813</a>
           </div>
           <div>
             <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">E-mail</span>
-            <a href="mailto:eventos@grupotrio.com.br" style="display:inline-flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:15px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">eventos@grupotrio.com.br</a>
+            <a data-gtm-cta="email" href="mailto:eventos@grupotrio.com.br" style="display:inline-flex;align-items:center;min-height:44px;font-family:'General Sans',sans-serif;font-size:15px;color:#231D1A;text-decoration:none" style-hover="color:var(--ac)">eventos@grupotrio.com.br</a>
           </div>
           <div>
             <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:5px">Endereço</span>
@@ -390,26 +391,26 @@
           </div>
         </sc-if>
         <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
-          <form onSubmit="{{ onSubmit }}" noValidate="" style="display:flex;flex-direction:column;gap:24px">
+          <form name="orcamento" data-gtm-form="orcamento" onSubmit="{{ onSubmit }}" noValidate="" style="display:flex;flex-direction:column;gap:24px">
             <div style="{{ formGrid }}">
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-nome" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Nome Completo *</label>
-                <input id="tg-nome" type="text" value="{{ formNome }}" onChange="{{ onNome }}" placeholder="Seu nome completo" style="{{ inputNomeStyle }}" required="">
+                <input name="name" id="tg-nome" type="text" value="{{ formNome }}" onChange="{{ onNome }}" placeholder="Seu nome completo" style="{{ inputNomeStyle }}" required="">
                 <sc-if value="{{ errNome }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errNome }}</span></sc-if>
               </div>
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-email" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">E-mail *</label>
-                <input id="tg-email" type="email" value="{{ formEmail }}" onChange="{{ onEmail }}" placeholder="seu@email.com" style="{{ inputEmailStyle }}" required="">
+                <input name="email" id="tg-email" type="email" value="{{ formEmail }}" onChange="{{ onEmail }}" placeholder="seu@email.com" style="{{ inputEmailStyle }}" required="">
                 <sc-if value="{{ errEmail }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errEmail }}</span></sc-if>
               </div>
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-tel" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Telefone / WhatsApp *</label>
-                <input id="tg-tel" type="tel" value="{{ formTelefone }}" onChange="{{ onTelefone }}" placeholder="(11) 99999-9999" style="{{ inputTelStyle }}" required="">
+                <input name="personal_phone" id="tg-tel" type="tel" value="{{ formTelefone }}" onChange="{{ onTelefone }}" placeholder="(11) 99999-9999" style="{{ inputTelStyle }}" required="">
                 <sc-if value="{{ errTelefone }}" hint-placeholder-val="{{ false }}"><span style="font-family:'General Sans',sans-serif;font-size:12px;color:#510303" role="alert">{{ errTelefone }}</span></sc-if>
               </div>
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-tipo" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Tipo de Evento *</label>
-                <select id="tg-tipo" value="{{ formTipo }}" onChange="{{ onTipo }}" style="{{ selectTipoStyle }}" required="">
+                <select name="cf_tipo_de_evento_2" id="tg-tipo" value="{{ formTipo }}" onChange="{{ onTipo }}" style="{{ selectTipoStyle }}" required="">
                   <option value="">Selecione...</option>
                   <option value="casamento">Casamento</option>
                   <option value="mini-wedding">Mini Wedding</option>
@@ -425,11 +426,11 @@
               </div>
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-data" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Data Prevista</label>
-                <input id="tg-data" type="date" value="{{ formDataEvento }}" onChange="{{ onData }}" style="{{ inputDateStyle }}">
+                <input name="cf_data_do_evento" id="tg-data" type="date" value="{{ formDataEvento }}" onChange="{{ onData }}" style="{{ inputDateStyle }}">
               </div>
               <div style="display:flex;flex-direction:column;gap:6px">
                 <label for="tg-conv" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Nº de Convidados</label>
-                <select id="tg-conv" value="{{ formConvidados }}" onChange="{{ onConvidados }}" style="{{ selectConvStyle }}">
+                <select name="cf_quantidade_de_convidados" id="tg-conv" value="{{ formConvidados }}" onChange="{{ onConvidados }}" style="{{ selectConvStyle }}">
                   <option value="">Selecione...</option>
                   <option value="ate50">Até 50</option>
                   <option value="50-120">50 a 120</option>
@@ -441,7 +442,7 @@
             </div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <label for="tg-msg" style="font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(35,29,26,0.55)">Mensagem</label>
-              <textarea id="tg-msg" value="{{ formMensagem }}" onChange="{{ onMensagem }}" rows="4" placeholder="Conte mais sobre o seu evento..." style="{{ textareaStyle }}"></textarea>
+              <textarea name="cf_mensagem" id="tg-msg" value="{{ formMensagem }}" onChange="{{ onMensagem }}" rows="4" placeholder="Conte mais sobre o seu evento..." style="{{ textareaStyle }}"></textarea>
             </div>
             <div style="display:flex;align-items:center;gap:24px;padding-top:4px">
               <button type="submit" disabled="{{ submitDisabled }}" style="{{ submitStyle }}">{{ submitLabel }}</button>
@@ -454,7 +455,6 @@
     </div>
   </section>
 
-</sc-if>
 </main>
 
 <!-- ═══════════ FOOTER ═══════════ -->
@@ -506,10 +506,17 @@ class Component extends DCLogic {
   applyTheme() {
     const E = window.TRIO_ESPACOS && window.TRIO_ESPACOS[this.getKey()]; if (!E) return;
     document.documentElement.style.setProperty('--ac', E.ac); document.documentElement.style.setProperty('--ac2', E.ac2);
-    const ld = { '@context': 'https://schema.org', '@graph': [
-      { '@type': 'EventVenue', name: E.name, url: E.url, telephone: '+55-11-94343-3813', email: 'eventos@grupotrio.com.br', address: { '@type': 'PostalAddress', streetAddress: E.end1, addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR', postalCode: ((E.endereco.match(/\d{5}-\d{3}/) || [])[0] || undefined) }, parentOrganization: { '@type': 'Organization', name: 'Grupo TRIO' } },
-      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Início', item: 'home.dc.html' }, { '@type': 'ListItem', position: 2, name: 'Nossos espaços', item: 'nossos-espacos.dc.html' }, { '@type': 'ListItem', position: 3, name: E.name, item: E.url }] },
-      { '@type': 'FAQPage', mainEntity: E.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }] };
+    const U = window.trioUrl || (x => x); const ORG = { '@id': 'https://www.grupotrio.com.br/#organization' };
+    const modo = this.props.modo || 'social'; const base = U(E.url);
+    const pg = modo === 'portal' ? base : U(E.url.replace('.dc.html', '-' + modo + '.dc.html'));
+    const crumbs = [['Início', U('home.dc.html')], ['Nossos espaços', U('nossos-espacos.dc.html')], [E.name, base]];
+    if (modo !== 'portal') crumbs.push([modo === 'corporativo' ? 'Corporativo' : 'Social', pg]);
+    const cep = (String(E.endereco || '').match(/\d{5}-\d{3}/) || [])[0];
+    const graph = [
+      { '@type': 'EventVenue', '@id': base + '#venue', name: E.name, url: base, image: /^https?:/.test(E.heroImg || '') ? E.heroImg : undefined, telephone: '+55-11-99560-1287', email: 'eventos@grupotrio.com.br', address: { '@type': 'PostalAddress', streetAddress: E.end1, addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR', postalCode: cep }, parentOrganization: ORG },
+      { '@type': 'BreadcrumbList', '@id': pg + '#breadcrumb', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c[0], item: c[1] })) }];
+    if (modo !== 'portal' && (E.faqs || []).length) graph.push({ '@type': 'FAQPage', '@id': pg + '#faq', mainEntity: E.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+    const ld = { '@context': 'https://schema.org', '@graph': graph };
     let s = document.getElementById('ld-espaco'); if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-espaco'; document.head.appendChild(s); }
     s.textContent = JSON.stringify(ld);
   }
@@ -710,7 +717,7 @@ class Component extends DCLogic {
 
       faqs: E.faqs.map((f, i) => ({
         question: f.q, answer: f.a,
-        isOpen: this.state.openFaqIndex === i,
+        isOpen: this.state.openFaqIndex === i, ansStyle: { display: (this.state.openFaqIndex === i) ? 'block' : 'none' },
         toggle: () => this.setState(st => ({ openFaqIndex: st.openFaqIndex === i ? null : i })),
         icon: this.state.openFaqIndex === i ? '−' : '+',
         btnStyle: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', padding: '22px 0', cursor: 'pointer', textAlign: 'left', width: '100%' },
@@ -751,7 +758,7 @@ class Component extends DCLogic {
         e.preventDefault();
         const errs = this.validate();
         if (Object.keys(errs).length) { this.setState({ formErrors: errs }); return; }
-        this.setState({ formStatus: 'submitting', formErrors: {} });
+        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_name: 'orcamento', page_path: location.pathname }); this.setState({ formStatus: 'submitting', formErrors: {} });
         setTimeout(() => this.setState({ formStatus: 'success' }), 1600);
       },
       errNome: formErrors.nome, errEmail: formErrors.email,

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js?v=20261117165429"></script>
+<script src="./support.js?v=20261117173455"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="fontes-trio.css?v=20261117165429">
+  <link rel="stylesheet" href="fontes-trio.css?v=20261117173455">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -41,7 +41,7 @@
       <h1 id="rs-h1" style="{{ h1 }}">{{ r.h1 }}</h1>
       <p style="{{ heroP }}">{{ r.heroLead }}</p>
       <div style="{{ btnRow }}">
-        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
+        <a data-gtm-cta="reserva_whatsapp" data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
         <a data-btn="" href="#rs-menu" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 30px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Ver menus</a>
       </div>
     </div>
@@ -81,7 +81,7 @@
           <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 0 18px;text-wrap:pretty">{{ p }}</p>
         </sc-for>
         <div style="margin-top:12px">
-          <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
+          <a data-gtm-cta="reserva_whatsapp" data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
         </div>
       </div>
     </div>
@@ -101,11 +101,11 @@
         </sc-for>
         <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:#F9F8F4;margin:12px 0 14px">Consulte nossos menus</span>
         <div style="{{ btnRow }}">
-          <a data-btn="" href="{{ r.menuPt }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Menu almoço (PT)</a>
-          <a data-btn="" href="{{ r.menuEn }}" target="_blank" rel="noopener" lang="en" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 26px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Lunch menu (EN)</a>
+          <a data-gtm-cta="cardapio" data-btn="" href="{{ r.menuPt }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 28px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Menu almoço (PT)</a>
+          <a data-gtm-cta="cardapio" data-btn="" href="{{ r.menuEn }}" target="_blank" rel="noopener" lang="en" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:14px 26px;border:1px solid #F9F8F4;color:#F9F8F4;text-decoration:none" style-hover="background:rgba(249,248,244,0.12);color:#F9F8F4">Lunch menu (EN)</a>
         </div>
         <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(249,248,244,0.2)">
-          <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
+          <a data-gtm-cta="reserva_whatsapp" data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:#F9F8F4;color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Faça sua reserva</a>
         </div>
       </div>
       <div style="{{ menuPics }}">
@@ -135,12 +135,12 @@
           </div>
           <div style="padding:16px 0;border-bottom:1px solid rgba(35,29,26,0.15)">
             <span style="display:block;font-family:'General Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:{{ ls }};text-transform:uppercase;color:{{ ac }};margin-bottom:6px">Reservas</span>
-            <a href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;margin:-10px 0;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A">WhatsApp {{ r.tel }}</a>
+            <a data-gtm-cta="reserva_whatsapp" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;margin:-10px 0;font-family:'General Sans',sans-serif;font-size:16px;color:#231D1A">WhatsApp {{ r.tel }}</a>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px">
-          <a href="{{ r.mapLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Google Maps</a>
-          <a href="{{ appleMap }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Apple Maps</a>
+          <a data-gtm-cta="como_chegar" href="{{ r.mapLink }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Google Maps</a>
+          <a data-gtm-cta="como_chegar" href="{{ appleMap }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:12px 10px;text-align:center;border:1px solid {{ ac }};color:{{ ac }};text-decoration:none" style-hover="background:#BFB8AF">Abrir no Apple Maps</a>
         </div>
       </div>
       <div style="{{ mapBox }}">
@@ -201,7 +201,7 @@
       <h2 id="rs-exec-h2" style="{{ h2c }}">{{ r.execTitle }}</h2>
       <p style="font-family:'General Sans',sans-serif;font-size:16px;line-height:1.8;color:#231D1A;margin:0 auto 28px;max-width:640px;text-wrap:pretty">{{ r.exec }}</p>
       <div style="display:flex;justify-content:center">
-        <a data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
+        <a data-gtm-cta="reserva_whatsapp" data-btn="" href="{{ r.reserva }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;font-family:'General Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;background:{{ ac }};color:#F9F8F4;text-decoration:none" style-hover="opacity:0.88;color:#F9F8F4">Faça sua reserva</a>
       </div>
     </div>
   </section>
@@ -278,14 +278,15 @@ class Component extends DCLogic {
   componentWillUnmount() { window.removeEventListener('resize', this._r); clearInterval(this._iv); }
   schema() {
     const r = R[this.props.r] || R.dezenove;
+    const U = window.trioUrl || (x => x);
     const ld = { '@context': 'https://schema.org', '@graph': [
-      { '@type': 'Restaurant', name: r.name, url: r.url, image: r.hero, telephone: r.telIntl, servesCuisine: 'Contemporânea', priceRange: '$$$', acceptsReservations: 'True',
+      { '@type': 'Restaurant', '@id': U(r.url) + '#restaurant', name: r.name, url: U(r.url), image: r.hero, telephone: r.telIntl, servesCuisine: 'Contemporânea', priceRange: '$$$', acceptsReservations: true,
         hasMenu: r.menuPt, address: { '@type': 'PostalAddress', streetAddress: r.street, addressLocality: 'São Paulo', addressRegion: 'SP', postalCode: r.cep, addressCountry: 'BR' },
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:30', closes: '15:00' }],
-        parentOrganization: { '@type': 'Organization', name: 'Grupo TRIO Eventos e Gastronomia', url: 'home.dc.html' } },
+        parentOrganization: { '@id': 'https://www.grupotrio.com.br/#organization' } },
       { '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Início', item: 'home.dc.html' },
-        { '@type': 'ListItem', position: 2, name: r.name, item: r.url }] }] };
+        { '@type': 'ListItem', position: 1, name: 'Início', item: U('home.dc.html') },
+        { '@type': 'ListItem', position: 2, name: r.name, item: U(r.url) }] }] };
     let s = document.getElementById('ld-restaurante');
     if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld-restaurante'; document.head.appendChild(s); }
     s.textContent = JSON.stringify(ld);
